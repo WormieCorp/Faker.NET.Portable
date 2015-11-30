@@ -10,6 +10,7 @@ Faker.NET Portable Edition
 
 C# port of the Ruby Faker gem (http://faker.rubyforge.org/) and is used to easily generate fake data: 
 names, addresses, phone numbers, etc.
+This project is based on the [faker-cs](https://github.com/slashdotdash/faker-cs) project so all credit goes to it's owner.
 
 Availabe as a NuGet package <a href="https://nuget.org/packages/Faker.Net.Portable" target="_blank">here</a>.
 
