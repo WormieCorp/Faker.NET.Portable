@@ -72,6 +72,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Phone.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="FlatHash.cs" />
     <None Include="Docs\NameFormatsExample.xml" />
     <EmbeddedResource Include="Resources\Address.de-DE.resx">
       <SubType>Designer</SubType>
@@ -115,7 +116,7 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Avatar.cs" />
+    <Compile Include="RoboHash.cs" />
     <Compile Include="Business.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Company.cs" />

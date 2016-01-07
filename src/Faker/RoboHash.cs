@@ -2,12 +2,12 @@
 using System.Text.RegularExpressions;
 using Faker.Extensions;
 
-namespace Faker
+namespace Faker.Avatar
 {
     /// <summary>
     ///     What kind of image will be generated.
     /// </summary>
-    public enum ImageFormat
+    public enum RoboHashImageFormat
     {
         // ReSharper disable InconsistentNaming        
         /// <summary>
@@ -32,7 +32,7 @@ namespace Faker
     /// </summary>
     /// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
     /// <threadsafety static="true" />
-    public static class Avatar
+    public static class RoboHash
     {
         /// <summary>
         ///     Gets a random image URL.
@@ -40,7 +40,7 @@ namespace Faker
         /// <returns>The random image URL.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="set" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">Size should be specified in format 300x300</exception>
-        public static string Image(string slug = null, string size = "300x300", ImageFormat format = ImageFormat.png,
+        public static string Image(string slug = null, string size = "300x300", RoboHashImageFormat format = RoboHashImageFormat.png,
                                    string set = "set1")
         {
             if (set == null)

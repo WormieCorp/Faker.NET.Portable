@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Faker.Avatar;
 using JetBrains.Annotations;
 
 namespace Faker.Extensions
@@ -27,7 +28,8 @@ namespace Faker.Extensions
 
                 AddVariables(typeof (Address), s_validVariables);
                 AddVariables(typeof (App), s_validVariables);
-                AddVariables(typeof (Avatar), s_validVariables);
+                AddVariables(typeof (RoboHash), s_validVariables);
+                AddVariables(typeof (FlatHash), s_validVariables);
                 AddVariables(typeof (Business), s_validVariables);
                 AddVariables(typeof (Company), s_validVariables);
                 AddVariables(typeof (Internet), s_validVariables);

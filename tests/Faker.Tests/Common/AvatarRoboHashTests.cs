@@ -1,18 +1,19 @@
 ﻿using System;
+using Faker.Avatar;
 using NUnit.Framework;
 
 namespace Faker.Tests.Common
 {
     [TestFixture]
-    public class AvatarTests
+    public class AvatarRoboHashTests
     {
         private const string IMAGE_FORMAT = @"{0}\.{1}\?size={2}&set={3}$";
         private const string URL_STARTS_WITH = "http://robohash.org/";
 
         [Test]
-        public static void Should_Get_Avatar_Image_With_Custom_Format()
+        public static void Should_Get_Avatar_RoboHash_Image_With_Custom_Format()
         {
-            string avatar = Avatar.Image(format: ImageFormat.jpg);
+            string avatar = RoboHash.Image(format: RoboHashImageFormat.jpg);
 
             string expectedFormat = string.Format(IMAGE_FORMAT, "[a-z]+", "jpg", "300x300", "set1");
 
@@ -22,9 +23,9 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        public static void Should_Get_Avatar_Image_With_Custom_Set()
+        public static void Should_Get_Avatar_RoboHash_Image_With_Custom_Set()
         {
-            string avatar = Avatar.Image(set: "MySet");
+            string avatar = RoboHash.Image(set: "MySet");
 
             string expectedFormat = string.Format(IMAGE_FORMAT, "[a-z]+", "png", "300x300", "MySet");
 
@@ -34,9 +35,9 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        public static void Should_Get_Avatar_Image_With_Custom_Size()
+        public static void Should_Get_Avatar_RoboHash_Image_With_Custom_Size()
         {
-            string avatar = Avatar.Image(size: "200x140");
+            string avatar = RoboHash.Image(size: "200x140");
 
             string expectedFormat = string.Format(IMAGE_FORMAT, "[a-z]+", "png", "200x140", "set1");
 
@@ -46,9 +47,9 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        public static void Should_Get_Avatar_Image_With_Custom_Slug()
+        public static void Should_Get_Avatar_RoboHash_Image_With_Custom_Slug()
         {
-            string avatar = Avatar.Image("YOOOOOOOO");
+            string avatar = RoboHash.Image("YOOOOOOOO");
 
             string expectedFormat = string.Format(IMAGE_FORMAT, "YOOOOOOOO", "png", "300x300", "set1");
 
@@ -58,9 +59,9 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        public static void Should_Get_Avatar_Image_With_Default_Values()
+        public static void Should_Get_Avatar_RoboHash_Image_With_Default_Values()
         {
-            string avatar = Avatar.Image();
+            string avatar = RoboHash.Image();
 
             string expectedFormat = string.Format(IMAGE_FORMAT, "[a-z]+", "png", "300x300", "set1");
 
@@ -70,17 +71,17 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        public static void Should_Throw_Argument_Exception_If_Size_Not_Valid()
+        public static void Should_Throw_Argument_Exception_If_Avatar_RoboHash_Size_Not_Valid()
         {
-            var ex = Assert.Throws<ArgumentException>(() => Avatar.Image(size: "NotValid"));
+            var ex = Assert.Throws<ArgumentException>(() => RoboHash.Image(size: "NotValid"));
             Assert.That(ex.Message, Is.StringStarting("Size should be specified in format 300x300"));
             Assert.That(ex.ParamName, Is.EqualTo("size"));
         }
 
         [Test]
-        public static void Should_Throw_Argument_Null_Exception_If_Set_Is_Null()
+        public static void Should_Throw_Argument_Null_Exception_If_Avatar_RoboHash_Set_Is_Null()
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => Avatar.Image(set: null));
+            var ex = Assert.Throws<ArgumentNullException>(() => RoboHash.Image(set: null));
             Assert.That(ex.ParamName, Is.EqualTo("set"));
         }
     }

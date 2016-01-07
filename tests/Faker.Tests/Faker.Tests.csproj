@@ -59,6 +59,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Common\AvatarFlatHashTests.cs" />
     <Compile Include="Common\ColorTests.cs" />
     <Compile Include="Common\DateTests.cs" />
     <Compile Include="Common\LoremTests.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="en_US\NameAmericanTests.cs" />
     <Compile Include="en_US\PhoneAmericanTests.cs" />
     <Compile Include="nb_NO\AddressNorwegianTests.cs" />
-    <Compile Include="Common\AvatarTests.cs" />
+    <Compile Include="Common\AvatarRoboHashTests.cs" />
     <Compile Include="Extensions\ArrayExtensionsTests.cs" />
     <Compile Include="Extensions\EnumerableExtensionsTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
