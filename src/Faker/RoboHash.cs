@@ -28,14 +28,14 @@ namespace Faker.Avatar
     }
 
     /// <summary>
-    ///     A collection of Avatar related resources.
+    ///     A collection of RoboHash.org avatar related resources.
     /// </summary>
     /// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
     /// <threadsafety static="true" />
     public static class RoboHash
     {
         /// <summary>
-        ///     Gets a random image URL.
+        ///     Gets a random RoboHash.org image URL.
         /// </summary>
         /// <returns>The random image URL.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="set" /> is <see langword="null" />.</exception>

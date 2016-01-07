@@ -30,8 +30,17 @@ namespace Faker.Avatar
         // ReSharper restore InconsistentNaming
     }
 
+    /// <summary>
+    ///     A collection of FlatHash.com avatar related resources.
+    /// </summary>
+    /// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
+    /// <threadsafety static="true" />
     public static class FlatHash
     {
+        /// <summary>
+        ///     Gets a random RoboHash.com image URL.
+        /// </summary>
+        /// <returns>The random image URL.</returns>
         public static string Image(string slug = null, FlatHashImageFormat format = FlatHashImageFormat.png)
         {
             slug = slug ?? string.Join(string.Empty, Lorem.Words(3));
