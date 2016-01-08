@@ -1,13 +1,14 @@
 ﻿using Faker.Extensions;
 
-namespace Faker.Avatar
+namespace Faker
 {
     /// <summary>
     ///     What kind of image will be generated.
     /// </summary>
+    /// <remarks>When version 3.0 hits, this will be in Faker.Avatar namespace.</remarks>
     public enum FlatHashImageFormat
     {
-        // ReSharper disable InconsistentNaming        
+        // ReSharper disable InconsistentNaming
         /// <summary>
         ///     A PNG image
         /// </summary>
@@ -33,8 +34,8 @@ namespace Faker.Avatar
     /// <summary>
     ///     A collection of FlatHash.com avatar related resources.
     /// </summary>
-    /// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
     /// <threadsafety static="true" />
+    /// <remarks>When version 3.0 hits, this will be in Faker.Avatar namespace.</remarks>
     public static class FlatHash
     {
         /// <summary>

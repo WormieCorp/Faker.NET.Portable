@@ -1,5 +1,5 @@
 ﻿using System;
-using Faker.Avatar;
+using Faker;
 using NUnit.Framework;
 
 namespace Faker.Tests.Common
