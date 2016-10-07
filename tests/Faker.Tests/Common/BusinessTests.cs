@@ -27,7 +27,7 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        [Repeat(10000)]
+        [Repeat(1000)]
         public void Should_Generate_Credit_Expiry_Date()
         {
             DateTime minimumExpected = DateTime.Now.AddDays(365);
@@ -40,7 +40,7 @@ namespace Faker.Tests.Common
         }
 
         [Test]
-        [Repeat(10)]
+        [Repeat(100)]
         public void Should_Generate_National_Insurance_Number()
         {
             string[] possibleNumbers = Resources.Business.NationalInsuranceNumbers.Split(Config.SEPARATOR);
