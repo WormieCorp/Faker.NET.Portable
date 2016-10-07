@@ -126,4 +126,7 @@
   <data name="CreditCardTypes" xml:space="preserve">
     <value>visa;mastercard;americanexpress;discover</value>
   </data>
+  <data name="NationalInsuranceNumbers" xml:space="preserve">
+    <value>QQ123456Q;AA123456A;XY136749X;RT438473W;RR382971F</value>
+  </data>
 </root>

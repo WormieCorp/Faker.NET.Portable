@@ -38,5 +38,16 @@ namespace Faker.Tests.Common
             Assert.That(actual, Is.GreaterThanOrEqualTo(minimumExpected)
                                   .And.LessThanOrEqualTo(maximumExpected));
         }
+
+        [Test]
+        [Repeat(10)]
+        public void Should_Generate_National_Insurance_Number()
+        {
+            string[] possibleNumbers = Resources.Business.NationalInsuranceNumbers.Split(Config.SEPARATOR);
+
+            string number = Business.NationalInsuranceNumber();
+
+            Assert.That(new[] { number }, Is.SubsetOf(possibleNumbers));
+        }
     }
 }

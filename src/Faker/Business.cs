@@ -36,5 +36,14 @@ namespace Faker
         {
             return Resources.Business.CreditCardTypes.RandomResource();
         }
+
+        /// <summary>
+        ///     Generates a random National insurance number.
+        /// </summary>
+        /// <returns>A random National insurance number</returns>
+        public static string NationalInsuranceNumber()
+        {
+            return Resources.Business.NationalInsuranceNumbers.RandomResource();
+        }
     }
 }
