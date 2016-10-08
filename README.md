@@ -79,9 +79,10 @@ Faker.Avatar.Image(
 
 ### Business
 ```C#
-Faker.Business.CreditCardNumber();      // "1211-1221-1234-2201"
-Faker.Business.CreditCardExpiryDate();  // "visa"
-Faker.Business.CreditCardType();        // 2019-07-17 15:35:35.731
+Faker.Business.CreditCardNumber();        // "1211-1221-1234-2201"
+Faker.Business.CreditCardExpiryDate();    // "visa"
+Faker.Business.CreditCardType();          // 2019-07-17 15:35:35.731
+Faker.Business.NationalInsuranceNumber(); // "AA123456A"
 ```
 
 ### Company
