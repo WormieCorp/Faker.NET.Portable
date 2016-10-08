@@ -140,3 +140,10 @@ Faker.Phone.Extension();                // "3485"
 Faker.Phone.Number();                   // "1-331-588-8777 x15811"
 Faker.Phone.SubscriberNumber();         // "2424"
 ```
+
+### Codes
+```C#
+Faker.Code.ISBN10();                    // "2352918227"
+Faker.Code.ISBN13();                    // "9782488974639"
+Faker.Code.EAN();                       // "6349033486318"
+```
