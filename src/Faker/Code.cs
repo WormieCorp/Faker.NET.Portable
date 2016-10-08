@@ -1,5 +1,6 @@
 ﻿using System;
 using Faker.Extensions;
+using System.Globalization;
 
 namespace Faker
 {
@@ -30,19 +31,7 @@ namespace Faker
 
             var prefix = string.Join(string.Empty, v);
 
-            return prefix + (checksum < 10 ? checksum.ToString() : "X");
-        }
-
-        private static int computeChecksumIsbn10(int[] digits)
-        {
-            int sum = 0;
-            
-            for (var i = 0; i < 9; i++)
-                sum += (10 - i) * digits[i];
-
-            sum *= 10;
-
-            return sum % 11;
+            return prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "X");
         }
 
         /// <summary>
@@ -97,6 +86,18 @@ namespace Faker
             var prefix = string.Join(string.Empty, v);
 
             return prefix + checksum;
+        }
+
+        private static int computeChecksumIsbn10(int[] digits)
+        {
+            int sum = 0;
+
+            for (var i = 0; i < 9; i++)
+                sum += (10 - i) * digits[i];
+
+            sum *= 10;
+
+            return sum % 11;
         }
 
         private static int computeChecksumEan(int[] digits)
