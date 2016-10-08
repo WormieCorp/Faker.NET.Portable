@@ -119,6 +119,7 @@
     <Compile Include="Avatar.cs" />
     <Compile Include="Avatar\RoboHash.cs" />
     <Compile Include="Business.cs" />
+    <Compile Include="Code.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Config.cs" />
