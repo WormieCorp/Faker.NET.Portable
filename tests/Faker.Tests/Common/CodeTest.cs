@@ -147,16 +147,16 @@ namespace Faker.Tests.Common
         /// <summary>
         /// Computes checksum validity on a EAN
         /// </summary>
-        /// <param name="isbn">The EAN to be checked</param>
+        /// <param name="ean">The EAN to be checked</param>
         /// <returns>Checksum is valid</returns>
         /// <remarks>
         ///     Checksum routines are at http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js
         /// </remarks>
-        private bool isEanChecksumValid(string isbn)
+        private bool isEanChecksumValid(string ean)
         {
             var v = new int[13];
             for (int i = 0; i < 13; i++)
-                v[i] = (byte)isbn[i] - (byte)'0';
+                v[i] = (byte)ean[i] - (byte)'0';
 
             var sum = 0;
             for (int i = 0; i < 13; i += 2)
