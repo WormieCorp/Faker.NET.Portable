@@ -15,7 +15,7 @@ namespace Faker.Tests.Common
 		{
 			string email = Internet.Email();
 
-			Assert.That(email, Does.StartWith(EMAIL_REGEX)
+			Assert.That(email, Does.Match(EMAIL_REGEX)
 								 .And.Not.Contains("www"));
 		}
 
