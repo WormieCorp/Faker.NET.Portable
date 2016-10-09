@@ -109,8 +109,7 @@ namespace Faker
 
             var prefix = string.Join(string.Empty, v);
 
-            var result = prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "K");
-            return result;
+            return prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "K");
         }
 
         private static int computeChecksumIsbn10(int[] digits)
