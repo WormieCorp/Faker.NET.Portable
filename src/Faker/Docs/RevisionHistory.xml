@@ -31,5 +31,4 @@ Renamed previously named <c>seed</c> to <paramref name="Seed" /> to be consisten
       </revision>
     </revisionHistory>
   </RandomNumber>
-
 </Revisions>

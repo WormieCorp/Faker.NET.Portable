@@ -2,51 +2,50 @@
 
 namespace Faker.Tests.nb_NO
 {
-    [TestFixture]
-    [SetUICulture("nb-NO")]
-    [SetCulture("nb-NO")]
-    [Category("Culture 'nb_NO'")]
-    public class CompanyNorwegianTests
-    {
-        [Test]
-        [Repeat(1000)]
-        public void Should_Generate_Bullshit()
-        {
-            string bs1Format = Resources.Company.BS1.ToFormat();
-            string bs2Format = Resources.Company.BS2.ToFormat();
-            string bs3Format = Resources.Company.BS3.ToFormat();
+	[SetUICulture("nb-NO")]
+	[SetCulture("nb-NO")]
+	[Category("Culture 'nb_NO'")]
+	public class CompanyNorwegianTests
+	{
+		[Test]
+		[Repeat(1000)]
+		public void Should_Generate_Bullshit()
+		{
+			string bs1Format = Resources.Company.BS1.ToFormat();
+			string bs2Format = Resources.Company.BS2.ToFormat();
+			string bs3Format = Resources.Company.BS3.ToFormat();
 
-            string bs = Company.Bullshit();
+			string bs = Company.Bullshit();
 
-            bs.AssertFormats(bs1Format.Combine(bs2Format, bs3Format));
-        }
+			bs.AssertFormats(bs1Format.Combine(bs2Format, bs3Format));
+		}
 
-        [Test]
-        [Repeat(1000)]
-        public void Should_Generate_Catchphrase()
-        {
-            string catch1Format = Resources.Company.Buzzwords1.ToFormat();
-            string catch2Format = Resources.Company.Buzzwords2.ToFormat();
-            string catch3Format = Resources.Company.Buzzwords3.ToFormat();
+		[Test]
+		[Repeat(1000)]
+		public void Should_Generate_Catchphrase()
+		{
+			string catch1Format = Resources.Company.Buzzwords1.ToFormat();
+			string catch2Format = Resources.Company.Buzzwords2.ToFormat();
+			string catch3Format = Resources.Company.Buzzwords3.ToFormat();
 
-            string catchPhrase = Company.CatchPhrase();
+			string catchPhrase = Company.CatchPhrase();
 
-            catchPhrase.AssertFormats(catch1Format.Combine(catch2Format, catch3Format));
-        }
+			catchPhrase.AssertFormats(catch1Format.Combine(catch2Format, catch3Format));
+		}
 
-        [Test]
-        [Repeat(1000)]
-        public virtual void Should_Generate_Company_Name()
-        {
-            string lastNameFormat = Resources.Name.Last.ToFormat();
-            string suffixCompanyFormat = Resources.Company.Suffix.ToFormat();
+		[Test]
+		[Repeat(1000)]
+		public virtual void Should_Generate_Company_Name()
+		{
+			string lastNameFormat = Resources.Name.Last.ToFormat();
+			string suffixCompanyFormat = Resources.Company.Suffix.ToFormat();
 
-            string name = Company.Name();
+			string name = Company.Name();
 
-            name.AssertFormats(
-                               lastNameFormat.Combine(suffixCompanyFormat),
-                               lastNameFormat + "-" + lastNameFormat,
-                               (lastNameFormat + ",").Combine(lastNameFormat, "og", lastNameFormat));
-        }
-    }
+			name.AssertFormats(
+							   lastNameFormat.Combine(suffixCompanyFormat),
+							   lastNameFormat + "-" + lastNameFormat,
+							   (lastNameFormat + ",").Combine(lastNameFormat, "og", lastNameFormat));
+		}
+	}
 }

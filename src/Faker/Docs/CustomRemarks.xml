@@ -19,5 +19,4 @@ The resources are aquired by satellite assemblies matching the current thread's
 If no matching satellite  assembly is found, the english version is used.
     </remarks>
   </SatelliteResource>
-
 </Comments>

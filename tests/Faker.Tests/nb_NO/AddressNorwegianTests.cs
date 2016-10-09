@@ -1,95 +1,93 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Faker.Tests.nb_NO
 {
-    [TestFixture]
-    [SetUICulture("nb-NO")]
-    [SetCulture("nb-NO")]
-    [Category("Culture 'nb_NO'")]
-    public class AddressNorwegianTests
-    {
-        [Test]
-        [Repeat(1000)]
-        public void Should_Get_Building_Number()
-        {
-            string buildingNum = Address.BuildingNumber();
+	[SetUICulture("nb-NO")]
+	[SetCulture("nb-NO")]
+	[Category("Culture 'nb_NO'")]
+	public class AddressNorwegianTests
+	{
+		[Test]
+		[Repeat(1000)]
+		public void Should_Get_Building_Number()
+		{
+			string buildingNum = Address.BuildingNumber();
 
-            Assert.That(buildingNum, Has.Length.GreaterThanOrEqualTo(3)
-                                        .Or.Length.LessThanOrEqualTo(5));
-            //Assert.That(buildingNum, Is.StringMatching("^[0-9]+$"));
-            buildingNum.AssertFormats(Resources.Address.BuildingNumber.ToFormat());
-        }
+			Assert.That(buildingNum, Has.Length.GreaterThanOrEqualTo(3)
+										.Or.Length.LessThanOrEqualTo(5));
 
-        [Test]
-        [Repeat(1000)]
-        public virtual void Should_Get_City()
-        {
-            string cityRootFormat = Resources.Address.CityRoot.ToFormat();
-            string citySuffixFormat = Resources.Address.CitySuffix.ToFormat();
+			buildingNum.AssertFormats(Resources.Address.BuildingNumber.ToFormat());
+		}
 
-            string city = Address.City();
+		[Test]
+		[Repeat(1000)]
+		public virtual void Should_Get_City()
+		{
+			string cityRootFormat = Resources.Address.CityRoot.ToFormat();
+			string citySuffixFormat = Resources.Address.CitySuffix.ToFormat();
 
-            city.AssertFormats(cityRootFormat + citySuffixFormat);
-        }
+			string city = Address.City();
 
-        [Test]
-        [Repeat(1000)]
-        public virtual void Should_Get_Street_Address()
-        {
-            string buildingNumberFormat = Resources.Address.BuildingNumber.ToFormat();
-            string firstNameFormat = Resources.Name.First.ToFormat();
-            string lastNameFormat = Resources.Name.Last.ToFormat();
-            string streetSuffixFormat = Resources.Address.StreetSuffix.ToFormat();
-            string streetPrefixFormat = Resources.Address.StreetPrefix.ToFormat();
-            string streetRootFormat = Resources.Address.StreetRoot.ToFormat();
-            string commonStreetSuffixFormat = Resources.Address.CommonStreetSuffixes.ToFormat();
+			city.AssertFormats(cityRootFormat + citySuffixFormat);
+		}
 
-            string address = Address.StreetAddress();
+		[Test]
+		[Repeat(1000)]
+		public virtual void Should_Get_Street_Address()
+		{
+			string buildingNumberFormat = Resources.Address.BuildingNumber.ToFormat();
+			string firstNameFormat = Resources.Name.First.ToFormat();
+			string lastNameFormat = Resources.Name.Last.ToFormat();
+			string streetSuffixFormat = Resources.Address.StreetSuffix.ToFormat();
+			string streetPrefixFormat = Resources.Address.StreetPrefix.ToFormat();
+			string streetRootFormat = Resources.Address.StreetRoot.ToFormat();
+			string commonStreetSuffixFormat = Resources.Address.CommonStreetSuffixes.ToFormat();
 
-            address.AssertFormats((streetRootFormat + streetSuffixFormat).Combine(buildingNumberFormat),
-                                  streetPrefixFormat
-                                      .Combine(streetRootFormat + streetSuffixFormat, buildingNumberFormat),
-                                  (firstNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat),
-                                  (lastNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat));
-        }
+			string address = Address.StreetAddress();
 
-        [Test]
-        [Repeat(1000)]
-        public virtual void Should_Get_Street_Address_With_Secondary_Address()
-        {
-            string buildingNumberFormat = Resources.Address.BuildingNumber.ToFormat();
-            string firstNameFormat = Resources.Name.First.ToFormat();
-            string lastNameFormat = Resources.Name.Last.ToFormat();
-            string streetSuffixFormat = Resources.Address.StreetSuffix.ToFormat();
-            string streetPrefixFormat = Resources.Address.StreetPrefix.ToFormat();
-            string streetRootFormat = Resources.Address.StreetRoot.ToFormat();
-            string commonStreetSuffixFormat = Resources.Address.CommonStreetSuffixes.ToFormat();
-            string secondaryAddressFormat = Resources.Address.SecondaryAddress.ToFormat();
+			address.AssertFormats((streetRootFormat + streetSuffixFormat).Combine(buildingNumberFormat),
+								  streetPrefixFormat
+									  .Combine(streetRootFormat + streetSuffixFormat, buildingNumberFormat),
+								  (firstNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat),
+								  (lastNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat));
+		}
 
-            string address = Address.StreetAddress(true);
+		[Test]
+		[Repeat(1000)]
+		public virtual void Should_Get_Street_Address_With_Secondary_Address()
+		{
+			string buildingNumberFormat = Resources.Address.BuildingNumber.ToFormat();
+			string firstNameFormat = Resources.Name.First.ToFormat();
+			string lastNameFormat = Resources.Name.Last.ToFormat();
+			string streetSuffixFormat = Resources.Address.StreetSuffix.ToFormat();
+			string streetPrefixFormat = Resources.Address.StreetPrefix.ToFormat();
+			string streetRootFormat = Resources.Address.StreetRoot.ToFormat();
+			string commonStreetSuffixFormat = Resources.Address.CommonStreetSuffixes.ToFormat();
+			string secondaryAddressFormat = Resources.Address.SecondaryAddress.ToFormat();
 
-            address.AssertFormats(
-                                  (streetRootFormat + streetSuffixFormat).Combine(buildingNumberFormat,
-                                                                                  secondaryAddressFormat),
-                                  streetPrefixFormat
-                                      .Combine(streetRootFormat + streetSuffixFormat, buildingNumberFormat,
-                                               secondaryAddressFormat),
-                                  (firstNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat,
-                                                                                       secondaryAddressFormat),
-                                  (lastNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat,
-                                                                                      secondaryAddressFormat));
-        }
+			string address = Address.StreetAddress(true);
 
-        [Test]
-        [Repeat(1000)]
-        public void Should_Get_Zip_Code()
-        {
-            string zipcodeFormat = Resources.Address.ZipCode.ToFormat(true);
+			address.AssertFormats(
+								  (streetRootFormat + streetSuffixFormat).Combine(buildingNumberFormat,
+																				  secondaryAddressFormat),
+								  streetPrefixFormat
+									  .Combine(streetRootFormat + streetSuffixFormat, buildingNumberFormat,
+											   secondaryAddressFormat),
+								  (firstNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat,
+																					   secondaryAddressFormat),
+								  (lastNameFormat + commonStreetSuffixFormat).Combine(buildingNumberFormat,
+																					  secondaryAddressFormat));
+		}
 
-            string zipcode = Address.ZipCode();
+		[Test]
+		[Repeat(1000)]
+		public void Should_Get_Zip_Code()
+		{
+			string zipcodeFormat = Resources.Address.ZipCode.ToFormat(true);
 
-            zipcode.AssertFormats(zipcodeFormat);
-        }
-    }
+			string zipcode = Address.ZipCode();
+
+			zipcode.AssertFormats(zipcodeFormat);
+		}
+	}
 }
