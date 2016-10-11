@@ -46,6 +46,15 @@ namespace Faker
 		/// <returns>The randomly created first name.</returns>
 		public static string First()
 		{
+			return Resources.Name.First.Split(Config.SEPARATOR).Random().Trim();
+		}
+
+		/// <summary>
+		///   Creates a random first name, using a more aggressive caching strategy.
+		/// </summary>
+		/// <returns>The randomly created first name.</returns>
+		public static string FirstCached()
+		{
 			var cultureInfo = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 			if (!firstArrayCacheDictionary.ContainsKey(cultureInfo))
 				firstArrayCacheDictionary[cultureInfo] = Resources.Name.First.Split(Config.SEPARATOR).Select(s => s.Trim()).ToArray();

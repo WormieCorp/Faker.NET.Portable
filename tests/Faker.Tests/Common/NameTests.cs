@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using System;
+using System.Diagnostics;
 
 namespace Faker.Tests.Common
 {
@@ -27,14 +29,30 @@ namespace Faker.Tests.Common
 		}
 
 		[Test]
-		[Repeat(100000)]
+		[Repeat(1)]
 		public void Compute_Time_Elapsed_By_The_First_Method()
 		{
-			Name.First();
+			var sw = new Stopwatch();
+			sw.Start();
+			for (int i = 0; i < 100000; i++)
+			{
+				Name.First();
+			}
+			sw.Stop();
+			Console.WriteLine("Elapsed time without caching {0}msec", sw.ElapsedMilliseconds);
+			sw.Reset();
+
+			sw.Start();
+			for (int i = 0; i < 100000; i++)
+			{
+				Name.FirstCached();
+			}
+			sw.Stop();
+			Console.WriteLine("Elapsed time with caching {0}msec", sw.ElapsedMilliseconds);
 		}
 
 		[Test]
-		[Repeat(100000)]
+		[Repeat(1)]
 		public void Compute_Time_Elapsed_By_The_Last_Method()
 		{
 			Name.Last();
