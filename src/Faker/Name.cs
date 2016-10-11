@@ -1,56 +1,60 @@
-﻿using System;
+﻿using Faker.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Faker.Extensions;
 
 namespace Faker
 {
 	/// <summary>
-	///     Enumeration of which Name format to use in the <see cref="Name.FullName(NameFormats)" /> method.
+	///   Enumeration of which Name format to use in the <see cref="Name.FullName(NameFormats)" /> method.
 	/// </summary>
-	/// <include file='Docs/NameFormatsExample.xml' path='example' />
+	/// <include file="Docs/NameFormatsExample.xml" path="example" />
 	[Flags]
 	public enum NameFormats : byte
 	{
 		/// <summary>
-		///     The standard (First and Last name only).
+		///   The standard (First and Last name only).
 		/// </summary>
 		Standard = 1 << 0,
 
 		/// <summary>
-		///     First and Last name with a Prefix.
+		///   First and Last name with a Prefix.
 		/// </summary>
 		WithPrefix = 1 << 1,
 
 		/// <summary>
-		///     First and Last name with a Suffix.
+		///   First and Last name with a Suffix.
 		/// </summary>
 		WithSuffix = 1 << 2,
 
 		/// <summary>
-		///     First Last name with both a Prefix and a Suffix.
+		///   First Last name with both a Prefix and a Suffix.
 		/// </summary>
 		WithPrefixAndSuffix = WithPrefix | WithSuffix
 	}
 
 	/// <summary>
-	///     A collection of Personal name related resources.
+	///   A collection of Personal name related resources.
 	/// </summary>
-	/// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
+	/// <include file="Docs/CustomRemarks.xml" path="Comments/SatelliteResource/*" />
 	/// <threadsafety static="true" />
 	public static class Name
 	{
 		/// <summary>
-		///     Creates a random first name.
+		///   Creates a random first name.
 		/// </summary>
 		/// <returns>The randomly created first name.</returns>
 		public static string First()
 		{
-			return Resources.Name.First.Split(Config.SEPARATOR).Random().Trim();
+			var cultureInfo = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+			if (!firstArrayCacheDictionary.ContainsKey(cultureInfo))
+				firstArrayCacheDictionary[cultureInfo] = Resources.Name.First.Split(Config.SEPARATOR).Select(s => s.Trim()).ToArray();
+
+			return firstArrayCacheDictionary[cultureInfo].Random();
 		}
 
 		/// <summary>
-		///     Creates a name using random format.
+		///   Creates a name using random format.
 		/// </summary>
 		/// <returns>The randomly created name.</returns>
 		public static string FullName()
@@ -62,11 +66,11 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Creates a random name using the specified format.
+		///   Creates a random name using the specified format.
 		/// </summary>
 		/// <param name="format">The name format.</param>
 		/// <returns>A random name with the specified format.</returns>
-		/// <include file='Docs/NameFormatsExample.xml' path='example' />
+		/// <include file="Docs/NameFormatsExample.xml" path="example" />
 		public static string FullName(NameFormats format)
 		{
 			lock (s_formatMapLock)
@@ -76,16 +80,20 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Creates a random Last name
+		///   Creates a random Last name
 		/// </summary>
 		/// <returns>The randomly created last name.</returns>
 		public static string Last()
 		{
-			return Resources.Name.Last.Split(Config.SEPARATOR).Random().Trim();
+			var cultureInfo = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+			if (!lastArrayCacheDictionary.ContainsKey(cultureInfo))
+				lastArrayCacheDictionary[cultureInfo] = Resources.Name.Last.Split(Config.SEPARATOR).Select(s => s.Trim()).ToArray();
+
+			return lastArrayCacheDictionary[cultureInfo].Random();
 		}
 
 		/// <summary>
-		///     Creates a random prefix.
+		///   Creates a random prefix.
 		/// </summary>
 		/// <returns>The randomly created prefix.</returns>
 		public static string Prefix()
@@ -94,7 +102,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Creates a random suffix.
+		///   Creates a random suffix.
 		/// </summary>
 		/// <returns>The randomly created suffix.</returns>
 		public static string Suffix()
@@ -123,6 +131,9 @@ namespace Faker
 
 		private static readonly object s_formatMapLock = new object();
 		private static readonly object s_formatsLock = new object();
+
+		private static Dictionary<string, string[]> lastArrayCacheDictionary = new Dictionary<string, string[]>();
+		private static Dictionary<string, string[]> firstArrayCacheDictionary = new Dictionary<string, string[]>();
 
 		#endregion Format Mappings
 	}

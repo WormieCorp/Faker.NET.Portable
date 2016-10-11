@@ -25,5 +25,19 @@ namespace Faker.Tests.Common
 
 			Assert.That(new[] { suffix }, Is.SubsetOf(possibleSuffixes));
 		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Compute_Time_Elapsed_By_The_First_Method()
+		{
+			Name.First();
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Compute_Time_Elapsed_By_The_Last_Method()
+		{
+			Name.Last();
+		}
 	}
 }
