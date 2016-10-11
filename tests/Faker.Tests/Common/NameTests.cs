@@ -27,14 +27,14 @@ namespace Faker.Tests.Common
 		}
 
 		[Test]
-		[Repeat(1000)]
+		[Repeat(100000)]
 		public void Compute_Time_Elapsed_By_The_First_Method()
 		{
 			Name.First();
 		}
 
 		[Test]
-		[Repeat(1000)]
+		[Repeat(100000)]
 		public void Compute_Time_Elapsed_By_The_Last_Method()
 		{
 			Name.Last();
