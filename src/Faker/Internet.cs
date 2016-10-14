@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Faker.Caching;
+using Faker.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Faker.Extensions;
 
 namespace Faker
 {
 	/// <summary>
-	///     A collection of address related resources.
+	///   A collection of address related resources.
 	/// </summary>
-	/// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
+	/// <include file="Docs/CustomRemarks.xml" path="Comments/SatelliteResource/*" />
 	/// <threadsafety static="true" />
 	public static class Internet
 	{
@@ -26,7 +27,7 @@ namespace Faker
 		};
 
 		/// <summary>
-		///     Generates the name of a random domain.
+		///   Generates the name of a random domain.
 		/// </summary>
 		/// <returns>The random domain name.</returns>
 		public static string DomainName()
@@ -37,7 +38,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random domain suffix (ex. com,net,info etc.).
+		///   Generates a random domain suffix (ex. com,net,info etc.).
 		/// </summary>
 		/// <returns>A random Domain suffix.</returns>
 		public static string DomainSuffix()
@@ -46,7 +47,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random domain word.
+		///   Generates a random domain word.
 		/// </summary>
 		/// <returns>The random domain word.</returns>
 		[SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase")]
@@ -56,7 +57,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random email address.
+		///   Generates a random email address.
 		/// </summary>
 		/// <returns>A random email address.</returns>
 		public static string Email()
@@ -65,7 +66,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random email address.
+		///   Generates a random email address.
 		/// </summary>
 		/// <param name="name">The name to generate the username from.</param>
 		/// <returns>The random email address, with the generated username.</returns>
@@ -75,24 +76,24 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random free email address.
+		///   Generates a random free email address.
 		/// </summary>
 		/// <returns>The random free email address.</returns>
 		/// <example>
-		///     <code language="cs">
+		///   <code language="cs">
 		/// var email = Faker.Internet.FreeEmail();
 		///
 		/// Console.WriteLine("Result = " + email);
 		/// // Result = abe.linky@gmail.com
-		/// </code>
+		///   </code>
 		/// </example>
 		public static string FreeEmail()
 		{
-			return "{0}@{1}".FormatCulture(UserName(), Resources.Internet.FreeMail.RandomResource());
+			return "{0}@{1}".FormatCulture(UserName(), ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Internet.FreeMail)).Random());
 		}
 
 		/// <summary>
-		///     Gets a random ip v4 address.
+		///   Gets a random ip v4 address.
 		/// </summary>
 		/// <returns>A random ip v4 address.</returns>
 		// ReSharper disable once InconsistentNaming
@@ -105,7 +106,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random ip v6 address.
+		///   Gets a random ip v6 address.
 		/// </summary>
 		/// <returns>A random ip v6 address.</returns>
 		// ReSharper disable once InconsistentNaming
@@ -118,7 +119,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random mac address.
+		///   Gets a random mac address.
 		/// </summary>
 		/// <param name="prefix">The prefix.</param>
 		/// <param name="groupSplit">The group split.</param>
@@ -140,7 +141,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random password.
+		///   Gets a random password.
 		/// </summary>
 		/// <param name="minLength">The minimum length.</param>
 		/// <param name="maxLength">The maximum length.</param>
@@ -157,7 +158,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random slug.
+		///   Gets a random slug.
 		/// </summary>
 		/// <param name="words">The words.</param>
 		/// <param name="glue">The glue.</param>
@@ -170,7 +171,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random URL.
+		///   Gets a random URL.
 		/// </summary>
 		/// <returns>A random URL.</returns>
 		public static string Url()
@@ -180,7 +181,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random username.
+		///   Generates a random username.
 		/// </summary>
 		/// <returns>The random username.</returns>
 		public static string UserName()
@@ -192,7 +193,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random username.
+		///   Generates a random username.
 		/// </summary>
 		/// <param name="name">The name to generate the user name from.</param>
 		/// <returns>The generated username.</returns>

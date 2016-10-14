@@ -1,83 +1,84 @@
-﻿using Faker.Extensions;
+﻿using Faker.Caching;
+using Faker.Extensions;
 
 namespace Faker
 {
 	/// <summary>
-	///     A collection of address related resources.
+	///   A collection of address related resources.
 	/// </summary>
-	/// <include file='Docs/CustomRemarks.xml' path='Comments/SatelliteResource/*' />
+	/// <include file="Docs/CustomRemarks.xml" path="Comments/SatelliteResource/*" />
 	/// <threadsafety static="true" />
 	public static class Address
 	{
 		/// <summary>
-		///     Gets a random building number.
+		///   Gets a random building number.
 		/// </summary>
 		/// <returns>The building number.</returns>
 		public static string BuildingNumber()
 		{
-			return Resources.Address.BuildingNumber.RandomResource().Numerify();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.BuildingNumber)).Random().Numerify();
 		}
 
 		#region Random Example
 
 		/// <summary>
-		///     Gets a random city.
+		///   Gets a random city.
 		/// </summary>
 		/// <returns>The random city.</returns>
 		public static string City()
 		{
-			return Resources.Address.CityFormat.RandomResource().Transform(true);
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CityFormat)).Random().Transform(true);
 		}
 
 		#endregion Random Example
 
 		/// <summary>
-		///     Gets a random city prefix.
+		///   Gets a random city prefix.
 		/// </summary>
 		/// <returns>The random city prefix.</returns>
 		public static string CityPrefix()
 		{
-			return Resources.Address.CityPrefix.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CityPrefix)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random city suffix.
+		///   Gets a random city suffix.
 		/// </summary>
 		/// <returns>The city suffix.</returns>
 		public static string CitySuffix()
 		{
-			return Resources.Address.CitySuffix.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CitySuffix)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random country.
+		///   Gets a random country.
 		/// </summary>
 		/// <returns>The random country.</returns>
 		public static string Country()
 		{
-			return Resources.Address.Country.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.Country)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random country code.
+		///   Gets a random country code.
 		/// </summary>
 		/// <returns>The random country code.</returns>
 		public static string CountryCode()
 		{
-			return Resources.Address.CountryCode.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CountryCode)).Random();
 		}
 
 		/// <summary>
-		///     Gets the default country.
+		///   Gets the default country.
 		/// </summary>
 		/// <returns>The default country.</returns>
 		public static string DefaultCountry()
 		{
-			return Resources.Address.DefaultCountry.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.DefaultCountry)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random latitude coordinate.
+		///   Gets a random latitude coordinate.
 		/// </summary>
 		/// <returns>The latitude.</returns>
 		public static double Latitude()
@@ -86,7 +87,7 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random longitude coordinate.
+		///   Gets a random longitude coordinate.
 		/// </summary>
 		/// <returns>The longitude.</returns>
 		public static double Longitude()
@@ -95,44 +96,41 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random secondary address.
+		///   Gets a random secondary address.
 		/// </summary>
 		/// <returns>A random secondary address.</returns>
 		public static string SecondaryAddress()
 		{
-			return Resources.Address.SecondaryAddress.RandomResource().Numerify();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.SecondaryAddress)).Random().Numerify();
 		}
 
 		/// <summary>
-		///     Gets a random state.
+		///   Gets a random state.
 		/// </summary>
 		/// <returns>The random state.</returns>
 		/// <remarks>
-		///     <note>
-		///         If the selected Culture doesn't have states, this will output a Random Country instead.
-		///     </note>
+		///   <note>If the selected Culture doesn't have states, this will output a Random Country instead.</note>
 		/// </remarks>
 		public static string State()
 		{
-			return Resources.Address.State.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.State)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random state abbreviation.
+		///   Gets a random state abbreviation.
 		/// </summary>
 		/// <returns>The state abbreviation.</returns>
 		/// <remarks>
-		///     <note>
-		///         If the selected Culture doesn't have states, this will output a Random Country Abbreviation instead.
-		///     </note>
+		///   <note>If the selected Culture doesn't have states, this will output a Random Country
+		///   Abbreviation instead.</note>
 		/// </remarks>
 		public static string StateAbbreviation()
 		{
-			return Resources.Address.StateAbbr.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StateAbbr)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random street address, without a Secondary address.
+		///   Gets a random street address, without a Secondary address.
 		/// </summary>
 		/// <returns>A random street address, without a secondary address.</returns>
 		public static string StreetAddress()
@@ -141,51 +139,53 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Gets a random street address.
+		///   Gets a random street address.
 		/// </summary>
-		/// <param name="includeSecondaryAddress">if set to <see langword="true" /> include secondary address.</param>
+		/// <param name="includeSecondaryAddress">
+		///   if set to <see langword="true" /> include secondary address.
+		/// </param>
 		/// <returns>A random street address.</returns>
 		public static string StreetAddress(bool includeSecondaryAddress)
 		{
 			return includeSecondaryAddress
-					   ? Resources.Address.StreetAddressSecondaryFormat.RandomResource().Transform(true)
-					   : Resources.Address.StreetAddressFormat.RandomResource().Transform(true);
+					   ? ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetAddressSecondaryFormat)).Random().Transform(true)
+					   : ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetAddressFormat)).Random().Transform(true);
 		}
 
 		/// <summary>
-		///     Gets the name of a random street.
+		///   Gets the name of a random street.
 		/// </summary>
 		/// <returns>The name of a random street.</returns>
 		public static string StreetName()
 		{
-			return Resources.Address.StreetNameFormat.RandomResource().Transform(true);
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetNameFormat)).Random().Transform(true);
 		}
 
 		/// <summary>
-		///     Gets a random street suffix.
+		///   Gets a random street suffix.
 		/// </summary>
 		/// <returns>The random street suffix.</returns>
 		public static string StreetSuffix()
 		{
-			return Resources.Address.StreetSuffix.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetSuffix)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random time zone.
+		///   Gets a random time zone.
 		/// </summary>
 		/// <returns>The time zone.</returns>
 		public static string TimeZone()
 		{
-			return Resources.Address.TimeZone.RandomResource();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.TimeZone)).Random();
 		}
 
 		/// <summary>
-		///     Gets a random zip code.
+		///   Gets a random zip code.
 		/// </summary>
 		/// <returns>The random zip code.</returns>
 		public static string ZipCode()
 		{
-			return Resources.Address.ZipCode.RandomResource().Numerify();
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.ZipCode)).Random().Numerify();
 		}
 	}
 }

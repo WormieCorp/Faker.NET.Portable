@@ -119,12 +119,14 @@
     <Compile Include="Avatar.cs" />
     <Compile Include="Avatar\RoboHash.cs" />
     <Compile Include="Business.cs" />
+    <Compile Include="Caching\PropertyHelper.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Caching\ResourceCollectionCacher.cs" />
     <Compile Include="Internet.cs" />
     <Compile Include="Lorem.cs" />
     <Compile Include="Name.cs" />

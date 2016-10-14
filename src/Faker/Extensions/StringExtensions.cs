@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Faker.Caching;
+using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 
 namespace Faker.Extensions
 {
 	/// <summary>
-	///     A collection of string helper extensions.
+	///   A collection of string helper extensions.
 	/// </summary>
 	/// <threadsafety static="true" />
 	public static class StringExtensions
@@ -36,17 +37,17 @@ namespace Faker.Extensions
 				AddVariables(typeof(Lorem), s_validVariables);
 				AddVariables(typeof(Name), s_validVariables);
 				AddVariables(typeof(Phone), s_validVariables);
-				s_validVariables.Add("StreetRoot", () => Resources.Address.StreetRoot.RandomResource());
-				s_validVariables.Add("CityRoot", () => Resources.Address.CityRoot.RandomResource());
-				s_validVariables.Add("CommonStreetSuffix", () => Resources.Address.CommonStreetSuffixes.RandomResource());
-				s_validVariables.Add("AreaCode", () => Resources.Phone.AreaCode.RandomResource());
-				s_validVariables.Add("ExchangeCode", () => Resources.Phone.ExchangeCode.RandomResource());
-				s_validVariables.Add("Address.StreetPrefix", () => Resources.Address.StreetPrefix.RandomResource());
+				s_validVariables.Add("StreetRoot", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetRoot)).Random());
+				s_validVariables.Add("CityRoot", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CityRoot)).Random());
+				s_validVariables.Add("CommonStreetSuffix", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CommonStreetSuffixes)).Random());
+				s_validVariables.Add("AreaCode", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Phone.AreaCode)).Random());
+				s_validVariables.Add("ExchangeCode", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Phone.ExchangeCode)).Random());
+				s_validVariables.Add("Address.StreetPrefix", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetPrefix)).Random());
 			}
 		}
 
 		/// <summary>
-		///     Removes all characters which is not Alphanumeric from the specified <paramref name="s">source</paramref>
+		///   Removes all characters which is not Alphanumeric from the specified <paramref name="s">source</paramref>
 		/// </summary>
 		/// <param name="s">The source string.</param>
 		/// <returns>The transformed string.</returns>
@@ -61,7 +62,7 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///     Capitalises the first letter of the given string.
+		///   Capitalises the first letter of the given string.
 		/// </summary>
 		/// <param name="s">The source string.</param>
 		/// <returns>The source string with it's first letter capitalized.</returns>
@@ -71,7 +72,7 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///     Helper function for formatting a string with the current <see cref="CultureInfo" />
+		///   Helper function for formatting a string with the current <see cref="CultureInfo" />
 		/// </summary>
 		/// <param name="format">The format.</param>
 		/// <param name="args">The arguments.</param>
@@ -85,7 +86,7 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///     Helper function for formatting string with an invariant <see cref="CultureInfo" />.
+		///   Helper function for formatting string with an invariant <see cref="CultureInfo" />.
 		/// </summary>
 		/// <param name="format">The format.</param>
 		/// <param name="args">The arguments.</param>
@@ -99,7 +100,7 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///     Get a string with every '?' replaced with a random character from the english alphabet.
+		///   Get a string with every '?' replaced with a random character from the english alphabet.
 		/// </summary>
 		/// <param name="s">The source format</param>
 		/// <returns>The formatted string.</returns>
@@ -109,7 +110,7 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///     Get a string with every occurrence of '#' replaced with a random number.
+		///   Get a string with every occurrence of '#' replaced with a random number.
 		/// </summary>
 		/// <param name="s">The source format.</param>
 		/// <returns>The formatted string.</returns>
@@ -119,10 +120,12 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///     Transforms the specified source and conditionally replaces variables.
+		///   Transforms the specified source and conditionally replaces variables.
 		/// </summary>
 		/// <param name="s">The s.</param>
-		/// <param name="replaceVariables">if set to <see langword="true" /> replace variables in the string.</param>
+		/// <param name="replaceVariables">
+		///   if set to <see langword="true" /> replace variables in the string.
+		/// </param>
 		/// <returns>The transformed string.</returns>
 		public static string Transform(this string s, bool replaceVariables = false)
 		{
