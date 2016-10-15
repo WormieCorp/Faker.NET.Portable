@@ -121,9 +121,9 @@ namespace Faker.Tests.Common
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(unsupportedCultureName);
-				var br_BR_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
+				var fallback_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
-				Assert.IsTrue(array.SequenceEqual(br_BR_array));
+				Assert.IsTrue(array.SequenceEqual(fallback_array));
 			}
 
 			// Cache hit case
@@ -131,9 +131,9 @@ namespace Faker.Tests.Common
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(unsupportedCultureName);
-				var br_BR_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
+				var fallback_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
-				Assert.IsTrue(array.SequenceEqual(br_BR_array));
+				Assert.IsTrue(array.SequenceEqual(fallback_array));
 			}
 		}
 
