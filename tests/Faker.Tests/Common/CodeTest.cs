@@ -121,7 +121,7 @@ namespace Faker.Tests.Common
 
 		#endregion EAN tests
 
-		#region RUT Tests
+		#region RUT tests
 
 		[Test]
 		[Repeat(1000)]
@@ -155,7 +155,19 @@ namespace Faker.Tests.Common
 			Assert.IsFalse(IsRutOk(result), result + " has valid checksum");
 		}
 
-		#endregion RUT Tests
+		#endregion RUT tests
+
+		#region NPI tests
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_generate_NPI_as_10_digits_number()
+		{
+			var result = Code.NPI();
+			Assert.That(result, Does.Match(@"[0-9]{10}"));
+		}
+
+		#endregion NPI tests
 
 		/// <summary>
 		///   Computes checksum validity on a EAN

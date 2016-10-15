@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text;
 
 namespace Faker
 {
@@ -121,6 +122,26 @@ namespace Faker
 			var prefix = string.Join(string.Empty, v);
 
 			return prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "K");
+		}
+
+		/// <summary>
+		///   Generates a 10 digit NPI (National Provider Identifier issued to health care providers
+		///   in the United States)
+		/// </summary>
+		/// <returns>The generated NPI</returns>
+		/// <remarks>
+		///   Description of the NPI standard is at
+		///   https://en.wikipedia.org/wiki/National_Provider_Identifier. The NPI has replaced the
+		///   unique physician identification number (UPIN).
+		/// </remarks>
+		public static string NPI()
+		{
+			var sb = new StringBuilder();
+
+			for (int i = 0; i < 10; i++)
+				sb.Append(RandomNumber.Next(9));
+
+			return sb.ToString();
 		}
 
 		private static int ComputeChecksumEan(int[] digits)
