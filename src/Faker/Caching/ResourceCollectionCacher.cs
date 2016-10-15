@@ -22,8 +22,8 @@ namespace Faker.Caching
 		{
 			var invokingClassName = p.DeclaringType.FullName;
 			var invokedPropertyName = p.Name;
-			var currentUICultureName = global::System.Globalization.CultureInfo.CurrentUICulture.Name;
-			var cacheKey = string.Format("{0}_{1}_{2}", invokingClassName, invokedPropertyName, currentUICultureName);
+			var currentUICultureName = CultureInfo.CurrentUICulture.Name;
+			var cacheKey = string.Format(CultureInfo.InvariantCulture, "{0}_{1}_{2}", invokingClassName, invokedPropertyName, currentUICultureName);
 
 			lock (lock_obj)
 			{
