@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Faker.Extensions;
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Faker.Extensions;
-using NUnit.Framework;
 
 namespace Faker.Tests.Extensions
 {
@@ -34,14 +34,6 @@ namespace Faker.Tests.Extensions
 
 			Assert.That(ex.Message, Does.StartWith("The specified source can not be an empty string."));
 			Assert.That(ex.ParamName, Is.EqualTo("source"));
-		}
-
-		[Test]
-		public void Should_Throw_ArgumentNullException_If_ResourceString_Is_Null()
-		{
-			var ex = Assert.Throws<ArgumentNullException>(() => ArrayExtensions.RandomResource(null));
-
-			Assert.That(ex.ParamName, Is.EqualTo("resourceString"));
 		}
 
 		[Test]

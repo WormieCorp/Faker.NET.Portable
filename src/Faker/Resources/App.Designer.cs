@@ -10,8 +10,8 @@
 
 namespace Faker.Resources {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace Faker.Resources {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class App {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal App() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Faker.Resources {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace Faker.Resources {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {Name.FullName};{Company.Name}.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Faker.Resources {
                 return ResourceManager.GetString("Author", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Redhold;Treeflex;Trippledex;Kanlam;Bigtax;Daltfresh;Toughjoyfax;Mat Lam Tam;Otcom;Tres-Zap;Y-Solowarm;Tresom;Voltsillam;Biodex;Greenlam;Viva;Matsoft;Temp;Zoolab;Subin;Rank;Job;Stringtough;Tin;It;Home Ing;Zamit;Sonsing;Konklab;Alpha;Latlux;Voyatouch;Alphazap;Holdlamis;Zaam-Dox;Sub-Ex;Quo Lux;Bamity;Ventosanzap;Lotstring;Hatity;Tempsoft;Overhold;Fixflex;Konklux;Zontrax;Tampflex;Span;Namfix;Transcof;Stim;Fix San;Sonair;Stronghold;Fintone;Y-find;Opela;Lotlux;Ronstring;Zathin;Duobam;Keylex.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Faker.Resources {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to 0.#.#;0.##;#.##;#.#;#.#.#.
         /// </summary>
