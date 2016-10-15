@@ -114,11 +114,13 @@ namespace Faker.Tests.Common
 		[Test]
 		public void Switch_To_Unsupported_Culture_Returns_Equal_Arrays()
 		{
+			const string unsupportedCultureName = "ru-RU";
+
 			// Cache miss case
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("br-BR");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(unsupportedCultureName);
 				var br_BR_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsTrue(array.SequenceEqual(br_BR_array));
@@ -128,7 +130,7 @@ namespace Faker.Tests.Common
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("br-BR");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(unsupportedCultureName);
 				var br_BR_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsTrue(array.SequenceEqual(br_BR_array));
