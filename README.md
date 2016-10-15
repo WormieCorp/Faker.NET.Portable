@@ -148,4 +148,5 @@ Faker.Code.ISBN13();                    // "9782488974639"
 Faker.Code.EAN();                       // "6349033486318"
 Faker.Code.RUT();                       // "334441113"
 Faker.Code.NPI();                       // "0957732948"
+Faker.Code.NRIC();                      // "S7170204I"
 ```

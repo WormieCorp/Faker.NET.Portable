@@ -83,7 +83,7 @@ namespace Faker
 			v[1] = 7;
 			v[2] = RandomNumber.Next(8, 10);
 			for (int i = 3; i < 12; i++)
-				v[i] = RandomNumber.Next(0, 10);
+				v[i] = RandomNumber.Next(10);
 
 			var checksum = ComputeChecksumEan(v); //ISBN13 is an EAN
 
@@ -112,7 +112,7 @@ namespace Faker
 			int[] v = new int[8];
 
 			for (int i = 0; i < 8; i++)
-				v[i] = RandomNumber.Next(0, 10);
+				v[i] = RandomNumber.Next(10);
 
 			var checksum = ComputeRutChecksum(v);
 
@@ -139,9 +139,37 @@ namespace Faker
 			var sb = new StringBuilder();
 
 			for (int i = 0; i < 10; i++)
-				sb.Append(RandomNumber.Next(9));
+				sb.Append(RandomNumber.Next(10));
 
 			return sb.ToString();
+		}
+
+		/// <summary>
+		///   Generates a Singaporean National Registration Identity Card (NRIC) for holder who is
+		///   born between specified ages.
+		/// </summary>
+		/// <param name="minAge">Minimum age of the holder</param>
+		/// <param name="maxAge">Maximum age of the holder</param>
+		/// <param name="validChecksum">
+		///   Indicates whether the generated NRIC has a valid checksum or not
+		/// </param>
+		/// <returns>The generated NRIC</returns>
+		/// <remarks>
+		///   Description of the NRIC standard is at
+		///   https://en.wikipedia.org/wiki/National_Registration_Identity_Card. This ID was issued
+		///   for the first time in 1965 in Singapore. See also: https://github.com/stympy/faker/blob/master/lib/faker/code.rb#L32
+		/// </remarks>
+		public static string NRIC(int minAge = 18, int maxAge = 65, bool validChecksum = true)
+		{
+			var birthYear = Date.Birthday(minAge, maxAge).Year;
+			var prefix = birthYear < 2000 ? 'S' : 'T';
+			var v = new int[7];
+			for (int i = 0; i < 7; i++)
+				v[i] = RandomNumber.Next(10);
+
+			var checksum = computeChecksumNric(v, prefix, validChecksum);
+
+			return string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}", prefix, string.Join(string.Empty, v), checksum);
 		}
 
 		private static int ComputeChecksumEan(int[] digits)
@@ -177,6 +205,23 @@ namespace Faker
 				sum += coefs[i] * digits[i];
 
 			return (11 - (sum % 11)) % 11;
+		}
+
+		private static char computeChecksumNric(int[] digits, char prefix, bool validChecksum)
+		{
+			int[] weights = { 2, 7, 6, 5, 4, 3, 2 };
+			var total = 0;
+			for (int i = 0; i < 7; i++)
+				total += digits[i] * weights[i];
+			if (prefix == 'T')
+				total += 4;
+
+			if (!validChecksum)
+				total++; //set wrong checksum
+
+			char[] checksumChars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Z', 'J' };
+
+			return checksumChars[10 - total % 11];
 		}
 	}
 }
