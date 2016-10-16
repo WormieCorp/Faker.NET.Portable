@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NameFormats" xml:space="preserve">
+    <value>{Name.First} {Name.Last} {Company.Suffix};{Name.Last}-{Name.Last} {Company.Suffix};{Name.Last} e {Name.Last} {Company.Suffix};{Name.Last}, {Name.Last} e {Name.Last} {Company.Suffix}</value>
+  </data>
   <data name="Suffix" xml:space="preserve">
-    <value>s.r.l.;s.r.l.;s.r.l.;s.p.a.;s.p.a.;s.p.a.;s.c.a.r.l.;onlus</value>
+    <value>s.r.l.;s.r.l.;s.r.l.;srl;srl;s.p.a.;s.p.a.;s.p.a.;spa;spa;spa;s.a.s;s.a.s;sas;sas;s.n.c;s.n.c.;snc;snc;s.c.a.r.l.;scarl;onlus;onlus;o.n.l.u.s.;s.r.l.s.;srls</value>
   </data>
 </root>
