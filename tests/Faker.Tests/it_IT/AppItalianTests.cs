@@ -23,9 +23,10 @@ namespace Faker.Tests.it_IT
 								 prefixNameFormat.Combine(firstNameFormat, lastNameFormat),
 								 firstNameFormat.Combine(lastNameFormat, suffixNameFormat),
 								 prefixNameFormat.Combine(firstNameFormat, lastNameFormat, suffixNameFormat),
-								 lastNameFormat.Combine(suffixCompanyFormat),
-								 lastNameFormat + "-" + lastNameFormat,
-								 (lastNameFormat + ",").Combine(lastNameFormat, "and", lastNameFormat));
+								 firstNameFormat.Combine(lastNameFormat, suffixCompanyFormat),
+							   lastNameFormat + "-" + lastNameFormat + " " + suffixCompanyFormat,
+							   lastNameFormat + " e " + lastNameFormat + " " + suffixCompanyFormat,
+							   lastNameFormat + ", " + lastNameFormat + " e " + lastNameFormat + " " + suffixCompanyFormat);
 		}
 	}
 }

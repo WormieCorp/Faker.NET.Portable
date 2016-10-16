@@ -47,6 +47,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Compile Include="Resources\Phone.it-IT1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Phone.it-IT.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Resources\Address.it-IT.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Address.it-IT.Designer.cs</LastGenOutput>
