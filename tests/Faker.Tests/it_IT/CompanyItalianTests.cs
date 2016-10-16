@@ -37,26 +37,17 @@ namespace Faker.Tests.it_IT
 		[Repeat(1000)]
 		public virtual void Should_Generate_Company_Name()
 		{
-<<<<<<< HEAD
 			string firstNameFormat = Resources.Name.First.ToFormat();
-=======
->>>>>>> 97445966a8b77bff8e3b86174cf827793e0ebe46
 			string lastNameFormat = Resources.Name.Last.ToFormat();
 			string suffixCompanyFormat = Resources.Company.Suffix.ToFormat();
 
 			string name = Company.Name();
 
 			name.AssertFormats(
-<<<<<<< HEAD
 							   firstNameFormat.Combine(lastNameFormat, suffixCompanyFormat),
 							   lastNameFormat + "-" + lastNameFormat + " " + suffixCompanyFormat,
 							   lastNameFormat + " e " + lastNameFormat + " " + suffixCompanyFormat,
 							   lastNameFormat + ", " + lastNameFormat + " e " + lastNameFormat + " " + suffixCompanyFormat);
-=======
-							   lastNameFormat.Combine(suffixCompanyFormat),
-							   lastNameFormat + "-" + lastNameFormat,
-							   (lastNameFormat + ",").Combine(lastNameFormat, "and", lastNameFormat));
->>>>>>> 97445966a8b77bff8e3b86174cf827793e0ebe46
 		}
 	}
 }
