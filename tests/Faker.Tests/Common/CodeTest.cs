@@ -1,10 +1,31 @@
-﻿using System.Text.RegularExpressions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Faker.Tests.Common
 {
 	public class CodeTests
 	{
+		#region Fiscal Code tests
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_generate_invalid_FiscalCode_with_invalid_checksum()
+		{
+			var result = Code.FiscalCode(false);
+			Assert.IsFalse(IsFiscalCodeOk(result));
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_generate_valid_FiscalCode_with_valid_checksum()
+		{
+			var result = Code.FiscalCode();
+			Assert.IsTrue(IsFiscalCodeOk(result), "Invalid fiscal code {0}", result);
+		}
+
+		#endregion Fiscal Code tests
+
 		#region ISBN10 tests
 
 		[Test]
@@ -208,6 +229,108 @@ namespace Faker.Tests.Common
 				sum += 3 * v[i];
 
 			return sum % 10 == 0;
+		}
+
+		/// <summary>
+		///   Computes checksum validity on a Fiscal Code
+		/// </summary>
+		/// <param name="ean">The Fiscal Code to be checked</param>
+		/// <returns>Checksum is valid</returns>
+		/// <remarks>Checksum routines are at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+		private bool IsFiscalCodeOk(string fiscalCode)
+		{
+			if (!Regex.IsMatch(fiscalCode, @"^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$"))
+				return false;
+
+			#region static maps
+
+			var oddMap = new Dictionary<char, int>() {
+				{'0', 1},
+				{'1', 0},
+				{'2', 5},
+				{'3', 7},
+				{'4', 9},
+				{'5', 13},
+				{'6', 15},
+				{'7', 17},
+				{'8', 19},
+				{'9', 21},
+				{'A', 1},
+				{'B', 0},
+				{'C', 5},
+				{'D', 7},
+				{'E', 9},
+				{'F', 13},
+				{'G', 15},
+				{'H', 17},
+				{'I', 19},
+				{'J', 21},
+				{'K', 2},
+				{'L', 4},
+				{'M', 18},
+				{'N', 20},
+				{'O', 11},
+				{'P', 3},
+				{'Q', 6},
+				{'R', 8},
+				{'S', 12},
+				{'T', 14},
+				{'U', 16},
+				{'V', 10},
+				{'W', 22},
+				{'X', 25},
+				{'Y', 24},
+				{'Z', 23}
+			};
+
+			var evenMap = new Dictionary<char, int>() {
+				{'0', 0},
+				{'1', 1},
+				{'2', 2},
+				{'3', 3},
+				{'4', 4},
+				{'5', 5},
+				{'6', 6},
+				{'7', 7},
+				{'8', 8},
+				{'9', 9},
+				{'A', 0},
+				{'B', 1},
+				{'C', 2},
+				{'D', 3},
+				{'E', 4},
+				{'F', 5},
+				{'G', 6},
+				{'H', 7},
+				{'I', 8},
+				{'J', 9},
+				{'K', 10},
+				{'L', 11},
+				{'M', 12},
+				{'N', 13},
+				{'O', 14},
+				{'P', 15},
+				{'Q', 16},
+				{'R', 17},
+				{'S', 18},
+				{'T', 19},
+				{'U', 20},
+				{'V', 21},
+				{'W', 22},
+				{'X', 23},
+				{'Y', 24},
+				{'Z', 25}
+			};
+
+			#endregion static maps
+
+			int total = 0;
+			for (int i = 0; i < 15; i += 2)
+				total += oddMap[fiscalCode[i]];
+			for (int i = 1; i < 15; i += 2)
+				total += evenMap[fiscalCode[i]];
+
+			return fiscalCode[15] == (char)('A' + total % 26);
 		}
 
 		/// <summary>
