@@ -1,19 +1,20 @@
-﻿using Faker.Caching;
-using NUnit.Framework;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
+using Faker.Caching;
+using NUnit.Framework;
 
 namespace Faker.Tests.Common
 {
 	public class ResourceCollectionCachingTests
 	{
-		private System.Globalization.CultureInfo defaultUICulture;
+		private CultureInfo defaultUICulture;
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp()
 		{
-			defaultUICulture = System.Threading.Thread.CurrentThread.CurrentUICulture;
+			defaultUICulture = new CultureInfo("en");
 		}
 
 		[SetUp]
@@ -70,7 +71,7 @@ namespace Faker.Tests.Common
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
 				var de_DE_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsFalse(array.SequenceEqual(de_DE_array));
@@ -80,7 +81,7 @@ namespace Faker.Tests.Common
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
 				var de_DE_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsFalse(array.SequenceEqual(de_DE_array));
@@ -92,9 +93,9 @@ namespace Faker.Tests.Common
 		{
 			// Cache miss case
 			{
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-BR");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
 				var en_US_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
 				var de_DE_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsFalse(en_US_array.SequenceEqual(de_DE_array));
@@ -102,9 +103,9 @@ namespace Faker.Tests.Common
 
 			// Cache hit case
 			{
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-BR");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
 				var en_US_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
 				var de_DE_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsFalse(en_US_array.SequenceEqual(de_DE_array));
@@ -120,7 +121,7 @@ namespace Faker.Tests.Common
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(unsupportedCultureName);
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(unsupportedCultureName);
 				var fallback_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsTrue(array.SequenceEqual(fallback_array));
@@ -130,7 +131,7 @@ namespace Faker.Tests.Common
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(unsupportedCultureName);
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(unsupportedCultureName);
 				var fallback_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsTrue(array.SequenceEqual(fallback_array));
@@ -160,7 +161,7 @@ namespace Faker.Tests.Common
 		[Test]
 		public void Resource_And_Cache_Give_Equal_Arrays_With_Foreign_Culture()
 		{
-			System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+			System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
 
 			// Cache miss case
 			{

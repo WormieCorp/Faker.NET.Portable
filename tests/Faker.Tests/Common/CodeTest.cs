@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using NUnit.Framework;
 
 namespace Faker.Tests.Common
 {
@@ -125,10 +125,10 @@ namespace Faker.Tests.Common
 
 		[Test]
 		[Repeat(1000)]
-		public void Should_generate_valid_RUT_no_longer_than_9_chars()
+		public void Should_generate_invalid_RUT_with_invalid_checksum()
 		{
-			var result = Code.RUT();
-			Assert.That(result.Length, Is.LessThanOrEqualTo(9));
+			var result = Code.RUT(false);
+			Assert.IsFalse(IsRutOk(result), result + " has valid checksum");
 		}
 
 		[Test]
@@ -141,18 +141,18 @@ namespace Faker.Tests.Common
 
 		[Test]
 		[Repeat(1000)]
-		public void Should_generate_valid_RUT_with_valid_checksum()
+		public void Should_generate_valid_RUT_no_longer_than_9_chars()
 		{
 			var result = Code.RUT();
-			Assert.IsTrue(IsRutOk(result), "RUT {0} has invalid checksum", result);
+			Assert.That(result.Length, Is.LessThanOrEqualTo(9));
 		}
 
 		[Test]
 		[Repeat(1000)]
-		public void Should_generate_invalid_RUT_with_invalid_checksum()
+		public void Should_generate_valid_RUT_with_valid_checksum()
 		{
-			var result = Code.RUT(false);
-			Assert.IsFalse(IsRutOk(result), result + " has valid checksum");
+			var result = Code.RUT();
+			Assert.IsTrue(IsRutOk(result), "RUT {0} has invalid checksum", result);
 		}
 
 		#endregion RUT tests
@@ -173,18 +173,18 @@ namespace Faker.Tests.Common
 
 		[Test]
 		[Repeat(1000)]
-		public void Should_generate_valid_NRIC_with_valid_checksum()
-		{
-			var result = Code.NRIC();
-			Assert.IsTrue(IsNricOk(result));
-		}
-
-		[Test]
-		[Repeat(1000)]
 		public void Should_generate_NRIC_with_invalid_checksum()
 		{
 			var result = Code.NRIC(10, 40, false);
 			Assert.IsFalse(IsNricOk(result));
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_generate_valid_NRIC_with_valid_checksum()
+		{
+			var result = Code.NRIC();
+			Assert.IsTrue(IsNricOk(result));
 		}
 
 		#endregion NRIC tests
@@ -232,6 +232,29 @@ namespace Faker.Tests.Common
 		}
 
 		/// <summary>
+		///   Computes checksum validity on a NRIC
+		/// </summary>
+		/// <param name="nric">The NRIC to be checked</param>
+		/// <returns>Checksum is valid</returns>
+		/// <remarks>Checksum routines are at https://github.com/stympy/faker/blob/master/lib/faker/code.rb#L32</remarks>
+		private bool IsNricOk(string nric)
+		{
+			if (!Regex.IsMatch(nric, @"[ST][0-9]{7}[A-Z]"))
+				return false;
+
+			int[] weights = { 2, 7, 6, 5, 4, 3, 2 };
+			var total = 0;
+			for (int i = 0; i < 7; i++)
+				total += (nric[i + 1] - '0') * weights[i];
+			if (nric[0] == 'T')
+				total += 4;
+
+			char[] checksumChars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Z', 'J' };
+
+			return checksumChars[10 - total % 11] == nric[8];
+		}
+
+		/// <summary>
 		///   Computes checksum validity on a RUT
 		/// </summary>
 		/// <param name="isbn">The RUT to be checked</param>
@@ -257,29 +280,6 @@ namespace Faker.Tests.Common
 				return true;
 
 			return false;
-		}
-
-		/// <summary>
-		///   Computes checksum validity on a NRIC
-		/// </summary>
-		/// <param name="nric">The NRIC to be checked</param>
-		/// <returns>Checksum is valid</returns>
-		/// <remarks>Checksum routines are at https://github.com/stympy/faker/blob/master/lib/faker/code.rb#L32</remarks>
-		private bool IsNricOk(string nric)
-		{
-			if (!Regex.IsMatch(nric, @"[ST][0-9]{7}[A-Z]"))
-				return false;
-
-			int[] weights = { 2, 7, 6, 5, 4, 3, 2 };
-			var total = 0;
-			for (int i = 0; i < 7; i++)
-				total += (nric[i + 1] - '0') * weights[i];
-			if (nric[0] == 'T')
-				total += 4;
-
-			char[] checksumChars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Z', 'J' };
-
-			return checksumChars[10 - total % 11] == nric[8];
 		}
 	}
 }

@@ -96,35 +96,6 @@ namespace Faker
 		}
 
 		/// <summary>
-		///   Generates a RUT Code
-		/// </summary>
-		/// <param name="validChecksum">
-		///   Indicates whether the generated RUT has a valid checksum or not
-		/// </param>
-		/// <returns>The generated RUT</returns>
-		/// <remarks>
-		///   Description of the RUT standard is at
-		///   https://en.wikipedia.org/wiki/National_identification_number#Chile Checksum routines
-		///   are at http://www.vesic.org/english/blog-eng/net/verifying-chilean-rut-code-tax-number/
-		/// </remarks>
-		public static string RUT(bool validChecksum = true)
-		{
-			int[] v = new int[8];
-
-			for (int i = 0; i < 8; i++)
-				v[i] = RandomNumber.Next(10);
-
-			var checksum = ComputeRutChecksum(v);
-
-			if (!validChecksum)
-				checksum = (checksum + 1) % 11; //set wrong checksum
-
-			var prefix = string.Join(string.Empty, v);
-
-			return prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "K");
-		}
-
-		/// <summary>
 		///   Generates a 10 digit NPI (National Provider Identifier issued to health care providers
 		///   in the United States)
 		/// </summary>
@@ -172,6 +143,35 @@ namespace Faker
 			return string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}", prefix, string.Join(string.Empty, v), checksum);
 		}
 
+		/// <summary>
+		///   Generates a RUT Code
+		/// </summary>
+		/// <param name="validChecksum">
+		///   Indicates whether the generated RUT has a valid checksum or not
+		/// </param>
+		/// <returns>The generated RUT</returns>
+		/// <remarks>
+		///   Description of the RUT standard is at
+		///   https://en.wikipedia.org/wiki/National_identification_number#Chile Checksum routines
+		///   are at http://www.vesic.org/english/blog-eng/net/verifying-chilean-rut-code-tax-number/
+		/// </remarks>
+		public static string RUT(bool validChecksum = true)
+		{
+			int[] v = new int[8];
+
+			for (int i = 0; i < 8; i++)
+				v[i] = RandomNumber.Next(10);
+
+			var checksum = ComputeRutChecksum(v);
+
+			if (!validChecksum)
+				checksum = (checksum + 1) % 11; //set wrong checksum
+
+			var prefix = string.Join(string.Empty, v);
+
+			return prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "K");
+		}
+
 		private static int ComputeChecksumEan(int[] digits)
 		{
 			var sum = 0;
@@ -195,18 +195,6 @@ namespace Faker
 			return sum % 11;
 		}
 
-		private static int ComputeRutChecksum(int[] digits)
-		{
-			int[] coefs = { 3, 2, 7, 6, 5, 4, 3, 2 };
-
-			int sum = 0;
-
-			for (int i = 0; i < 8; i++)
-				sum += coefs[i] * digits[i];
-
-			return (11 - (sum % 11)) % 11;
-		}
-
 		private static char computeChecksumNric(int[] digits, char prefix, bool validChecksum)
 		{
 			int[] weights = { 2, 7, 6, 5, 4, 3, 2 };
@@ -222,6 +210,18 @@ namespace Faker
 			char[] checksumChars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Z', 'J' };
 
 			return checksumChars[10 - total % 11];
+		}
+
+		private static int ComputeRutChecksum(int[] digits)
+		{
+			int[] coefs = { 3, 2, 7, 6, 5, 4, 3, 2 };
+
+			int sum = 0;
+
+			for (int i = 0; i < 8; i++)
+				sum += coefs[i] * digits[i];
+
+			return (11 - (sum % 11)) % 11;
 		}
 	}
 }
