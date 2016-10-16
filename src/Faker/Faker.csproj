@@ -47,6 +47,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <EmbeddedResource Include="Resources\Address.it-IT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Address.it-IT.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Address.en-US.resx" />
     <EmbeddedResource Include="Resources\Address.nb-NO.resx" />
     <EmbeddedResource Include="Resources\App.resx">
@@ -57,12 +62,28 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Business.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Company.it-IT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Company.it-IT1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Company.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Internet.it-IT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Internet.it-IT1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Internet.en-US.resx" />
     <EmbeddedResource Include="Resources\Internet.nb-NO.resx" />
     <EmbeddedResource Include="Resources\Lorem.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Name.it-IT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Name.it-IT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Name.nb-NO.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Phone.it-IT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Phone.it-IT1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Phone.de-DE.resx" />
     <EmbeddedResource Include="Resources\Phone.en-US.resx" />
@@ -136,6 +157,11 @@
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Address.it-IT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Address.it-IT.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Address.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,10 +182,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Company.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Company.it-IT1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.it-IT.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Internet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Internet.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Internet.it-IT1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Internet.it-IT.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Lorem.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -170,6 +206,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Name.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Name.it-IT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Name.it-IT.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Phone.Designer.cs">
       <AutoGen>True</AutoGen>
