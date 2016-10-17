@@ -23,6 +23,8 @@ Setup(context =>
 		parameters.IsTagged);
 });
 
+Task("Update-AssemblyInfo");
+
 Task("Clean")
 	.Does(() =>
 	{
