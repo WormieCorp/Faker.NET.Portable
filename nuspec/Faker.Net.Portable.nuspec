@@ -13,10 +13,7 @@
         <tags>Faker Portable Testing TDD .Net</tags>
     </metadata>
     <files>
-        <file src="de-DE\Faker.Portable.resources.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8\de-DE\Faker.Portable.resources.dll" />
-        <file src="en-US\Faker.Portable.resources.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8\en-US\Faker.Portable.resources.dll" />
-        <file src="nb-NO\Faker.Portable.resources.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8\nb-NO\Faker.Portable.resources.dll" />
-        <file src="pt-BR\Faker.Portable.resources.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8\pt-BR\Faker.Portable.resources.dll" />
+        <file src="**\Faker.Portable.resources.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8" />
         <file src="Faker.Portable.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8\Faker.Portable.dll" />
 		<file src="Faker.Portable.pdb" target="lib\portable-net40+sl5+win8+wpa81+wp8\Faker.Portable.pdb" />
         <file src="Faker.Portable.xml" target="lib\portable-net40+sl5+win8+wpa81+wp8\Faker.Portable.xml" />
