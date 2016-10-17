@@ -218,19 +218,6 @@ Task("Create-Release-Notes")
 		);
 	});
 
-Task("Publish-Git-Release")
-	.WithCriteria(() => parameters.GitHub.HasCredentials)
-	.Does(() =>
-	{
-		GitReleaseManagerPublish(
-			parameters.GitHub.Username,
-			parameters.GitHub.Password,
-			"AdmiringWorm",
-			"Faker.Net.Portable",
-			parameters.Version.Milestone
-		);
-	});
-
 Task("Export-Release-Notes")
   .WithCriteria(() => parameters.GitHub.HasCredentials)
 	.IsDependentOn("Copy-Files")
@@ -281,6 +268,13 @@ Task("Publish-GitHub-Release")
 	{
 		GitReleaseManagerAddAssets(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone, parameters.Paths.Files.ZipArtifactPath.ToString());
 		GitReleaseManagerClose(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone);
+		GitReleaseManagerPublish(
+			parameters.GitHub.Username,
+			parameters.GitHub.Password,
+			"AdmiringWorm",
+			"Faker.Net.Portable",
+			parameters.Version.Milestone
+		);
 	})
 	.OnError(exception =>
 	{
