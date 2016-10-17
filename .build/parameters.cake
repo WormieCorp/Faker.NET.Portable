@@ -39,6 +39,15 @@ public class BuildParameters
 		}
 	}
 
+	public bool ShouldCreateReleaseNotes
+	{
+		get
+		{
+			return IsRunningOnAppVeyor && !IsPullRequest &&
+				IsMainRepo && IsMainBranch && !IsTagged;
+		}
+	}
+
 	public BuildCredentials GitHub { get; private set; }
 	public BuildPackages Packages { get; private set; }
 	public BuildPaths Paths { get; private set; }
