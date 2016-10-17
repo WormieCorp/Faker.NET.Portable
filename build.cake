@@ -201,7 +201,7 @@ Task("Upload-AppVeyor-Artifacts")
 
 Task("Create-Release-Notes")
 	.WithCriteria(() => parameters.GitHub.HasCredentials)
-	//.WithCriteria(() => parameters.ShouldCreateReleaseNotes)
+	.WithCriteria(() => parameters.ShouldCreateReleaseNotes)
 	.Does(() =>
 	{
 		GitReleaseManagerCreate(
