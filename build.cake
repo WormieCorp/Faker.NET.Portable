@@ -128,6 +128,7 @@ Task("Copy-Files")
 
 Task("Zip-Files")
 	.IsDependentOn("Copy-Files")
+	.IsDependentOn("Export-Release-Notes")
 	.Does(() =>
 	{
 		var files = GetFiles(parameters.Paths.Directories.ArtifactsBin.FullPath + "/**/*")
@@ -136,8 +137,8 @@ Task("Zip-Files")
 	});
 
 Task("Create-NuGet-Packages")
-	.IsDependentOn("Export-Release-Notes")
 	.IsDependentOn("Copy-Files")
+	.IsDependentOn("Export-Release-Notes")
 	.Does(() =>
 	{
 		//var releaseNotes = ParseAllReleaseNotes("./CHANGELOG.md").First().Notes.ToArray();
