@@ -1,0 +1,19 @@
+[*]
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = tab
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+[*.{sln,xproj}]
+end_of_line = crlf
+
+[*.ps1]
+charset = utf-8-bom
+end_of_line = crlf
+
+[*.sh]
+end_of_line = lf

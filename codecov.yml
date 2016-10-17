@@ -1,0 +1,13 @@
+coverage:
+  notify:
+    gitter:
+      default:
+        url: secret:fwfkuvDCFG4AXt5ac2s5Nq9mDYVqjKyuUaIToe/4tPqtQ9dJUUs8z1bU2wHUGqDbpWF7+qf/VDHffYw1WUtSPCxM2QbXY5H/d1h9QzFE215gQUcux4AyfOSzBJaJ0XJe
+        threashold: 1%
+  status:
+    project:
+      default:
+        threshold: 1%
+comment:
+  behavior: default
+  require_changes: true

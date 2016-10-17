@@ -1,0 +1,26 @@
+﻿{
+  "extensions": {
+    "mandatory": [
+      {
+        "name": "EditorConfig",
+        "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
+        "link": "http://editorconfig.org/",
+        "description": "Loads editor options such as indentation sizes from standard, cross-platform .editorconfig files."
+      },
+      {
+        "name": "NUnit 3 Test Adapter",
+        "productId": "NUnit.NUnit3TestAdapter",
+        "link": "https://github.com/nunit/docs/wiki/VS-Adapter",
+        "description": "NUnit 3 adapter for running tests in Visual Studio. Works with NUnit 3.x, use the NUnit 2 adapter for 2.x tests."
+      }
+    ],
+    "optional": [
+      {
+        "name": "CodeMaid",
+        "productId": "4c82e17d-927e-42d2-8460-b473ac7df316",
+        "link": "http://www.codemaid.net/",
+        "description": "CodeMaid is an open source Visual Studio extension to cleanup and simplify our C#, C++, F#, VB, PHP, PowerShell, R, JSON, XAML, XML, ASP, HTML, CSS, LESS, SCSS, JavaScript and TypeScript coding."
+      }
+    ]
+  }
+}

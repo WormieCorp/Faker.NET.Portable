@@ -1,16 +1,24 @@
+language: csharp
 os:
   - linux
   - osx
-language: csharp
-cache: 
+
+before_install:
+  - git fetch --unshallow # Travis always does a shallow clone, but GitVersion needs the full history including branches and tags
+
+script:
+  - chmod +x build.sh
+  - ./build.sh --verbosity normal --target Travis
+
+cache:
   directories:
     - packages
-mono:
-  - latest
-solution: Faker.sln
-install:
-  - nuget restore Faker.sln
-  - nuget install NUnit.ConsoleRunner -OutputDirectory testrunner
-script:
-  - xbuild /v:m /p:Configuration=Release Faker.sln
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./tests/Faker.Tests/bin/Release/Faker.Tests.dll
+    - tools
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/4a4095f0f21d178196c4
+    on_success: change
+    on_failure: always
+    on_start: never

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="First" xml:space="preserve">
+    <value>Achille;Adamo;Adelaide;Adele;Agnese;Albano;Alberto;Aldo;Alessandra;Alessandro;Alessia;Alessio;Alfio;Alice;Alina;Amedeo;Amelia;Amelio;Andrea;Angela;Angelo;Angelina;Angelino;Anna;Annalisa;Annamaria;Annarita;Annelise;Annunziata;Antonella;Antonello;Antonia;Antonino;Antonio;Arianna;Armando;Assunta;Augusto;Aurelia;Barbara;Benedetta;Beniamino;Biagio;Bianca;Brigida;Bruno;Carla;Carlo;Carmela;Carmen;Carola;Carolina;Cataldo;Caterina;Cesare;Cesidio;Chiara;Christian;Cinzia;Claudia;Claudio;Clemente;Clementina;Cleonice;Concetta;Consuelo;Corrado;Corrine;Costantino;Costanza;Cristian;Cristiana;Cristiano;Cristina;Damiano;Daniela;Daniele;Danilo;Daria;Dario;David;Davide;Debora;Diego;Dina;Dino;Domenico;Donata;Donatella;Donato;Doriana;Edonella;Elena;Eleonora;Elide;Elisa;Elisabetta;Elvio;Elvira;Elza;Emanuela;Emanuele;Emilia;Emiliano;Emilio;Enrica;Enrico;Enza;Ermanno;Ettore;Eugenia;Eugenio;Evelisa;Fabiana;Fabio;Fabiola;Fabrizio;Fausta;Fausto;Federica;Federico;Fedra;Felice;Ferdinando;Fernanda;Fernando;Filippo;Filomena;Fiorenza;Flavia;Flavio;Floriana;Florinda;Franca;Francesca;Francesco;Fulvio;Gabriele;Gabriella;Gaetano;Gerardina;Gerardo;Germano;Giacomo;Giada;Giampaolo;Gian;Giancarlo;Gianfilippo;Gianfranco;Gianluca;Gianluigi;Gianni;Giordano;Giorgia;Giorgio;Giovanna;Giovanni;Gisella;Giulia;Giuliana;Giuliano;Giulio;Giuseppe;Giuseppina;Giusy;Gloria;Grazia;Guido;Idoia;Ilaria;Irene;Isabel;Isabella;Isidoro;Ivano;Katia;Katiuscia;Lamberto;Lara;Laura;Leo;Leonardo;Leone;Leonilde;Letizia;Linda;Lisa;Lisella;Livia;Livio;Loredana;Lorena;Lorenza;Lorenzo;Loretana;Loretta;Luca;Lucia;Luciana;Lucio;Ludovico;Luigi;Luis;Luisa;Luisella;Maddalena;Mafalda;Maialen;Manola;Manuela;Manuele;Mara;Marcella;Marcello;Marco;Margherita;Maria;Mariangela;Marianna;Mariantonia;Marica;Marilena;Marina;Mario;Marisa;Marisol;Maristella;Marta;Martina;Marzia;Marzio;Mascia;Massimiliano;Massimo;Matteo;Mattia;Maurizio;Mauro;Mercedes;Micaela;Michela;Michele;Miguel;Milena;Mirko;Monica;Nadia;Natascia;Neculina;Nicola;Nicoletta;Nicolo';Noemi;Ombretta;Ornella;Pamela;Paola;Paolo;Pasquale;Patricia;Patrizia;Patrizio;Pieranna;Pierfilippo;Pierfranco;Pierluigi;Piermarco;Piero;Pietro;Pilar;Raffaele;Raffaella;Ramona;Renata;Renato;Riccardo;Rita;Roberta;Roberto;Rocco;Rocio;Rodica;Rodolfo;Roger;Rolando;Romina;Rosa;Rosalba;Rosanna;Rosaria;Rosario;Rosaura;Rosetta;Rossana;Rossella;Sabine;Sabrina;Saioa;Sandro;Sante;Sara;Saverio;Sebastiano;Serena;Serenella;Sergio;Sibeli;Silvia;Simona;Simone;Simonetta;Siriana;Sofia;Sonia;Stefania;Stefano;Svetlana;Sylviane;Tamara;Tanya;Tatiana;Teresa;Tina;Tiziana;Tommasangelo;Tommaso;Ugo;Valentina;Valeria;Valerio;Valter;Veronica;Vincenzina;Vincenzo;Vincenzopio;Vito;Vittoradolfo;Vittorio;Viviana;Walter</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Abate;Agostini;Aiello;Albanese;Albano;Alberti;Alessi;Amato;Andreoli;Angelini;Anselmi;Antonini;Arena;Baldi;Baldini;Barbieri;Barone;Baroni;Bartoli;Basile;Bassi;Basso;Battaglia;Belli;Bellini;Belloni;Benedetti;Berardi;Beretta;Bernardi;Bernardini;Berti;Bertoli;Bertolini;Bertoni;Bevilacqua;Bianchi;Bianchini;Bianco;Biondi;Bonelli;Bonetti;Boni;Borghi;Bosco;Bosio;Brambilla;Brunelli;Brunetti;Bruni;Bruno;Bucci;Calabrese;Campana;Cappelletti;Cappelli;Caputo;Carbone;Carboni;Carli;Carrara;Carta;Caruso;Casagrande;Casella;Castagna;Castellani;Castelli;Catalano;Cattaneo;Cavaliere;Cavallaro;Cavalli;Cavallo;Chiesa;Cipriani;Cirillo;Clemente;Cocco;Colella;Colombo;Colucci;Comune;Conte;Conti;Coppola;Corona;Cortese;Corti;Cosentino;Costa;Costantini;Costantino;Costanzo;Croce;Curti;D'Agostino;D'Alessandro;D'Ambrosio;D'Amico;D'Andrea;D'Angelo;D'Urzo;Damiani;De Luigi;Dentale;Di Donato;Diana;Donadoni;Donati;Donato;Durante;Esposito;Fabbri;Falcone;Fantini;Farina;Fava;Fazio;Ferrante;Ferrara;Ferrari;Ferraro;Ferrero;Ferretti;Ferri;Ferro;Festa;Filippi;Filippini;Fiore;Fiori;Fiorini;Fontana;Forte;Fortunato;Franceschini;Franchi;Franchini;Franco;Fumagalli;Fusco;Gabrielli;Gagliardi;Galli;Gallo;Garofalo;Gasparini;Gatti;Gatto;Genovese;Gentile;Giannini;Giglio;Gioia;Giordano;Giorgi;Girardi;Giuliani;Giuliano;Giusti;Granata;Grandi;Grassi;Grasso;Graziano;Greco;Grillo;Grimaldi;Grossi;Grosso;Guarino;Guerra;Guida;Guidi;Ippolito;La;La;Lancia;Landi;Lanza;Lazzari;Lazzarini;Leo;Leonardi;Leone;Leoni;Locatelli;Lombardi;Lombardo;Longhi;Longo;Lorenzi;Luciani;Lupi;Lupo;Maffei;Maggi;Maggio;Magnani;Magni;Manca;Mancini;Mancuso;Manfredi;Mantovani;Manzoni;Marangoni;Marchese;Marchesi;Marchetti;Marchi;Marconi;Mari;Mariani;Marinelli;Marini;Marino;Mariotti;Marotta;Marra;Martelli;Martinelli;Martini;Martino;Masi;Massa;Massari;Massaro;Mattioli;Mauri;Mauro;Mazza;Mazzola;Mazzoni;Mele;Melis;Meloni;Merlo;Messina;Miceli;Micheli;Milani;Milano;Molinari;Monaco;Montanari;Monti;Morandi;Morelli;Morello;Moretti;Mori;Moro;Moroni;Mosca;Motta;Mura;Napoli;Napolitano;Nardi;Natale;Negri;Negro;Neri;Nicoletti;Nigro;Novelli;Oliva;Olivieri;Orlandi;Orlando;Orsini;Pace;Pagani;Pagano;Palermo;Palma;Palmieri;Palumbo;Paolini;Papa;Parisi;Pasini;Pasquali;Pastore;Pavan;Pellegrini;Pellegrino;Pepe;Perini;Perrone;Pesce;Piazza;Piccolo;Pini;Pinna;Pinto;Piras;Pisani;Pisano;Piva;Poli;Porta;Pozzi;Pucci;Pugliese;Quaranta;Raimondi;Ranieri;Re;Riccardi;Ricci;Ricciardi;Riccio;Rinaldi;Riva;Rizzi;Rizzo;Rocca;Rocchi;Rocco;Romagnoli;Romani;Romano;Romeo;Rosa;Rosati;Rossetti;Rossi;Rossini;Rosso;Rota;Rubino;Ruggeri;Ruggiero;Russo;Sacchi;Sacco;Sala;Salerno;Salvi;Sanna;Santi;Santini;Santoro;Sartori;Scotti;Serafini;Serra;Silvestri;Simone;Simonetti;Sorrentino;Spada;Spina;Spinelli;Stefani;Stella;Tarantino;Tedeschi;Tedesco;Testa;Tonelli;Toscano;Tosi;Trevisan;Turco;Vacca;Vaccaro;Valente;Valenti;Valentini;Valentino;Vecchi;Ventura;Venturi;Venturini;Villa;Villani;Vinci;Viola;Vitale;Vitali;Volpe;Volpi;Zanella;Zanetti;Zanini;Zanotti;Zito</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Sig.;Sig.ra;Sig.na;Dr.;Dr.ssa</value>
+  </data>
+  <data name="Suffix" xml:space="preserve">
+    <value>Jr.;Sr.;I;II;III;IV;V;MD;PhD;</value>
+  </data>
+</root>
