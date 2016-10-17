@@ -6,6 +6,7 @@
 #load "./.build/parameters.cake"
 #load "./.build/resolution.cake"
 #load "./.build/publishing.cake"
+#load "./.build/parsing.cake"
 
 var parameters = BuildParameters.GetParameters(Context);;
 bool publishingError = false;
@@ -149,7 +150,7 @@ Task("Create-NuGet-Packages")
 			NuGetPack(package.NuspecPath, new NuGetPackSettings
 			{
 				Version = parameters.Version.NuspecVersion,
-				ReleaseNotes = ParseReleaseNotes(changelogFile).Notes.ToArray(),
+				ReleaseNotes = Parsing.ParseReleaseNotes(Context, changelogFile),
 				BasePath = parameters.Paths.Directories.ArtifactsBin,
 				OutputDirectory = parameters.Paths.Directories.NugetRoot,
 				Symbols = true
@@ -201,7 +202,7 @@ Task("Upload-AppVeyor-Artifacts")
 
 Task("Create-Release-Notes")
 	.WithCriteria(() => parameters.GitHub.HasCredentials)
-	.WithCriteria(() => parameters.ShouldPublish)
+	//.WithCriteria(() => parameters.ShouldPublish)
 	.Does(() =>
 	{
 		GitReleaseManagerCreate(
@@ -233,7 +234,7 @@ Task("Publish-Git-Release")
 Task("Export-Release-Notes")
   .WithCriteria(() => parameters.GitHub.HasCredentials)
 	.IsDependentOn("Copy-Files")
-	.IsDependentOn("Create-Release-Notes")
+	//.IsDependentOn("Create-Release-Notes")
 	.Does(() =>
 {
 	GitReleaseManagerExport(

@@ -35,6 +35,7 @@ public class BuildPaths
 		{
 			"de-DE",
 			"en-US",
+			"it-IT",
 			"nb-NO",
 			"pt-BR"
 		}.Select(d => buildDir.Combine(d)).ToArray();
