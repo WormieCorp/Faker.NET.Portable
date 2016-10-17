@@ -202,7 +202,7 @@ Task("Upload-AppVeyor-Artifacts")
 
 Task("Create-Release-Notes")
 	.WithCriteria(() => parameters.GitHub.HasCredentials)
-	//.WithCriteria(() => parameters.ShouldPublish)
+	.WithCriteria(() => parameters.ShouldCreateReleaseNotes)
 	.Does(() =>
 	{
 		GitReleaseManagerCreate(
@@ -234,7 +234,7 @@ Task("Publish-Git-Release")
 Task("Export-Release-Notes")
   .WithCriteria(() => parameters.GitHub.HasCredentials)
 	.IsDependentOn("Copy-Files")
-	//.IsDependentOn("Create-Release-Notes")
+	.IsDependentOn("Create-Release-Notes")
 	.Does(() =>
 {
 	GitReleaseManagerExport(
