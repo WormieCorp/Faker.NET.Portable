@@ -1,6 +1,8 @@
 Faker.NET Portable Edition
 =====
 
+[![CLA assistant](https://cla-assistant.io/readme/badge/AdmiringWorm/Faker.NET.Portable)](https://cla-assistant.io/AdmiringWorm/Faker.NET.Portable)
+
 [![Join the chat at https://gitter.im/AdmiringWorm/Faker.NET.Portable](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AdmiringWorm/Faker.NET.Portable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 | AppVeyor | Travis | NuGet | GitHub | Codecov |
