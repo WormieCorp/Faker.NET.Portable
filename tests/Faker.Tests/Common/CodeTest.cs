@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using NUnit.Framework;
 
 namespace Faker.Tests.Common
 {
@@ -196,7 +196,7 @@ namespace Faker.Tests.Common
 		[Repeat(1000)]
 		public void Should_generate_NRIC_with_invalid_checksum()
 		{
-			var result = Code.NRIC(10, 40, false);
+			var result = Code.NRIC(false, 10, 40);
 			Assert.IsFalse(IsNricOk(result));
 		}
 

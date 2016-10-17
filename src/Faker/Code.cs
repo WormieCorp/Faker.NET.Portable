@@ -157,18 +157,18 @@ namespace Faker
 		///   Generates a Singaporean National Registration Identity Card (NRIC) for holder who is
 		///   born between specified ages.
 		/// </summary>
-		/// <param name="minAge">Minimum age of the holder</param>
-		/// <param name="maxAge">Maximum age of the holder</param>
 		/// <param name="validChecksum">
 		///   Indicates whether the generated NRIC has a valid checksum or not
 		/// </param>
+		/// <param name="minAge">Minimum age of the holder</param>
+		/// <param name="maxAge">Maximum age of the holder</param>
 		/// <returns>The generated NRIC</returns>
 		/// <remarks>
 		///   Description of the NRIC standard is at
 		///   https://en.wikipedia.org/wiki/National_Registration_Identity_Card. This ID was issued
 		///   for the first time in 1965 in Singapore. See also: https://github.com/stympy/faker/blob/master/lib/faker/code.rb#L32
 		/// </remarks>
-		public static string NRIC(int minAge = 18, int maxAge = 65, bool validChecksum = true)
+		public static string NRIC(bool validChecksum = true, int minAge = 18, int maxAge = 65)
 		{
 			var birthYear = Date.Birthday(minAge, maxAge).Year;
 			var prefix = birthYear < 2000 ? 'S' : 'T';
