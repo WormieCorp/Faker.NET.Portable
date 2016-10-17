@@ -201,7 +201,7 @@ Task("Upload-AppVeyor-Artifacts")
 
 Task("Create-Release-Notes")
 	.WithCriteria(() => parameters.GitHub.HasCredentials)
-	.WithCriteria(() => parameters.ShouldCreateReleaseNotes)
+	.WithCriteria(() => parameters.ShouldPublish)
 	.Does(() =>
 	{
 		GitReleaseManagerCreate(
@@ -217,9 +217,23 @@ Task("Create-Release-Notes")
 		);
 	});
 
+Task("Publish-Git-Release")
+	.WithCriteria(() => parameters.GitHub.HasCredentials)
+	.Does(() =>
+	{
+		GitReleaseManagerPulblish(
+			parameters.GitHub.Username,
+			parameters.GitHub.Password,
+			"AdmiringWorm",
+			"Faker.Net.Portable",
+			parameters.Version.Milestone
+		);
+	});
+
 Task("Export-Release-Notes")
   .WithCriteria(() => parameters.GitHub.HasCredentials)
 	.IsDependentOn("Copy-Files")
+	.IsDependentOn("Create-Release-Notes")
 	.Does(() =>
 {
 	GitReleaseManagerExport(
@@ -266,7 +280,6 @@ Task("Publish-GitHub-Release")
 	{
 		GitReleaseManagerAddAssets(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone, parameters.Paths.Files.ZipArtifactPath.ToString());
 		GitReleaseManagerClose(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone);
-		GitReleaseManagerPublish(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone);
 	})
 	.OnError(exception =>
 	{
@@ -285,10 +298,7 @@ Task("Travis")
 	.IsDependentOn("Run-Unit-Tests");
 
 Task("AppVeyor")
-	.IsDependentOn("Create-Release-Notes")
 	.IsDependentOn("Upload-AppVeyor-Artifacts")
-	//.IsDependentOn("Upload-Test-Results")
-	//.IsDependentOn("Upload-Coverage-Report")
 	.IsDependentOn("Package")
 	.IsDependentOn("Publish-MyGet")
 	.IsDependentOn("Publish-NuGet")

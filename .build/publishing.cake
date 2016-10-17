@@ -3,7 +3,8 @@ public static class Publishing
 	public static void NuGet(ICakeContext context, FilePath packagePath)
 	{
 		var apiKey = context.EnvironmentVariable("NUGET_API_KEY");
-		PublishNugetPackage(context, apiKey, null, packagePath);
+		var apiUrl = context.EnvironmentVariable("NUGET_API_URL");
+		PublishNugetPackage(context, apiKey, apiUrl, packagePath);
 	}
 
 	public static void MyGet(ICakeContext context, FilePath packagePath)
@@ -27,14 +28,16 @@ public static class Publishing
 			throw new ArgumentNullException("apiKey");
 		}
 
+		if (string.IsNullOrEmpty(apiUrl))
+		{
+			throw new ArgumentNullException("apiUrl");
+		}
+
 		var settings = new NuGetPushSettings
 		{
-			ApiKey = apiKey
+			ApiKey = apiKey,
+			Source = apiUrl
 		};
-		if (!string.IsNullOrEmpty(apiUrl))
-		{
-			settings.Source = apiUrl;
-		}
 
 		context.NuGetPush(packagePath, settings);
 	}
