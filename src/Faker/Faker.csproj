@@ -98,6 +98,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Phone.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="Avatar\FlatHash.cs" />
     <None Include="Docs\NameFormatsExample.xml" />
     <EmbeddedResource Include="Resources\Address.de-DE.resx">

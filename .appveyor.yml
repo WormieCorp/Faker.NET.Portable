@@ -1,0 +1,17 @@
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  except:
+  - ci/travis
+init:
+- git config --global core.autocrlf input
+- "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
+install:
+- cmd: pip install codecov
+cache:
+- packages -> **\packages.config
+- tools -> build.cake
+build_script:
+- ps: .\build.ps1 -Configuration Release -Verbosity normal -Target AppVeyor
+- ps: codecov -f $(Get-ChildItem -Path "./" -Name "OpenCover.xml" -Recurse -File | select -first 1) -X gcov
+test: off

@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faker", "src\Faker\Faker.csproj", "{7615EE26-1AB0-436D-A5C3-6ABF0F3D2FF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faker.Tests", "tests\Faker.Tests\Faker.Tests.csproj", "{D385DDFB-44D7-4CC8-8422-963F80714B91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2F4D561F-580A-48E5-8DED-34704A4050DC}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		cake.config = cake.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
