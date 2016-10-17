@@ -221,7 +221,7 @@ Task("Publish-Git-Release")
 	.WithCriteria(() => parameters.GitHub.HasCredentials)
 	.Does(() =>
 	{
-		GitReleaseManagerPulblish(
+		GitReleaseManagerPublish(
 			parameters.GitHub.Username,
 			parameters.GitHub.Password,
 			"AdmiringWorm",
