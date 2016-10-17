@@ -52,7 +52,7 @@ public class BuildParameters
 
 		Packages = BuildPackages.GetPackages(
 			Paths.Directories.NugetRoot,
-			Version.SemVersion,
+			Version.NuspecVersion,
 			new [] { "Faker.Net.Portable" }
 		);
 	}
