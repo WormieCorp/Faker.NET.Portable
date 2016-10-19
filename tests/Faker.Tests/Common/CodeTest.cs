@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using NUnit.Framework;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using NUnit.Framework;
 
 namespace Faker.Tests.Common
 {
@@ -10,18 +10,28 @@ namespace Faker.Tests.Common
 
 		[Test]
 		[Repeat(1000)]
+		public void Should_town_code_part_be_a_valid_one()
+		{
+			var fiscalCode = Code.FiscalCode();
+			var trailingPart = fiscalCode.Substring(11, 4);
+			var townCodes = Resources.FiscalCode_TownCodes.Codes.Split(Config.SEPARATOR);
+			Assert.That(townCodes, Does.Contain(trailingPart));
+		}
+
+		[Test]
+		[Repeat(1000)]
 		public void Should_generate_invalid_FiscalCode_with_invalid_checksum()
 		{
-			var result = Code.FiscalCode(false);
-			Assert.IsFalse(IsFiscalCodeOk(result));
+			var fiscalCode = Code.FiscalCode(false);
+			Assert.IsFalse(IsFiscalCodeOk(fiscalCode));
 		}
 
 		[Test]
 		[Repeat(1000)]
 		public void Should_generate_valid_FiscalCode_with_valid_checksum()
 		{
-			var result = Code.FiscalCode();
-			Assert.IsTrue(IsFiscalCodeOk(result), "Invalid fiscal code {0}", result);
+			var fiscalCode = Code.FiscalCode();
+			Assert.IsTrue(IsFiscalCodeOk(fiscalCode), "Invalid fiscal code {0}", fiscalCode);
 		}
 
 		#endregion Fiscal Code tests
