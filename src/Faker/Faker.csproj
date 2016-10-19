@@ -53,6 +53,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Beer.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\FiscalCode_TownCodes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FiscalCode_TownCodes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Phone.it-IT1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +87,10 @@
       <LastGenOutput>Company.it-IT1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Company.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\FiscalCode_TownCodes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FiscalCode_TownCodes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Internet.it-IT.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Internet.it-IT1.Designer.cs</LastGenOutput>
