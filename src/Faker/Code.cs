@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Faker.Caching;
+using Faker.Extensions;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
@@ -65,8 +67,7 @@ namespace Faker
 			sb.Append((birthDate.Year % 100).ToString("00", CultureInfo.InvariantCulture));
 			sb.Append(monthChars[birthDate.Month - 1]);
 			sb.Append((birthDate.Day + (male ? 0 : 40)).ToString("00", CultureInfo.InvariantCulture));
-			sb.Append(consonantsAndVowels[RandomNumber.Next(consonants.Length)]);
-			sb.Append(RandomNumber.Next(100, 1000)); //three numbers for faking country code
+			sb.Append(ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.FiscalCode_TownCodes.Codes)).Random());
 
 			var checksum = ComputeChecksumFiscalCode(sb.ToString(), validChecksum);
 			sb.Append(checksum);
