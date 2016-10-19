@@ -2,41 +2,44 @@ public static class Parsing
 {
 	public static string[] ParseReleaseNotes(ICakeContext context, FilePath changelog)
 	{
-		var notes = context.ParseReleaseNotes(changelog).Notes;
-
 		var newNotes = new List<string>();
-
-		foreach (var note in notes)
+		
+		try
 		{
-			if (note.StartsWith("__") && note.EndsWith("__"))
+			var notes = context.ParseReleaseNotes(changelog).Notes;
+
+			foreach (var note in notes)
 			{
-				newNotes.Add("");
-				newNotes.Add("");
-				newNotes.Add(note.Trim('_').Trim());
-				newNotes.Add("");
-			}
-			else if (note.StartsWith("-"))
-			{
-				int index = note.IndexOf(')');
-				if (index > 0)
+				if (note.StartsWith("__") && note.EndsWith("__"))
 				{
-					string issue = note.Substring(index + 1).Trim();
-					newNotes.Add(note.Substring(0, 2) + issue);
+					newNotes.Add("");
+					newNotes.Add("");
+					newNotes.Add(note.Trim('_').Trim());
+					newNotes.Add("");
+				}
+				else if (note.StartsWith("-"))
+				{
+					int index = note.IndexOf(')');
+					if (index > 0)
+					{
+						string issue = note.Substring(index + 1).Trim();
+						newNotes.Add(note.Substring(0, 2) + issue);
+					}
+					else
+					{
+						newNotes.Add(note);
+					}
+				}
+				else if (note.IndexOf("part of this release") > 0)
+				{
+					continue;
 				}
 				else
 				{
 					newNotes.Add(note);
 				}
 			}
-			else if (note.IndexOf("part of this release") > 0)
-			{
-				continue;
-			}
-			else
-			{
-				newNotes.Add(note);
-			}
-		}
+		} catch {}
 
 		return newNotes.ToArray();
 	}
