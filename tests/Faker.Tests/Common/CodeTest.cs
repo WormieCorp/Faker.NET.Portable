@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace Faker.Tests.Common
@@ -10,12 +11,18 @@ namespace Faker.Tests.Common
 
 		[Test]
 		[Repeat(1000)]
-		public void Should_town_code_part_be_a_valid_one()
+		public void Should_encode_date()
 		{
-			var fiscalCode = Code.FiscalCode();
-			var trailingPart = fiscalCode.Substring(11, 4);
-			var townCodes = Resources.FiscalCode_TownCodes.Codes.Split(Config.SEPARATOR);
-			Assert.That(townCodes, Does.Contain(trailingPart));
+			char[] monthChars = { 'A', 'B', 'C', 'D', 'E', 'H', 'L', 'M', 'P', 'R', 'S', 'T' };
+
+			var date = Date.Birthday();
+			var fiscalCode = Code.FiscalCode("Macchi", "Michi", date, true);
+			var regex = string.Format("^.{{6}}{0}{1}({2}|{3})",
+				(date.Year % 100).ToString("00", CultureInfo.InvariantCulture),
+				monthChars[date.Month - 1],
+				date.Day.ToString("00", CultureInfo.InvariantCulture),
+				(date.Day + 40).ToString("00", CultureInfo.InvariantCulture));
+			Assert.That(fiscalCode, Does.Match(regex));
 		}
 
 		[Test]
@@ -32,6 +39,104 @@ namespace Faker.Tests.Common
 		{
 			var fiscalCode = Code.FiscalCode();
 			Assert.IsTrue(IsFiscalCodeOk(fiscalCode), "Invalid fiscal code {0}", fiscalCode);
+		}
+
+		[Test]
+		public void Should_squeeze_double_names()
+		{
+			var fiscalCode = Code.FiscalCode("Dado Amico", "Rino Andrea", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^DDMRNN"));
+		}
+
+		[Test]
+		public void Should_squeeze_names_starting_with_vowel()
+		{
+			var fiscalCode = Code.FiscalCode("AIRONE", "EULA", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^RNALEU"));
+		}
+
+		[Test]
+		public void Should_squeeze_names_with_apostrophe()
+		{
+			var fiscalCode = Code.FiscalCode("D'Urzo", "Morena", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^DRZMRN"));
+		}
+
+		[Test]
+		public void Should_squeeze_names_with_symbols()
+		{
+			var fiscalCode = Code.FiscalCode("D'Ama-Deidda", "Pasquale", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^DMDPSQ"));
+		}
+
+		[Test]
+		public void Should_squeeze_one_consonant_in_names()
+		{
+			var fiscalCode = Code.FiscalCode("Aria", "Maia", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^RAIMAI"));
+		}
+
+		[Test]
+		public void Should_squeeze_three_or_more_consonants_in_names()
+		{
+			var fiscalCode = Code.FiscalCode("Macchi", "Michi", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^MCCMCH"));
+		}
+
+		[Test]
+		public void Should_squeeze_two_consonants_in_names()
+		{
+			var fiscalCode = Code.FiscalCode("Masi", "Nico", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^MSANCI"));
+		}
+
+		[Test]
+		public void Should_squeeze_two_letter_names()
+		{
+			var fiscalCode = Code.FiscalCode("Ro", "Ka", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^ROXKAX"));
+		}
+
+		[Test]
+		public void Should_squeeze_uppercase_names()
+		{
+			var fiscalCode = Code.FiscalCode("MORI", "ANTONIO", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^MRONTN"));
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_take_chkValidity_with_lastName_firstName_birthday_parameters()
+		{
+			var fiscalCode = Code.FiscalCode("AAA", "BBB", System.DateTime.Today, false);
+			Assert.IsFalse(IsFiscalCodeOk(fiscalCode));
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_take_chkValidity_with_minAge_maxAge_parameters()
+		{
+			var fiscalCode = Code.FiscalCode(false, 0, 0);
+			Assert.IsFalse(IsFiscalCodeOk(fiscalCode));
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_take_minAge_maxAge_parameters()
+		{
+			var fiscalCode = Code.FiscalCode(0, 0);
+			var regex = "^.{6}" + (System.DateTime.Today.Year % 100).ToString("00", CultureInfo.InvariantCulture);
+			Assert.That(fiscalCode, Does.Match(regex));
+		}
+
+		[Test]
+		[Repeat(1000)]
+		public void Should_town_code_part_be_a_valid_one()
+		{
+			var fiscalCode = Code.FiscalCode();
+			var trailingPart = fiscalCode.Substring(11, 4);
+			var townCodes = Resources.FiscalCode_TownCodes.Codes.Split(Config.SEPARATOR);
+			Assert.That(townCodes, Does.Contain(trailingPart));
 		}
 
 		#endregion Fiscal Code tests

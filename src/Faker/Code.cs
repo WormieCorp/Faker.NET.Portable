@@ -1,8 +1,11 @@
 ﻿using Faker.Caching;
 using Faker.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Faker
 {
@@ -45,28 +48,71 @@ namespace Faker
 		/// <param name="validChecksum">
 		///   Indicates whether the generated Fiscal Code has a valid checksum or not
 		/// </param>
+		/// <returns>The generated Fiscal Code</returns>
+		/// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+		public static string FiscalCode(bool validChecksum = true)
+		{
+			var birthday = Date.Birthday();
+			return FiscalCode(null, null, birthday, validChecksum);
+		}
+
+		/// <summary>
+		///   Generates an Italian Fiscal Code
+		/// </summary>
 		/// <param name="minAge">Minimum age of the holder</param>
 		/// <param name="maxAge">Maximum age of the holder</param>
 		/// <returns>The generated Fiscal Code</returns>
 		/// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
-		public static string FiscalCode(bool validChecksum = true, int minAge = 18, int maxAge = 65)
+		public static string FiscalCode(int minAge, int maxAge)
 		{
-			char[] consonants = { 'B', 'C', 'D', 'F', 'G', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'Z' };
-			char[] consonantsAndVowels = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'Z' };
+			var birthday = Date.Birthday(minAge, maxAge);
+			return FiscalCode(null, null, birthday, true);
+		}
+
+		/// <summary>
+		///   Generates an Italian Fiscal Code
+		/// </summary>
+		/// <param name="validChecksum">
+		///   Indicates whether the generated Fiscal Code has a valid checksum or not
+		/// </param>
+		/// <param name="minAge">Minimum age of the holder</param>
+		/// <param name="maxAge">Maximum age of the holder</param>
+		/// <returns>The generated Fiscal Code</returns>
+		/// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+		public static string FiscalCode(bool validChecksum, int minAge, int maxAge)
+		{
+			var birthday = Date.Birthday(minAge, maxAge);
+			return FiscalCode(null, null, birthday, validChecksum);
+		}
+
+		/// <summary>
+		///   Generates an Italian Fiscal Code
+		/// </summary>
+		/// <param name="lastName">Lastname of the holder</param>
+		/// <param name="firstName">Firstname of the holder</param>
+		/// <param name="birthday">Birthday of the holder</param>
+		/// <param name="validChecksum">
+		///   Indicates whether the generated Fiscal Code has a valid checksum or not
+		/// </param>
+		/// <returns>The generated Fiscal Code</returns>
+		/// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+		public static string FiscalCode(string lastName, string firstName, DateTime birthday, bool validChecksum = true)
+		{
 			char[] monthChars = { 'A', 'B', 'C', 'D', 'E', 'H', 'L', 'M', 'P', 'R', 'S', 'T' };
-			var birthDate = Date.Birthday(minAge, maxAge);
+
+			if (string.IsNullOrWhiteSpace(lastName))
+				lastName = Name.Last();
+			if (string.IsNullOrWhiteSpace(firstName))
+				firstName = Name.First();
+
 			var male = RandomNumber.Next(2) == 0; //even probability to be male or female
 
 			var sb = new StringBuilder();
-			sb.Append(consonants[RandomNumber.Next(consonants.Length)]);
-			sb.Append(consonants[RandomNumber.Next(consonants.Length)]);
-			sb.Append(consonantsAndVowels[RandomNumber.Next(consonantsAndVowels.Length)]);
-			sb.Append(consonants[RandomNumber.Next(consonants.Length)]);
-			sb.Append(consonants[RandomNumber.Next(consonants.Length)]);
-			sb.Append(consonantsAndVowels[RandomNumber.Next(consonantsAndVowels.Length)]);
-			sb.Append((birthDate.Year % 100).ToString("00", CultureInfo.InvariantCulture));
-			sb.Append(monthChars[birthDate.Month - 1]);
-			sb.Append((birthDate.Day + (male ? 0 : 40)).ToString("00", CultureInfo.InvariantCulture));
+			sb.Append(GetFiscalCodeSqueezedName(lastName));
+			sb.Append(GetFiscalCodeSqueezedName(firstName));
+			sb.Append((birthday.Year % 100).ToString("00", CultureInfo.InvariantCulture));
+			sb.Append(monthChars[birthday.Month - 1]);
+			sb.Append((birthday.Day + (male ? 0 : 40)).ToString("00", CultureInfo.InvariantCulture));
 			sb.Append(ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.FiscalCode_TownCodes.Codes)).Random());
 
 			var checksum = ComputeChecksumFiscalCode(sb.ToString(), validChecksum);
@@ -357,6 +403,48 @@ namespace Faker
 				sum += coefs[i] * digits[i];
 
 			return (11 - (sum % 11)) % 11;
+		}
+
+		private static string GetFiscalCodeSqueezedName(string name)
+		{
+			var sb = new StringBuilder();
+			var normalizedName = name.ToUpperInvariant();
+			var regex = new Regex("[^A-Z]");
+			normalizedName = regex.Replace(normalizedName, string.Empty);
+
+			//add consonants
+			for (int i = 0; i < normalizedName.Length; i++)
+			{
+				if (!isVowel(normalizedName[i]))
+				{
+					sb.Append(normalizedName[i]);
+					if (sb.Length == 3)
+						return sb.ToString();
+				}
+			}
+
+			//add vowels
+			for (int i = 0; i < normalizedName.Length; i++)
+			{
+				if (isVowel(normalizedName[i]))
+				{
+					sb.Append(normalizedName[i]);
+					if (sb.Length == 3)
+						return sb.ToString();
+				}
+			}
+
+			//add padding X
+			while (sb.Length < 3)
+				sb.Append("X");
+
+			return sb.ToString();
+		}
+
+		private static bool isVowel(char c)
+		{
+			var vowels = new char[] { 'A', 'E', 'I', 'O', 'U' };
+			return vowels.Contains(c);
 		}
 	}
 }
