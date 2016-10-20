@@ -157,7 +157,7 @@ public class BuildParameters
 
 	private static bool IsPublishing(string target)
 	{
-		var targets = new [] { "Create-Release-Notes", "Export-Release-Notes" };
+		var targets = new [] { "Create-Release-Notes", "Export-Release-Notes", "Update-AssemblyInfo" };
 		return targets.Any(t => StringComparer.OrdinalIgnoreCase.Equals(t, target));
 	}
 
