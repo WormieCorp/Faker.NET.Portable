@@ -3,13 +3,6 @@ os:
   - linux
   - osx
 
-branches:
-  except:
-    - /^v[0-9]/ # Skip tag builds, these should already have been tested before the tag was created
-
-before_install:
-  - git fetch --unshallow # Travis always does a shallow clone, but GitVersion needs the full history including branches and tags
-
 script:
   - chmod +x build.sh
   - ./build.sh --verbosity normal --target Travis
