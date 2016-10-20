@@ -19,7 +19,7 @@ public class BuildVersion
 		string nuspecVersion = null;
 		string legacySemVersion = null;
 
-		if (context.IsRunningOnWindows() || parameters.IsRunningOnTravisCI)
+		if (context.IsRunningOnWindows())
 		{
 			context.Information("Calculating Semantic Version");
 			if (!parameters.IsLocalBuild || parameters.IsPublishBuild || parameters.IsReleaseBuild)
