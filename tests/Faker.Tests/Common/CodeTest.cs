@@ -26,11 +26,26 @@ namespace Faker.Tests.Common
 		}
 
 		[Test]
+		public void Should_fiscalCode_be_case_insensitive()
+		{
+			var fiscalCode1 = Code.FiscalCode("GRACCHI", "ANTONIO", System.DateTime.Today, true);
+			var fiscalCode2 = Code.FiscalCode("gracchi", "antonio", System.DateTime.Today, true);
+			Assert.That(fiscalCode1.Substring(0, 6), Is.EqualTo(fiscalCode2.Substring(0, 6)));
+		}
+
+		[Test]
 		[Repeat(1000)]
 		public void Should_generate_invalid_FiscalCode_with_invalid_checksum()
 		{
 			var fiscalCode = Code.FiscalCode(false);
 			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.ChecksumError));
+		}
+
+		[Test]
+		public void Should_generate_invalid_FiscalCode_with_less_than_16_chars()
+		{
+			var fiscalCode = "MRRTRR55E12A343";
+			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.FormallyInvalid));
 		}
 
 		[Test]
@@ -42,17 +57,26 @@ namespace Faker.Tests.Common
 		}
 
 		[Test]
-		public void Should_generate_invalid_FiscalCode_with_less_than_16_chars()
-		{
-			var fiscalCode = "MRRTRR55E12A343";
-			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.FormallyInvalid));
-		}
-
-		[Test]
 		public void Should_squeeze_double_names()
 		{
 			var fiscalCode = Code.FiscalCode("Dado Amico", "Rino Andrea", System.DateTime.Today, true);
 			Assert.That(fiscalCode, Does.StartWith("DDMRND"));
+		}
+
+		[Test]
+		public void Should_squeeze_more_than_three_consonants_in_firstname()
+		{
+			//the special does apply to firstnames
+			var fiscalCode = Code.FiscalCode("Masi", "Annamaria", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^.{3}NMR"));
+		}
+
+		[Test]
+		public void Should_squeeze_more_than_three_consonants_in_lastname()
+		{
+			//the special case does not apply to lastnames
+			var fiscalCode = Code.FiscalCode("Astratto", "Michela", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.StartWith("STR"));
 		}
 
 		[Test]
@@ -99,22 +123,6 @@ namespace Faker.Tests.Common
 		}
 
 		[Test]
-		public void Should_squeeze_more_than_three_consonants_in_firstname()
-		{
-			//the special does apply to firstnames
-			var fiscalCode = Code.FiscalCode("Masi", "Annamaria", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^.{3}NMR"));
-		}
-
-		[Test]
-		public void Should_squeeze_more_than_three_consonants_in_lastname()
-		{
-			//the special case does not apply to lastnames
-			var fiscalCode = Code.FiscalCode("Astratto", "Michela", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.StartWith("STR"));
-		}
-
-		[Test]
 		public void Should_squeeze_two_letter_names()
 		{
 			var fiscalCode = Code.FiscalCode("Ro", "Ka", System.DateTime.Today, true);
@@ -126,14 +134,6 @@ namespace Faker.Tests.Common
 		{
 			var fiscalCode = Code.FiscalCode("MORI", "ANTONIO", System.DateTime.Today, true);
 			Assert.That(fiscalCode, Does.StartWith("MRONTN"));
-		}
-
-		[Test]
-		public void Should_fiscalCode_be_case_insensitive()
-		{
-			var fiscalCode1 = Code.FiscalCode("GRACCHI", "ANTONIO", System.DateTime.Today, true);
-			var fiscalCode2 = Code.FiscalCode("gracchi", "antonio", System.DateTime.Today, true);
-			Assert.That(fiscalCode1.Substring(0, 6), Is.EqualTo(fiscalCode2.Substring(0, 6)));
 		}
 
 		[Test]
@@ -356,6 +356,8 @@ namespace Faker.Tests.Common
 
 		#endregion NRIC tests
 
+		internal enum FiscalCodeValidationResult { Ok, FormallyInvalid, ChecksumError };
+
 		/// <summary>
 		///   Computes checksum validity on a EAN
 		/// </summary>
@@ -376,8 +378,6 @@ namespace Faker.Tests.Common
 
 			return sum % 10 == 0;
 		}
-
-		internal enum FiscalCodeValidationResult { Ok, FormallyInvalid, ChecksumError };
 
 		/// <summary>
 		///   Computes checksum validity on a Fiscal Code
