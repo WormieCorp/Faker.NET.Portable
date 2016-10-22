@@ -406,15 +406,13 @@ namespace Faker
 		}
 
 		/// <summary>
-		///   This method applyes the rule giving the consonants and vowels extracted by the name,
+		///   This method applies the rule giving the consonants and vowels extracted by the name,
 		///   according to the algorithm.
 		/// </summary>
 		/// <param name="name">The name to process</param>
-		/// <param name="firstNameSpecialCase">
-		///   In case of first names having more than 3 consonants, the second one is skipped
-		/// </param>
-		/// <returns></returns>
-		private static string GetFiscalCodeSqueezedName(string name, bool firstNameSpecialCase)
+		/// <param name="isFirstName">true, in case of first names</param>
+		/// <returns>The squeezed name</returns>
+		private static string GetFiscalCodeSqueezedName(string name, bool isFirstName)
 		{
 			var sb = new StringBuilder();
 			var normalizedName = name.ToUpperInvariant();
@@ -423,7 +421,7 @@ namespace Faker
 
 			//manages firstname special case (first names having more than 3 consonants -> the 2nd is skipped)
 			var consonantToSkipIdx = -1;
-			if (firstNameSpecialCase)
+			if (isFirstName)
 			{
 				var consonantCount = 0;
 				for (int i = 0; i < normalizedName.Length; i++)
