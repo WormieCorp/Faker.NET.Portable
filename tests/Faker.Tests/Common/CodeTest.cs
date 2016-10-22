@@ -30,7 +30,7 @@ namespace Faker.Tests.Common
 		public void Should_generate_invalid_FiscalCode_with_invalid_checksum()
 		{
 			var fiscalCode = Code.FiscalCode(false);
-			Assert.IsFalse(IsFiscalCodeOk(fiscalCode));
+			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.ChecksumError));
 		}
 
 		[Test]
@@ -38,78 +38,109 @@ namespace Faker.Tests.Common
 		public void Should_generate_valid_FiscalCode_with_valid_checksum()
 		{
 			var fiscalCode = Code.FiscalCode();
-			Assert.IsTrue(IsFiscalCodeOk(fiscalCode), "Invalid fiscal code {0}", fiscalCode);
+			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.Ok));
+		}
+
+		[Test]
+		public void Should_generate_invalid_FiscalCode_with_less_than_16_chars()
+		{
+			var fiscalCode = "MRRTRR55E12A343";
+			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.FormallyInvalid));
 		}
 
 		[Test]
 		public void Should_squeeze_double_names()
 		{
 			var fiscalCode = Code.FiscalCode("Dado Amico", "Rino Andrea", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^DDMRNN"));
+			Assert.That(fiscalCode, Does.StartWith("DDMRND"));
 		}
 
 		[Test]
 		public void Should_squeeze_names_starting_with_vowel()
 		{
 			var fiscalCode = Code.FiscalCode("AIRONE", "EULA", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^RNALEU"));
+			Assert.That(fiscalCode, Does.StartWith("RNALEU"));
 		}
 
 		[Test]
 		public void Should_squeeze_names_with_apostrophe()
 		{
 			var fiscalCode = Code.FiscalCode("D'Urzo", "Morena", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^DRZMRN"));
+			Assert.That(fiscalCode, Does.StartWith("DRZMRN"));
 		}
 
 		[Test]
 		public void Should_squeeze_names_with_symbols()
 		{
 			var fiscalCode = Code.FiscalCode("D'Ama-Deidda", "Pasquale", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^DMDPSQ"));
+			Assert.That(fiscalCode, Does.StartWith("DMDPQL"));
 		}
 
 		[Test]
 		public void Should_squeeze_one_consonant_in_names()
 		{
 			var fiscalCode = Code.FiscalCode("Aria", "Maia", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^RAIMAI"));
+			Assert.That(fiscalCode, Does.StartWith("RAIMAI"));
 		}
 
 		[Test]
-		public void Should_squeeze_three_or_more_consonants_in_names()
+		public void Should_squeeze_three_consonants_in_names()
 		{
+			//special case does not apply with 3 consonants in firstname
 			var fiscalCode = Code.FiscalCode("Macchi", "Michi", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^MCCMCH"));
+			Assert.That(fiscalCode, Does.StartWith("MCCMCH"));
 		}
 
 		[Test]
 		public void Should_squeeze_two_consonants_in_names()
 		{
 			var fiscalCode = Code.FiscalCode("Masi", "Nico", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^MSANCI"));
+			Assert.That(fiscalCode, Does.StartWith("MSANCI"));
+		}
+
+		[Test]
+		public void Should_squeeze_more_than_three_consonants_in_firstname()
+		{
+			//the special does apply to firstnames
+			var fiscalCode = Code.FiscalCode("Masi", "Annamaria", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.Match("^.{3}NMR"));
+		}
+
+		[Test]
+		public void Should_squeeze_more_than_three_consonants_in_lastname()
+		{
+			//the special case does not apply to lastnames
+			var fiscalCode = Code.FiscalCode("Astratto", "Michela", System.DateTime.Today, true);
+			Assert.That(fiscalCode, Does.StartWith("STR"));
 		}
 
 		[Test]
 		public void Should_squeeze_two_letter_names()
 		{
 			var fiscalCode = Code.FiscalCode("Ro", "Ka", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^ROXKAX"));
+			Assert.That(fiscalCode, Does.StartWith("ROXKAX"));
 		}
 
 		[Test]
 		public void Should_squeeze_uppercase_names()
 		{
 			var fiscalCode = Code.FiscalCode("MORI", "ANTONIO", System.DateTime.Today, true);
-			Assert.That(fiscalCode, Does.Match("^MRONTN"));
+			Assert.That(fiscalCode, Does.StartWith("MRONTN"));
 		}
 
 		[Test]
-		[Repeat(1000)]
+		public void Should_fiscalCode_be_case_insensitive()
+		{
+			var fiscalCode1 = Code.FiscalCode("GRACCHI", "ANTONIO", System.DateTime.Today, true);
+			var fiscalCode2 = Code.FiscalCode("gracchi", "antonio", System.DateTime.Today, true);
+			Assert.That(fiscalCode1.Substring(0, 6), Is.EqualTo(fiscalCode2.Substring(0, 6)));
+		}
+
+		[Test]
 		public void Should_take_chkValidity_with_lastName_firstName_birthday_parameters()
 		{
 			var fiscalCode = Code.FiscalCode("AAA", "BBB", System.DateTime.Today, false);
-			Assert.IsFalse(IsFiscalCodeOk(fiscalCode));
+			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.ChecksumError));
 		}
 
 		[Test]
@@ -117,7 +148,7 @@ namespace Faker.Tests.Common
 		public void Should_take_chkValidity_with_minAge_maxAge_parameters()
 		{
 			var fiscalCode = Code.FiscalCode(false, 0, 0);
-			Assert.IsFalse(IsFiscalCodeOk(fiscalCode));
+			Assert.That(IsFiscalCodeOk(fiscalCode), Is.EqualTo(FiscalCodeValidationResult.ChecksumError));
 		}
 
 		[Test]
@@ -346,16 +377,18 @@ namespace Faker.Tests.Common
 			return sum % 10 == 0;
 		}
 
+		internal enum FiscalCodeValidationResult { Ok, FormallyInvalid, ChecksumError };
+
 		/// <summary>
 		///   Computes checksum validity on a Fiscal Code
 		/// </summary>
 		/// <param name="ean">The Fiscal Code to be checked</param>
 		/// <returns>Checksum is valid</returns>
 		/// <remarks>Checksum routines are at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
-		private bool IsFiscalCodeOk(string fiscalCode)
+		private FiscalCodeValidationResult IsFiscalCodeOk(string fiscalCode)
 		{
 			if (!Regex.IsMatch(fiscalCode, @"^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$"))
-				return false;
+				return FiscalCodeValidationResult.FormallyInvalid;
 
 			#region static maps
 
@@ -445,7 +478,10 @@ namespace Faker.Tests.Common
 			for (int i = 1; i < 15; i += 2)
 				total += evenMap[fiscalCode[i]];
 
-			return fiscalCode[15] == (char)('A' + total % 26);
+			if (fiscalCode[15] != (char)('A' + total % 26))
+				return FiscalCodeValidationResult.ChecksumError;
+
+			return FiscalCodeValidationResult.Ok;
 		}
 
 		/// <summary>

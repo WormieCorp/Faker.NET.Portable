@@ -108,8 +108,8 @@ namespace Faker
 			var male = RandomNumber.Next(2) == 0; //even probability to be male or female
 
 			var sb = new StringBuilder();
-			sb.Append(GetFiscalCodeSqueezedName(lastName));
-			sb.Append(GetFiscalCodeSqueezedName(firstName));
+			sb.Append(GetFiscalCodeSqueezedName(lastName, false));
+			sb.Append(GetFiscalCodeSqueezedName(firstName, true));
 			sb.Append((birthday.Year % 100).ToString("00", CultureInfo.InvariantCulture));
 			sb.Append(monthChars[birthday.Month - 1]);
 			sb.Append((birthday.Day + (male ? 0 : 40)).ToString("00", CultureInfo.InvariantCulture));
@@ -405,17 +405,42 @@ namespace Faker
 			return (11 - (sum % 11)) % 11;
 		}
 
-		private static string GetFiscalCodeSqueezedName(string name)
+		/// <summary>
+		///   This method applyes the rule giving the consonants and vowels extracted by the name,
+		///   according to the algorithm.
+		/// </summary>
+		/// <param name="name">The name to process</param>
+		/// <param name="firstNameSpecialCase">
+		///   In case of first names having more than 3 consonants, the second one is skipped
+		/// </param>
+		/// <returns></returns>
+		private static string GetFiscalCodeSqueezedName(string name, bool firstNameSpecialCase)
 		{
 			var sb = new StringBuilder();
 			var normalizedName = name.ToUpperInvariant();
 			var regex = new Regex("[^A-Z]");
 			normalizedName = regex.Replace(normalizedName, string.Empty);
 
+			//manages firstname special case (first names having more than 3 consonants -> the 2nd is skipped)
+			var consonantToSkipIdx = -1;
+			if (firstNameSpecialCase)
+			{
+				var consonantCount = 0;
+				for (int i = 0; i < normalizedName.Length; i++)
+					if (!isVowel(normalizedName[i]))
+					{
+						consonantCount++;
+						if (consonantCount == 2)
+							consonantToSkipIdx = i;
+					}
+				if (consonantCount <= 3)
+					consonantToSkipIdx = -1;
+			}
+
 			//add consonants
 			for (int i = 0; i < normalizedName.Length; i++)
 			{
-				if (!isVowel(normalizedName[i]))
+				if (!isVowel(normalizedName[i]) && (i != consonantToSkipIdx))
 				{
 					sb.Append(normalizedName[i]);
 					if (sb.Length == 3)
