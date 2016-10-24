@@ -17,6 +17,16 @@ namespace Faker.Caching
 		private static object lockObj = new object();
 		private static Dictionary<string, string[]> cache = new Dictionary<string, string[]>();
 
+		/// <summary>
+		///   Gets the cached array (with O(1) complexity) in cache-hit case. In cache-miss case,
+		///   invokes the property, splits, caches, and returns the array (with O(n) complexity).
+		/// </summary>
+		/// <param name="p">The property returning the array</param>
+		/// <returns>The (possibly cached) array</returns>
+		/// <remarks>
+		///   The cache is indexed by the class holding the property, the property name and the
+		///   current UI culture name.
+		/// </remarks>
 		internal static string[] GetArray(PropertyInfo p)
 		{
 			var invokingClassName = p.DeclaringType.FullName;

@@ -13,6 +13,12 @@ namespace Faker.Caching
 	/// </remarks>
 	internal static class PropertyHelper
 	{
+		/// <summary>
+		///   Extracts the PropertyInfo for the member selector
+		/// </summary>
+		/// <typeparam name="TValue">Type returned from the selector</typeparam>
+		/// <param name="selector">The lambda expression to extract property of</param>
+		/// <returns>The property info</returns>
 		public static PropertyInfo GetProperty<TValue>(
 			Expression<Func<TValue>> selector)
 		{
