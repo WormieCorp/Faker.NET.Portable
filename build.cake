@@ -210,8 +210,8 @@ Task("Create-Release-Notes")
 			"Faker.Net.Portable",
 			new GitReleaseManagerCreateSettings
 			{
-				Milestone = parameters.Version.Milestone,
-				Prerelease = parameters.IsMainBranch
+				Milestone = parameters.Version.Version,
+				Prerelease = !parameters.IsMainBranch
 			}
 		);
 	});
@@ -264,14 +264,14 @@ Task("Publish-GitHub-Release")
 	.WithCriteria(() => parameters.ShouldPublish)
 	.Does(() =>
 	{
-		GitReleaseManagerAddAssets(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone, parameters.Paths.Files.ZipArtifactPath.ToString());
-		GitReleaseManagerClose(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone);
+		GitReleaseManagerAddAssets(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Version, parameters.Paths.Files.ZipArtifactPath.ToString());
+		GitReleaseManagerClose(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Version);
 		GitReleaseManagerPublish(
 			parameters.GitHub.Username,
 			parameters.GitHub.Password,
 			"AdmiringWorm",
 			"Faker.Net.Portable",
-			parameters.Version.Milestone
+			parameters.Version.Version
 		);
 	})
 	.OnError(exception =>
