@@ -1,8 +1,4 @@
-#tool "nuget:?package=gitreleasemanager&version=0.6.0"
-#tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
-#tool "nuget:?package=OpenCover&version=4.6.519"
-#tool "nuget:?package=NUnit.ConsoleRunner&version=3.4.1"
-
+#load "./.build/tools.cake"
 #load "./.build/parameters.cake"
 #load "./.build/resolution.cake"
 #load "./.build/publishing.cake"

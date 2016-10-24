@@ -43,8 +43,8 @@ public class BuildParameters
 	{
 		get
 		{
-			return IsRunningOnAppVeyor && !IsPullRequest &&
-				IsMainRepo && !IsTagged && (IsMainBranch || BranchMatches(CurrentBranch, "release/.+"));
+			return IsPublishBuild || (IsRunningOnAppVeyor && !IsPullRequest &&
+				IsMainRepo && !IsTagged && (IsMainBranch || BranchMatches(CurrentBranch, "release/.+")));
 		}
 	}
 
