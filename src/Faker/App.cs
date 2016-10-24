@@ -11,6 +11,15 @@ namespace Faker
 	public static class App
 	{
 		/// <summary>
+		///   Gets a random application author.
+		/// </summary>
+		/// <returns>The Author.</returns>
+		public static string Author()
+		{
+			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.App.Author)).Random().Transform(true);
+		}
+
+		/// <summary>
 		///   Gets the name of a random application.
 		/// </summary>
 		/// <returns>The name.</returns>
@@ -26,15 +35,6 @@ namespace Faker
 		public static string Version()
 		{
 			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.App.VersionFormat)).Random().Numerify();
-		}
-
-		/// <summary>
-		///   Gets a random application author.
-		/// </summary>
-		/// <returns>The Author.</returns>
-		public static string Author()
-		{
-			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.App.Author)).Random().Transform(true);
 		}
 	}
 }

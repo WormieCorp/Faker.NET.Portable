@@ -83,7 +83,7 @@ namespace Faker
 		/// <returns>The latitude.</returns>
 		public static double Latitude()
 		{
-			return ((RandomNumber.NextDouble() * 180) - 90);
+			return (RandomNumber.NextDouble() * 180) - 90;
 		}
 
 		/// <summary>
@@ -92,7 +92,7 @@ namespace Faker
 		/// <returns>The longitude.</returns>
 		public static double Longitude()
 		{
-			return ((RandomNumber.NextDouble() * 360) - 180);
+			return (RandomNumber.NextDouble() * 360) - 180;
 		}
 
 		/// <summary>

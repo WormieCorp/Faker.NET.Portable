@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Faker.Caching
 {
@@ -11,11 +9,12 @@ namespace Faker.Caching
 	///   This class caches resource items containing collections of strings, separated by a separator.
 	/// </summary>
 	/// <remarks>
-	///   It returns the splitted array reducing complexity from O(n) to O(1). The class is thread-safe.
+	///   It returns the split array reducing complexity from O(n) to O(1). The class is thread-safe.
 	/// </remarks>
+	/// <threadsafety static="true" />
 	internal static class ResourceCollectionCacher
 	{
-		private static object lock_obj = new object();
+		private static object lockObj = new object();
 		private static Dictionary<string, string[]> cache = new Dictionary<string, string[]>();
 
 		internal static string[] GetArray(PropertyInfo p)
@@ -25,7 +24,7 @@ namespace Faker.Caching
 			var currentUICultureName = CultureInfo.CurrentUICulture.Name;
 			var cacheKey = string.Format(CultureInfo.InvariantCulture, "{0}_{1}_{2}", invokingClassName, invokedPropertyName, currentUICultureName);
 
-			lock (lock_obj)
+			lock (lockObj)
 			{
 				if (!cache.ContainsKey(cacheKey))
 				{

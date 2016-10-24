@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace Faker.Caching
 {
@@ -11,8 +8,8 @@ namespace Faker.Caching
 	///   This class helps to shorten code to return method PropertyInfo.
 	/// </summary>
 	/// <remarks>
-	///   The code is inspired by http://stackoverflow.com/a/491486/1045789 and edited to address the
-	///   static class with static method case.
+	///   The code is inspired by <see href="http://stackoverflow.com/a/491486/1045789" /> and edited
+	///   to address the static class with static method case.
 	/// </remarks>
 	internal static class PropertyHelper
 	{
@@ -24,6 +21,7 @@ namespace Faker.Caching
 			{
 				body = ((LambdaExpression)body).Body;
 			}
+
 			switch (body.NodeType)
 			{
 				case ExpressionType.MemberAccess:

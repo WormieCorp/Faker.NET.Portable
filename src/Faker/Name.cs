@@ -1,8 +1,8 @@
-﻿using Faker.Caching;
-using Faker.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Faker.Caching;
+using Faker.Extensions;
 
 namespace Faker
 {
@@ -41,6 +41,27 @@ namespace Faker
 	/// <threadsafety static="true" />
 	public static class Name
 	{
+		private static readonly IDictionary<NameFormats, Func<string[]>> FormatMap
+			= new Dictionary<NameFormats, Func<string[]>>
+		{
+			{ NameFormats.Standard, () => new[] { First(), Last() } },
+			{ NameFormats.WithPrefix, () => new[] { Prefix(), First(), Last() } },
+			{ NameFormats.WithSuffix, () => new[] { First(), Last(), Suffix() } },
+			{ NameFormats.WithPrefixAndSuffix, () => new[] { Prefix(), First(), Last(), Suffix() } }
+		};
+
+		private static readonly object FormatMapLock = new object();
+
+		private static readonly IEnumerable<NameFormats> Formats = new[]
+				{
+			NameFormats.WithPrefix, NameFormats.WithSuffix, NameFormats.WithPrefixAndSuffix, NameFormats.Standard,
+			NameFormats.Standard,
+			NameFormats.Standard, NameFormats.Standard, NameFormats.Standard, NameFormats.Standard, NameFormats.Standard,
+			NameFormats.Standard, NameFormats.Standard
+		};
+
+		private static readonly object FormatsLock = new object();
+
 		/// <summary>
 		///   Creates a random first name.
 		/// </summary>
@@ -56,9 +77,9 @@ namespace Faker
 		/// <returns>The randomly created name.</returns>
 		public static string FullName()
 		{
-			lock (s_formatsLock)
+			lock (FormatsLock)
 			{
-				return FullName(s_formats.ElementAt(RandomNumber.Next(s_formats.Count() - 1)));
+				return FullName(Formats.ElementAt(RandomNumber.Next(Formats.Count() - 1)));
 			}
 		}
 
@@ -70,9 +91,9 @@ namespace Faker
 		/// <include file="Docs/NameFormatsExample.xml" path="example" />
 		public static string FullName(NameFormats format)
 		{
-			lock (s_formatMapLock)
+			lock (FormatMapLock)
 			{
-				return string.Join(" ", s_formatMap[format].Invoke());
+				return string.Join(" ", FormatMap[format].Invoke());
 			}
 		}
 
@@ -102,29 +123,5 @@ namespace Faker
 		{
 			return ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.Suffix)).Random();
 		}
-
-		#region Format Mappings
-
-		private static readonly IEnumerable<NameFormats> s_formats = new[]
-		{
-			NameFormats.WithPrefix, NameFormats.WithSuffix, NameFormats.WithPrefixAndSuffix, NameFormats.Standard,
-			NameFormats.Standard,
-			NameFormats.Standard, NameFormats.Standard, NameFormats.Standard, NameFormats.Standard, NameFormats.Standard,
-			NameFormats.Standard, NameFormats.Standard
-		};
-
-		private static readonly IDictionary<NameFormats, Func<string[]>> s_formatMap = new Dictionary
-			<NameFormats, Func<string[]>>
-		{
-			{NameFormats.Standard, () => new[] {First(), Last()}},
-			{NameFormats.WithPrefix, () => new[] {Prefix(), First(), Last()}},
-			{NameFormats.WithSuffix, () => new[] {First(), Last(), Suffix()}},
-			{NameFormats.WithPrefixAndSuffix, () => new[] {Prefix(), First(), Last(), Suffix()}}
-		};
-
-		private static readonly object s_formatMapLock = new object();
-		private static readonly object s_formatsLock = new object();
-
-		#endregion Format Mappings
 	}
 }

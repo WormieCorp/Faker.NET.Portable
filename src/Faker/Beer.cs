@@ -15,7 +15,7 @@ namespace Faker
 		/// <returns>The generated Alcohol percentage.</returns>
 		public static string Alcohol()
 		{
-			var num = RandomNumber.NextDouble() * (10.0 - 2.0) + 2.0;
+			var num = (RandomNumber.NextDouble() * (10.0 - 2.0)) + 2.0;
 
 			return num.ToString("N1", CultureInfo.CurrentCulture) + CultureInfo.CurrentCulture.NumberFormat.PercentSymbol;
 		}
@@ -33,7 +33,7 @@ namespace Faker
 		///   Generates a random IBU (Bitterness of the beer)
 		/// </summary>
 		/// <returns>The generated IBU.</returns>
-		/// <remarks>Description of IBU is at (https://en.wikipedia.org/wiki/Beer_measurement#Bitterness)</remarks>
+		/// <remarks>Description of IBU is at <see href="https://en.wikipedia.org/wiki/Beer_measurement#Bitterness" /></remarks>
 		public static string IBU()
 		{
 			return RandomNumber.Next(10, 100).ToString(CultureInfo.CurrentCulture) + " IBU";

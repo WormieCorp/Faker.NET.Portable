@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Resources;
 using Faker.Caching;
 using NUnit.Framework;
 

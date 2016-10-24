@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Faker.Extensions
@@ -8,7 +7,6 @@ namespace Faker.Extensions
 	///   A collection of Array helper extensions
 	/// </summary>
 	/// <threadsafety static="true" />
-	[SuppressMessage("ReSharper", "UseNameofExpression")]
 	public static class ArrayExtensions
 	{
 		/// <summary>
@@ -23,7 +21,9 @@ namespace Faker.Extensions
 		public static TResult Random<TResult>(this TResult[] list)
 		{
 			if (!list.Any())
+			{
 				throw new InvalidOperationException("Array must contain at least one item");
+			}
 
 			return list[RandomNumber.Next(0, list.Length)];
 		}
@@ -32,7 +32,7 @@ namespace Faker.Extensions
 		///   Selects a random character from the specified <paramref name="source" />
 		/// </summary>
 		/// <param name="source">The source containing characters to select from.</param>
-		/// <returns>System.Char.</returns>
+		/// <returns>A random character from the specified <paramref name="source" />.</returns>
 		/// <exception cref="System.ArgumentNullException">source is <c>null</c></exception>
 		/// <exception cref="System.ArgumentException">
 		///   The specified source can not be an empty string.
@@ -40,9 +40,14 @@ namespace Faker.Extensions
 		public static char Random(this string source)
 		{
 			if (source == null)
+			{
 				throw new ArgumentNullException("source");
+			}
+
 			if (source.Trim() == string.Empty)
+			{
 				throw new ArgumentException("The specified source can not be an empty string.", "source");
+			}
 
 			return source[RandomNumber.Next(0, source.Length)];
 		}
