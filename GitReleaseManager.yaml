@@ -18,6 +18,7 @@ issue-labels-include:
 - Feature
 - Improvement
 - Language
+- Documentation
 issue-labels-exclude:
 - Internal Refactoring
 - Build
