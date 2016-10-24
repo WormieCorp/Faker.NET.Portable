@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Faker.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Faker.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -72,6 +74,7 @@
     <Compile Include="Common\CompanyTests.cs" />
     <Compile Include="Common\InternetTests.cs" />
     <Compile Include="Common\PlaceholditTests.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="it_IT\AddressItalianTests.cs" />
     <Compile Include="it_IT\AppItalianTests.cs" />
     <Compile Include="it_IT\CompanyItalianTests.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Faker.Tests.ruleset" />
     <None Include="Faker.Tests.snk" />
     <None Include="packages.config" />
   </ItemGroup>

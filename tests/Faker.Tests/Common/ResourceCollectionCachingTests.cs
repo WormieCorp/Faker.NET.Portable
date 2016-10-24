@@ -29,14 +29,20 @@ namespace Faker.Tests.Common
 			var sw = new Stopwatch();
 			sw.Start();
 			for (int i = 0; i < 10000; i++)
+			{
 				Resources.Name.First.Split(Config.SEPARATOR);
+			}
+
 			sw.Stop();
 			var uncachedElapsed = sw.ElapsedMilliseconds;
 			sw.Reset();
 
 			sw.Start();
 			for (int i = 0; i < 10000; i++)
+			{
 				ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
+			}
+
 			sw.Stop();
 			var cachedElapsed = sw.ElapsedMilliseconds;
 
@@ -114,13 +120,13 @@ namespace Faker.Tests.Common
 		[Test]
 		public void Switch_To_Unsupported_Culture_Returns_Equal_Arrays()
 		{
-			const string unsupportedCultureName = "ru-RU";
+			const string UNSUPPORTED_CULTURE_NAME = "ru-RU";
 
 			// Cache miss case
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(unsupportedCultureName);
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(UNSUPPORTED_CULTURE_NAME);
 				var fallback_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsTrue(array.SequenceEqual(fallback_array));
@@ -130,7 +136,7 @@ namespace Faker.Tests.Common
 			{
 				System.Threading.Thread.CurrentThread.CurrentUICulture = defaultUICulture;
 				var array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(unsupportedCultureName);
+				System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(UNSUPPORTED_CULTURE_NAME);
 				var fallback_array = ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Name.First));
 
 				Assert.IsTrue(array.SequenceEqual(fallback_array));

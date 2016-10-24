@@ -3,7 +3,7 @@ public static class Parsing
 	public static string[] ParseReleaseNotes(ICakeContext context, FilePath changelog)
 	{
 		var newNotes = new List<string>();
-		
+
 		try
 		{
 			var notes = context.ParseReleaseNotes(changelog).Notes;

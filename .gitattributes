@@ -30,3 +30,6 @@
 
 # Linux files
 *.sh eol=lf
+
+*.resx  text whitespace=-trailing-space
+*.Designer.cs text whitespace=-trailing-space

@@ -9,20 +9,20 @@ namespace Faker.Tests.Extensions
 		[Test]
 		public void Should_Capitalise_First_Lowercase_Letter()
 		{
-			const string expected = "The quick brown fox";
+			const string EXPECTED = "The quick brown fox";
 			string actual = "the quick brown fox".Capitalise();
 
-			Assert.That(actual, Is.EqualTo(expected));
+			Assert.That(actual, Is.EqualTo(EXPECTED));
 		}
 
 		[Test]
 		public void Should_Not_Replace_Characters_If_ReplaceVariables_Is_False()
 		{
-			const string expected = "{Name.First}";
+			const string EXPECTED = "{Name.First}";
 
-			string actual = expected.Transform(false);
+			string actual = EXPECTED.Transform(false);
 
-			Assert.That(actual, Is.EqualTo(expected));
+			Assert.That(actual, Is.EqualTo(EXPECTED));
 		}
 
 		[Test]
