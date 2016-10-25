@@ -90,7 +90,9 @@ namespace Faker.Tests
 		public static void Repeat(this Action actionMethod, int times)
 		{
 			for (var i = 0; i < times; i++)
+			{
 				actionMethod();
+			}
 		}
 
 		public static string ToFormat(this string formatToBe, bool onlyAToZLetters = false)

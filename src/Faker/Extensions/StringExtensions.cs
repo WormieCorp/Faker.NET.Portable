@@ -1,12 +1,12 @@
-﻿using Faker.Caching;
-using JetBrains.Annotations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Faker.Caching;
+using JetBrains.Annotations;
 
 namespace Faker.Extensions
 {
@@ -17,32 +17,34 @@ namespace Faker.Extensions
 	public static class StringExtensions
 	{
 		private const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-		private static readonly object s_dictionaryLock = new object();
-		private static readonly IDictionary<string, Func<string>> s_validVariables;
+		private static readonly object DictionaryLock = new object();
+		private static readonly IDictionary<string, Func<string>> ValidVariables;
 
 		static StringExtensions()
 		{
-			lock (s_dictionaryLock)
+			lock (DictionaryLock)
 			{
-				s_validVariables = new Dictionary<string, Func<string>>();
+				ValidVariables = new Dictionary<string, Func<string>>();
 
-				AddVariables(typeof(Address), s_validVariables);
-				AddVariables(typeof(App), s_validVariables);
-				AddVariables(typeof(Avatar), s_validVariables);  // Will be removed in v.3.0
-				AddVariables(typeof(RoboHash), s_validVariables);
-				AddVariables(typeof(FlatHash), s_validVariables);
-				AddVariables(typeof(Business), s_validVariables);
-				AddVariables(typeof(Company), s_validVariables);
-				AddVariables(typeof(Internet), s_validVariables);
-				AddVariables(typeof(Lorem), s_validVariables);
-				AddVariables(typeof(Name), s_validVariables);
-				AddVariables(typeof(Phone), s_validVariables);
-				s_validVariables.Add("StreetRoot", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetRoot)).Random());
-				s_validVariables.Add("CityRoot", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CityRoot)).Random());
-				s_validVariables.Add("CommonStreetSuffix", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CommonStreetSuffixes)).Random());
-				s_validVariables.Add("AreaCode", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Phone.AreaCode)).Random());
-				s_validVariables.Add("ExchangeCode", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Phone.ExchangeCode)).Random());
-				s_validVariables.Add("Address.StreetPrefix", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetPrefix)).Random());
+				AddVariables(typeof(Address), ValidVariables);
+				AddVariables(typeof(App), ValidVariables);
+#pragma warning disable CS0618 // Type or member is obsolete
+				AddVariables(typeof(Avatar), ValidVariables);  // Will be removed in v.3.0
+#pragma warning restore CS0618 // Type or member is obsolete
+				AddVariables(typeof(RoboHash), ValidVariables);
+				AddVariables(typeof(FlatHash), ValidVariables);
+				AddVariables(typeof(Business), ValidVariables);
+				AddVariables(typeof(Company), ValidVariables);
+				AddVariables(typeof(Internet), ValidVariables);
+				AddVariables(typeof(Lorem), ValidVariables);
+				AddVariables(typeof(Name), ValidVariables);
+				AddVariables(typeof(Phone), ValidVariables);
+				ValidVariables.Add("StreetRoot", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetRoot)).Random());
+				ValidVariables.Add("CityRoot", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CityRoot)).Random());
+				ValidVariables.Add("CommonStreetSuffix", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.CommonStreetSuffixes)).Random());
+				ValidVariables.Add("AreaCode", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Phone.AreaCode)).Random());
+				ValidVariables.Add("ExchangeCode", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Phone.ExchangeCode)).Random());
+				ValidVariables.Add("Address.StreetPrefix", () => ResourceCollectionCacher.GetArray(PropertyHelper.GetProperty(() => Resources.Address.StreetPrefix)).Random());
 			}
 		}
 
@@ -62,7 +64,7 @@ namespace Faker.Extensions
 		}
 
 		/// <summary>
-		///   Capitalises the first letter of the given string.
+		///   Capitalizes the first letter of the given string.
 		/// </summary>
 		/// <param name="s">The source string.</param>
 		/// <returns>The source string with it's first letter capitalized.</returns>
@@ -134,6 +136,13 @@ namespace Faker.Extensions
 			return new string(currentChars.ToArray());
 		}
 
+		/// <summary>
+		///   Transform the <paramref name="s">string</paramref> replacing <c>#</c> placeholders into
+		///   a number. Also replaces variables if <paramref name="replaceVariables" /> is set to <see langword="true" />.
+		/// </summary>
+		/// <param name="s">The string containing the format to numerify.</param>
+		/// <param name="replaceVariables">if set to <see langword="true" /> also replace variables.</param>
+		/// <returns>The numerified string.</returns>
 		internal static string Numerify(this string s, bool replaceVariables)
 		{
 			return new string(Transform(s, false, true, replaceVariables).ToArray());
@@ -151,9 +160,8 @@ namespace Faker.Extensions
 						   && !methodInfo.GetParameters().Any()))
 			{
 				validVariables.Add(
-								   classType.Name + "." + methodInfo.Name,
-								   () => (string)methodInfo.Invoke(null, null)
-					);
+					classType.Name + "." + methodInfo.Name,
+					() => (string)methodInfo.Invoke(null, null));
 			}
 		}
 
@@ -162,7 +170,9 @@ namespace Faker.Extensions
 			var substring = new StringBuilder();
 
 			while (chars.Length >= index && chars[index] != '}')
+			{
 				substring.Append(chars[index++]);
+			}
 
 			return substring.ToString();
 		}
@@ -171,9 +181,9 @@ namespace Faker.Extensions
 		{
 			string variable = GetVariable(chars, ref index);
 
-			lock (s_dictionaryLock)
+			lock (DictionaryLock)
 			{
-				return s_validVariables.ContainsKey(variable) ? s_validVariables[variable].Invoke() : string.Empty;
+				return ValidVariables.ContainsKey(variable) ? ValidVariables[variable].Invoke() : string.Empty;
 			}
 		}
 
@@ -190,17 +200,25 @@ namespace Faker.Extensions
 			{
 				char c = s[index];
 				if (numerify && c == '#')
+				{
 					yield return RandomNumber.Next(0, 10).ToString()[0];
+				}
 				else if (letterify && c == '?')
+				{
 					yield return ALPHABET.Random();
+				}
 				else if (replaceVariables && c == '{' && char.IsLetter(s[++index]))
 				{
 					string value = GetVariableValue(s, ref index);
-					foreach (char chValue in value)
-						yield return chValue;
+					foreach (char ch in value)
+					{
+						yield return ch;
+					}
 				}
 				else
+				{
 					yield return c;
+				}
 			}
 		}
 	}

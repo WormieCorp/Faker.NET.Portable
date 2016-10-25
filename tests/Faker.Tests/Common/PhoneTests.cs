@@ -2,10 +2,10 @@
 
 namespace Faker.Tests.Common
 {
-	//[SetUICulture("en")]
-	//[SetUICulture("en-US")]
-	//[SetUICulture("nb-NO")]
-	//[SetUICulture("de-DE")]
+	////[SetUICulture("en")]
+	////[SetUICulture("en-US")]
+	////[SetUICulture("nb-NO")]
+	////[SetUICulture("de-DE")]
 	[SetUICulture("pt-BR")]
 	public class PhoneTests
 	{

@@ -1,8 +1,8 @@
-﻿using Faker.Extensions;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Faker.Extensions;
+using NUnit.Framework;
 
 namespace Faker.Tests.Extensions
 {

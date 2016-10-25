@@ -1,8 +1,4 @@
-#tool "nuget:?package=gitreleasemanager&version=0.6.0"
-#tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
-#tool "nuget:?package=OpenCover&version=4.6.519"
-#tool "nuget:?package=NUnit.ConsoleRunner&version=3.4.1"
-
+#load "./.build/tools.cake"
 #load "./.build/parameters.cake"
 #load "./.build/resolution.cake"
 #load "./.build/publishing.cake"
@@ -214,8 +210,8 @@ Task("Create-Release-Notes")
 			"Faker.Net.Portable",
 			new GitReleaseManagerCreateSettings
 			{
-				Milestone = parameters.Version.Milestone,
-				Prerelease = parameters.IsMainBranch
+				Milestone = parameters.Version.Version,
+				Prerelease = !parameters.IsMainBranch
 			}
 		);
 	});
@@ -268,14 +264,14 @@ Task("Publish-GitHub-Release")
 	.WithCriteria(() => parameters.ShouldPublish)
 	.Does(() =>
 	{
-		GitReleaseManagerAddAssets(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone, parameters.Paths.Files.ZipArtifactPath.ToString());
-		GitReleaseManagerClose(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Milestone);
+		GitReleaseManagerAddAssets(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Version, parameters.Paths.Files.ZipArtifactPath.ToString());
+		GitReleaseManagerClose(parameters.GitHub.Username, parameters.GitHub.Password, "AdmiringWorm", "Faker.Net.Portable", parameters.Version.Version);
 		GitReleaseManagerPublish(
 			parameters.GitHub.Username,
 			parameters.GitHub.Password,
 			"AdmiringWorm",
 			"Faker.Net.Portable",
-			parameters.Version.Milestone
+			parameters.Version.Version
 		);
 	})
 	.OnError(exception =>

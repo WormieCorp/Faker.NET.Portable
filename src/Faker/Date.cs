@@ -3,14 +3,14 @@
 namespace Faker
 {
 	/// <summary>
-	///     A collection of Date related resources.
+	///   A collection of Date related resources.
 	/// </summary>
 	/// <threadsafety static="true" />
 	public static class Date
 	{
 		/// <summary>
-		///     Generates a random <see cref="DateTime" /> between the specified <paramref name="from" /> and
-		///     <paramref name="to" />.
+		///   Generates a random <see cref="DateTime" /> between the specified
+		///   <paramref name="from" /> and <paramref name="to" />.
 		/// </summary>
 		/// <param name="from">The minimum date.</param>
 		/// <param name="to">The maximum date.</param>
@@ -23,8 +23,8 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random <see cref="DateTime" /> between number of <paramref name="days" /> in the past and
-		///     <see cref="DateTime.Today">Today</see>
+		///   Generates a random <see cref="DateTime" /> between number of <paramref name="days" />
+		///   in the past and <see cref="DateTime.Today">Today</see>
 		/// </summary>
 		/// <param name="days">The number of days to calculate the minimum date.</param>
 		/// <returns>The generated <see cref="DateTime" /></returns>
@@ -37,8 +37,8 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random <see cref="DateTime" /> between <see cref="DateTime.Today">Today</see> and number of
-		///     <paramref name="days" /> into the future.
+		///   Generates a random <see cref="DateTime" /> between
+		///   <see cref="DateTime.Today">Today</see> and number of <paramref name="days" /> into the future.
 		/// </summary>
 		/// <param name="days">The number of days to calculate the maximum date.</param>
 		/// <returns>The generated <see cref="DateTime" /></returns>
@@ -51,8 +51,8 @@ namespace Faker
 		}
 
 		/// <summary>
-		///     Generates a random <see cref="DateTime" /> between the specified  <paramref name="maxAge">maximum age</paramref>
-		///     and <paramref name="minAge">minimum age</paramref>.
+		///   Generates a random <see cref="DateTime" /> between the specified
+		///   <paramref name="maxAge">maximum age</paramref> and <paramref name="minAge">minimum age</paramref>.
 		/// </summary>
 		/// <param name="minAge">The minimum years into the past.</param>
 		/// <param name="maxAge">The maximum years into the past.</param>

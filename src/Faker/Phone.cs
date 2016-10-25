@@ -31,6 +31,7 @@ namespace Faker
 		/// <summary>
 		///   Generates a random extension with the specified <paramref name="length" />. (US based)
 		/// </summary>
+		/// <param name="length">The extension length</param>
 		/// <returns>a random extension.</returns>
 		public static string Extension(int length)
 		{

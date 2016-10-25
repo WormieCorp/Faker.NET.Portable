@@ -1,6 +1,6 @@
-﻿using Faker.Caching;
+﻿using System;
+using Faker.Caching;
 using Faker.Extensions;
-using System;
 
 namespace Faker
 {
@@ -9,7 +9,7 @@ namespace Faker
 	/// </summary>
 	/// <include file="Docs/CustomRemarks.xml" path="Comments/SatelliteResource/*" />
 	/// <threadsafety static="true" />
-	public class Business
+	public static class Business
 	{
 		/// <summary>
 		///   Generates a random Credit card number.
