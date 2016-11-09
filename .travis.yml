@@ -1,21 +1,18 @@
 language: csharp
 os:
-  - linux
-  - osx
-
+- linux
+- osx
 script:
-  - chmod +x build.sh
-  - ./build.sh --verbosity normal --target Travis
-
+- chmod +x build.sh
+- "./build.sh --verbosity normal --target Travis"
 cache:
   directories:
-    - packages
-    - tools
-
+  - packages
+  - tools
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/4a4095f0f21d178196c4
+      secure: HbmMWuvwdU+jHymRw2QUiBDnQ2s/erbIzG2KD/G8QoSHkggrNp7EZScBpGx5eyzjalkWqFVnqeU+IsF82OIo5rWuNktOQc2SQCUuZXc4/rTn27GeNfW/X+ReV/GBg7JMTZMivL4LpXoyZZOcYFLWDjXbaNdmHyxw3PGHcVejBuxNqTkz8/JovTGF6B9bkMZ+mM0zvoP69uY3AljYyxN4GYAQGAsZJLfxHaUH3PXsawBKF/M9sr9EKedabap3fjevHEqMLHMOMnMiWpWMdnaKw5+bw2IMD+Me9sSfTcvIAI0XmrhqmGlMRdmB/yKwn2N3qtPEaEaF4tmEHWErdaeV/C4JNq8ExyZKiv6PRnIeel8A2byL9A8/MtSfW2a3+RjY3AlSSEhKoMFkpPFwbKjhhTZVOqKbMDCH7jOr/7KheenOwbn+0hYEUccZMTqv6hdXpva1bo8RKVvx8GczXQx2zyOPjvtznIorl7ixrBxNiR24/qg745V+FUK3Yny0Esoj/+CcakU2hIxbfG35cBDTQNk2Gxs/jVFeSQNofqnyblu8BMwSgVcj7/+Jhh8kOGt0aeHeKKwGP2Uo1w00EJU/Lkb6BRGzXrY1lqyU173LHkhoyG2No0hbq+wGUOMvimeKJBTTlRhhLI6lOWC7rFwvudJ0g6lvzPff+gjKnJ8IcXU=
     on_success: change
     on_failure: always
     on_start: never
