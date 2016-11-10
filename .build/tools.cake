@@ -1,4 +1,4 @@
-// Last Tested on Cake (0.16.2)
+// Last Tested on Cake (0.17.0)
 
 #tool "nuget:?package=gitreleasemanager&version=0.6.0"
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
