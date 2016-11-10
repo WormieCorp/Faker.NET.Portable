@@ -19,8 +19,10 @@ The build script to execute.
 The build script target to run.
 .PARAMETER Configuration
 The build configuration to use.
-.PARAMETER Verbosity
+.PARAMETER CakeVerbosity
 Specifies the amount of information to be displayed.
+.PARAMETER BuildVerbosity
+Specifies the amount of information to be displayed when building the project.
 .PARAMETER Experimental
 Tells Cake to use the latest Roslyn release.
 .PARAMETER WhatIf
@@ -45,7 +47,9 @@ Param(
     [ValidateSet("Release", "Debug")]
     [string]$Configuration = "Release",
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
-    [string]$Verbosity = "normal",
+    [string]$CakeVerbosity = "normal",
+	[ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
+	[string]$BuildVerbosity = "Minimal",
     [switch]$Experimental,
     [Alias("DryRun","Noop")]
     [switch]$WhatIf,
@@ -195,5 +199,5 @@ if (!(Test-Path $CAKE_EXE)) {
 
 # Start Cake
 Write-Host "Running build script..."
-Invoke-Expression "& `"$CAKE_EXE`" `"$Script`" -target=`"$Target`" -configuration=`"$Configuration`" -verbosity=`"$Verbosity`" $UseMono $UseDryRun $UseExperimental $ScriptArgs"
+Invoke-Expression "& `"$CAKE_EXE`" `"$Script`" -target=`"$Target`" -configuration=`"$Configuration`" -verbosity=`"$CakeVerbosity`" -build-verbosity=`"$BuildVerbosity`" $UseMono $UseDryRun $UseExperimental $ScriptArgs"
 exit $LASTEXITCODE

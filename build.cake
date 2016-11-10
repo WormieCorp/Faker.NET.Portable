@@ -38,9 +38,28 @@ Task("Build")
 	.IsDependentOn("Restore-NuGet-Packages")
 	.Does(() =>
 	{
-		DotNetBuild("./Faker.sln", settings =>
-			settings.SetVerbosity(parameters.Verbosity)
-				.SetConfiguration(parameters.Configuration));
+		if (parameters.IsRunningOnWindows)
+		{
+			var settings = new MSBuildSettings()
+				.SetVerbosity(Argument("build-verbosity", Verbosity.Minimal))
+				.SetConfiguration(parameters.Configuration);
+
+			if (parameters.IsRunningOnAppVeyor)
+			{
+				Information("Setting AppVeyor logger");
+				settings.ArgumentCustomization = (args) => args.AppendQuoted(@"/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll");
+			}
+
+			MSBuild("./Faker.sln", settings);
+		}
+		else
+		{
+			var settings = new XBuildSettings()
+			  .SetVerbosity(Argument("build-verbosity", Verbosity.Minimal))
+				.SetConfiguration(parameters.Configuration);
+
+			XBuild("./Faker.sln", settings);
+		}
 	});
 
 Task("Run-Unit-Tests")
