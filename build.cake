@@ -42,7 +42,8 @@ Task("Build")
 		{
 			var settings = new MSBuildSettings()
 				.SetVerbosity(Argument("build-verbosity", Verbosity.Minimal))
-				.SetConfiguration(parameters.Configuration);
+				.SetConfiguration(parameters.Configuration)
+				.WithTarget(Argument("build-target", "Build"));
 
 			if (parameters.IsRunningOnAppVeyor)
 			{
@@ -56,7 +57,8 @@ Task("Build")
 		{
 			var settings = new XBuildSettings()
 			  .SetVerbosity(Argument("build-verbosity", Verbosity.Minimal))
-				.SetConfiguration(parameters.Configuration);
+				.SetConfiguration(parameters.Configuration)
+				.WithTarget(Argument("build-target", "Build"));
 
 			XBuild("./Faker.sln", settings);
 		}
