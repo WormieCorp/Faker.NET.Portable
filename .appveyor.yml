@@ -19,7 +19,7 @@ test: off
 skip_commits:
   files:
     - '**/*.md'
-    - *.vsext
-    - *.userprefs
-    - *.editorconfig
+    - '*.vsext'
+    - '*.userprefs'
+    - '*.editorconfig'
     - build.sh
