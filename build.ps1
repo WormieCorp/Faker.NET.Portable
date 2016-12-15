@@ -192,6 +192,14 @@ if(-Not $SkipToolPackageRestore.IsPresent) {
     Pop-Location
 }
 
+# Test if we are running on appveyor
+if (Test-Path env:\APPVEYOR) {
+  # In such a case, skip installing nunit.consolerunning
+  $content = gc "$PSScriptRoot\.build\tools.cake" -Encoding UTF8
+  $content = $content -replace '^(\#tool\s*".*NUnit.ConsoleRunner.*)','//$1'
+  $content | Out-File "$PSScriptRoot\.build\tools.cake" -Encoding UTF8
+}
+
 # Make sure that Cake has been installed.
 if (!(Test-Path $CAKE_EXE)) {
     Throw "Could not find Cake.exe at $CAKE_EXE"
@@ -200,4 +208,13 @@ if (!(Test-Path $CAKE_EXE)) {
 # Start Cake
 Write-Host "Running build script..."
 Invoke-Expression "& `"$CAKE_EXE`" `"$Script`" -target=`"$Target`" -configuration=`"$Configuration`" -verbosity=`"$CakeVerbosity`" -build-verbosity=`"$BuildVerbosity`" $UseMono $UseDryRun $UseExperimental $ScriptArgs"
+$exitCode = $LASTEXITCODE
+
+if (Test-Path env:\APPVEYOR) {
+  # We need to restore changes to tool file because of caching
+  $content = gc "$PSScriptRoot\.build\tools.cake" -Encoding UTF8
+  $content = $content -replace '^\/\/\s*(\#tool\s*".*NUnit.ConsoleRunner.*)','$1'
+  $content | Out-File "$PSScriptRoot\.build\tools.cake" -Encoding UTF8
+}
+
 exit $LASTEXITCODE
