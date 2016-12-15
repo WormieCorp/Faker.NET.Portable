@@ -9,10 +9,15 @@
 # Define directories.
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 TOOLS_DIR=$SCRIPT_DIR/tools
-NUGET_EXE=$TOOLS_DIR/nuget.exe
 CAKE_EXE=$TOOLS_DIR/Cake/Cake.exe
 PACKAGES_CONFIG=$TOOLS_DIR/packages.config
 PACKAGES_CONFIG_MD5=$TOOLS_DIR/packages.config.md5sum
+
+if hash nuget.exe 2>/dev/null; then
+  NUGET_EXE=nuget.exe
+else
+  NUGET_EXE=$TOOLS_DIR/nuget.exe
+fi
 
 # Define md5sum or md5 depending on Linux/OSX
 MD5_EXE=
