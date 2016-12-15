@@ -2,6 +2,9 @@ language: csharp
 os:
 - linux
 - osx
+mono:
+  - latest
+  - 3.10.0
 script:
 - chmod +x build.sh
 - "./build.sh --verbosity normal --target Travis"

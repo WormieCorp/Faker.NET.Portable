@@ -31,7 +31,7 @@ Supported version:
     Xamarin.Android,
     Xamarin.iOS,
     Xamarin.iOS (Classic),
-    Mono 3.2.8
+    Mono 3.10.0 (may work on earlier version)
 
 ## Usage
 
