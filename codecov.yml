@@ -2,7 +2,7 @@ coverage:
   notify:
     gitter:
       default:
-        url: secret:fwfkuvDCFG4AXt5ac2s5Nq9mDYVqjKyuUaIToe/4tPqtQ9dJUUs8z1bU2wHUGqDbpWF7+qf/VDHffYw1WUtSPCxM2QbXY5H/d1h9QzFE215gQUcux4AyfOSzBJaJ0XJe
+        url: secret:qpIrkrrjsmtaTWW3Hyf8doJtNwtL1fS1wWw5tpkh+EeonHLiX5oYCoQqbndNyAy9WYJ+3gwSSGanG0W9LQNAtr2aMyHXRUcuEnw0c3ljCaAiiVnPgXmq7W+53i/qOAfB
         threashold: 1%
   status:
     project:
