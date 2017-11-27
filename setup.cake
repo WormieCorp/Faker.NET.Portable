@@ -32,4 +32,12 @@ ToolSettings.SetToolSettings(
 
 BuildParameters.PrintParameters(Context);
 
+// Create a draft release when we run on master branch,
+// not on a tagged release, and not running on a PR
+if (BuildParameters.IsMainRepository && BuildParameters.IsMasterBranch
+	&& BuildParameters.IsRunningOnAppVeyor &&
+	!BuildParameters.IsTagged && !BuildParameters.IsPullRequest) {
+		BuildParameters.Tasks.AppVeyorTask.IsDependentOn("Create-Release-Notes");
+	}
+
 Build.Run();
