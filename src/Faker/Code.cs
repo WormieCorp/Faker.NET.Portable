@@ -35,16 +35,9 @@ namespace Faker
                 v[i] = RandomNumber.Next(0, 10);
             }
 
-            var checksum = ComputeChecksumEan(v);
-
-            if (!validChecksum)
-            {
-                checksum = (checksum + 1) % 10; // set wrong checksum
-            }
-
             var prefix = string.Join(string.Empty, v);
 
-            return prefix + checksum;
+            return prefix + ComputeChecksum(validChecksum, v);
         }
 
         /// <summary>
@@ -188,16 +181,9 @@ namespace Faker
                 v[i] = RandomNumber.Next(10);
             }
 
-            var checksum = ComputeChecksumEan(v); // ISBN13 is an EAN
-
-            if (!validChecksum)
-            {
-                checksum = (checksum + 1) % 10; // set wrong checksum
-            }
-
             var prefix = string.Join(string.Empty, v);
 
-            return prefix + checksum;
+            return prefix + ComputeChecksum(validChecksum, v);
         }
 
         /// <summary>
@@ -283,6 +269,18 @@ namespace Faker
             var prefix = string.Join(string.Empty, v);
 
             return prefix + (checksum < 10 ? checksum.ToString(CultureInfo.InvariantCulture) : "K");
+        }
+
+        private static int ComputeChecksum(bool validChecksum, int[] digits)
+        {
+            var checksum = ComputeChecksumEan(digits); // ISBN13 is an EAN
+
+            if (!validChecksum)
+            {
+                checksum = (checksum + 1) % 10; // set wrong checksum
+            }
+
+            return checksum;
         }
 
         private static int ComputeChecksumEan(int[] digits)
