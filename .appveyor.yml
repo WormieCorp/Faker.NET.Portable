@@ -9,7 +9,7 @@ cache:
 - packages -> src\**\packages.config, tests\**\packages.config
 - tools -> setup.cake
 build_script:
-- ps: .\build.ps1 -Configuration Release -CakeVerbosity normal -Target AppVeyor
+- ps: .\build.ps1 -Configuration Release -Verbosity Verbose -Target AppVeyor
 test: off
 
 skip_commits:
