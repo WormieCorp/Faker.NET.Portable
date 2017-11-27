@@ -5,15 +5,11 @@ branches:
   - ci/travis
 init:
 - git config --global core.autocrlf input
-- "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
-install:
-- cmd: pip install codecov
 cache:
 - packages -> src\**\packages.config, tests\**\packages.config
 - tools -> .build\tools.cake
 build_script:
 - ps: .\build.ps1 -Configuration Release -CakeVerbosity normal -Target AppVeyor
-- ps: codecov -f $(Get-ChildItem -Path "./" -Name "OpenCover.xml" -Recurse -File | select -first 1) -X gcov
 test: off
 
 skip_commits:
