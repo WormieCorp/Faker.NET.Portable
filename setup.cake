@@ -14,7 +14,8 @@ BuildParameters.SetParameters(
 	appVeyorProjectSlug: "faker-cs",
 	shouldPublishChocolatey: false,
 	solutionFilePath: "./Faker.sln",
-	shouldRunInspectCode: false
+	shouldRunInspectCode: false,
+	shouldDeployGraphDocumentation: false
 );
 
 ToolSettings.SetToolSettings(

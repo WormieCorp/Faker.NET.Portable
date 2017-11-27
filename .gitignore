@@ -200,3 +200,6 @@ opencoverCoverage.xml
 .vs/
 
 artifacts/
+BuildArtifacts/
+*.dll
+*.hash

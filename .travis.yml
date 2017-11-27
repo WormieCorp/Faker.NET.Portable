@@ -5,6 +5,13 @@ os:
 mono:
   - latest
   - 4.4.2
+branches:
+  except:
+    - ci/appveyor
+    - /^[\d\.]+$/ # Skip tag builds, these should already have been tested before the tag was created
+    - gh-pages
+before_install:
+  - git fetch --unshallow
 script:
 - chmod +x build.sh
 - "./build.sh --verbosity=normal --target=Travis"
@@ -12,6 +19,8 @@ cache:
   directories:
   - packages
   - tools
+before_cache:
+  rm -f tools/packages.config
 notifications:
   webhooks:
     urls:
