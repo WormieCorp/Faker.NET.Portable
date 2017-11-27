@@ -53,6 +53,7 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <Compile Include="Beer.cs" />
+    <Compile Include="Boolean.cs" />
     <Compile Include="Resources\Beer.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
