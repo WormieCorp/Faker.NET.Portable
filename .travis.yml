@@ -7,7 +7,7 @@ mono:
   - 4.4.2
 script:
 - chmod +x build.sh
-- "./build.sh --verbosity normal --target Travis"
+- "./build.sh --verbosity=normal --target=Travis"
 cache:
   directories:
   - packages
