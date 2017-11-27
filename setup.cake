@@ -6,18 +6,15 @@ BuildParameters.SetParameters(
 	context: Context,
 	buildSystem: BuildSystem,
 	sourceDirectoryPath: "./src",
+	testDirectoryPath: "./tests"
 	title: "Faker.NET.Portable",
 	repositoryOwner: "WormieCorp",
 	repositoryName: "Faker.NET.Portable",
 	appVeyorAccountName: "AdmiringWorm",
 	appVeyorProjectSlug: "faker-cs",
-	shouldDownloadFullReleaseNotes: true,
-	shouldDownloadMilestoneReleaseNotes: true,
 	shouldPublishChocolatey: false,
-	shouldPublishNuGet: false,
-	shouldPublishGitHub: false,
-	shouldExecuteGitLink: false,
-	solutionFilePath: "./Faker.sln"
+	solutionFilePath: "./Faker.sln",
+	shouldRunInspecCode: false
 );
 
 ToolSettings.SetToolSettings(
