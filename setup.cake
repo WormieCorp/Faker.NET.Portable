@@ -10,6 +10,7 @@ BuildParameters.SetParameters(
 	repositoryOwner: "WormieCorp",
 	repositoryName: "Faker.NET.Portable",
 	appVeyorAccountName: "AdmiringWorm",
+	appVeyorProjectSlug: "faker-cs",
 	shouldDownloadFullReleaseNotes: true,
 	shouldDownloadMilestoneReleaseNotes: true,
 	shouldPublishChocolatey: false,
