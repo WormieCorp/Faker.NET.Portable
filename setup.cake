@@ -32,6 +32,6 @@ ToolSettings.SetToolSettings(
      testCoverageExcludeByFile: "*Designer.cs;*.g.cs;*.g.i.cs"
 );
 
-BuildParameters.PrintParamaters(Context);
+BuildParameters.PrintParameters(Context);
 
 Build.Run();
