@@ -6,7 +6,7 @@ BuildParameters.SetParameters(
 	context: Context,
 	buildSystem: BuildSystem,
 	sourceDirectoryPath: "./src",
-	testDirectoryPath: "./tests"
+	testDirectoryPath: "./tests",
 	title: "Faker.NET.Portable",
 	repositoryOwner: "WormieCorp",
 	repositoryName: "Faker.NET.Portable",
@@ -14,7 +14,7 @@ BuildParameters.SetParameters(
 	appVeyorProjectSlug: "faker-cs",
 	shouldPublishChocolatey: false,
 	solutionFilePath: "./Faker.sln",
-	shouldRunInspecCode: false
+	shouldRunInspectCode: false
 );
 
 ToolSettings.SetToolSettings(
