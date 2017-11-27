@@ -1,7 +1,7 @@
 Faker.NET Portable Edition
 =====
 
-[![CLA assistant](https://cla-assistant.io/readme/badge/AdmiringWorm/Faker.NET.Portable)](https://cla-assistant.io/AdmiringWorm/Faker.NET.Portable)
+[![CLA assistant](https://cla-assistant.io/readme/badge/WormieCorp/Faker.NET.Portable)](https://cla-assistant.io/WormieCorp/Faker.NET.Portable)
 
 [![Join the chat at https://gitter.im/Faker-NET-Portable/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Faker-NET-Portable/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
