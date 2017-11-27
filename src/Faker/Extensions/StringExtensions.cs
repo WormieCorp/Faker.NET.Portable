@@ -28,9 +28,9 @@ namespace Faker.Extensions
 
 				AddVariables(typeof(Address), ValidVariables);
 				AddVariables(typeof(App), ValidVariables);
-#pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable 0618 // Type or member is obsolete
 				AddVariables(typeof(Avatar), ValidVariables);  // Will be removed in v.3.0
-#pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore 0618 // Type or member is obsolete
 				AddVariables(typeof(RoboHash), ValidVariables);
 				AddVariables(typeof(FlatHash), ValidVariables);
 				AddVariables(typeof(Business), ValidVariables);
