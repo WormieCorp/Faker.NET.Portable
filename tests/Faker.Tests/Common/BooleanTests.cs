@@ -11,7 +11,7 @@ namespace Faker.Tests.Common
         public void Should_Generate_True_Or_False()
         {
             var booleans = Enumerable.Range(1, 10000)
-                .Select(idx => Boolean.Next());
+                .Select(idx => Faker.Boolean.Next());
 
             int trueCount = booleans.Count(b => b);
             int falseCount = booleans.Count(b => !b);
@@ -25,7 +25,7 @@ namespace Faker.Tests.Common
         public void Should_Not_Generate_True_With_Zero_Probability()
         {
             var booleans = Enumerable.Range(1, 1000)
-                .Select(idx => Boolean.Next(0));
+                .Select(idx => Faker.Boolean.Next(0));
             var trueCount = booleans.Count(b => b);
 
             Assert.That(trueCount, Is.Zero);
@@ -36,7 +36,7 @@ namespace Faker.Tests.Common
         public void Should_Always_Generate_True_With_One_Probability()
         {
             var booleans = Enumerable.Range(1, 1000)
-                .Select(idx => Boolean.Next(1));
+                .Select(idx => Faker.Boolean.Next(1));
             var trueCount = booleans.Count(b => b);
 
             Assert.That(trueCount, Is.EqualTo(1000));
@@ -51,7 +51,7 @@ namespace Faker.Tests.Common
             var guardThreshold = 1.25f;
 
             var booleans = Enumerable.Range(1, runs)
-                .Select(idx => Boolean.Next(trueProbability));
+                .Select(idx => Faker.Boolean.Next(trueProbability));
             var trueCount = booleans.Count(b => b);
 
             Assert.That(trueCount, Is.LessThan(runs * trueProbability * guardThreshold));
@@ -66,7 +66,7 @@ namespace Faker.Tests.Common
             var guardThreshold = 1.25f;
 
             var booleans = Enumerable.Range(1, runs)
-                .Select(idx => Boolean.Next(trueProbability));
+                .Select(idx => Faker.Boolean.Next(trueProbability));
             var trueCount = booleans.Count(b => b);
 
             Assert.That(trueCount, Is.LessThan(runs * trueProbability * guardThreshold));
