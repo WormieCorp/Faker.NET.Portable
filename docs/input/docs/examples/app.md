@@ -13,7 +13,7 @@ By adding `using Faker;`, all `Faker.` prefixes in the examples can be removed.
 
 ## Author
 Generate a random application author, this can both be a name or a company.
-The same process can be aquired by either using [`Name.FullName`](name#fullname)
+The same process can be aquired by either using [`Name.FullName`](name#full-name)
 or by using [`Company.Name`](company#name).
 
 ```
