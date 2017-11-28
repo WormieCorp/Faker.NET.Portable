@@ -62,6 +62,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Common\BeerTests.cs" />
+    <Compile Include="Common\BooleanTests.cs" />
     <Compile Include="Common\ResourceCollectionCachingTests.cs" />
     <Compile Include="Common\AvatarFlatHashTests.cs" />
     <Compile Include="Common\CodeTest.cs" />
