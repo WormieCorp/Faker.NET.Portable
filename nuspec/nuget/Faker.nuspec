@@ -14,9 +14,6 @@
 		<releaseNotes>https://github.com/WormieCorp/Faker.NET.Portable/releases/tag/$version$</releaseNotes>
 	</metadata>
 	<files>
-		<file src="Faker.Portabke.resources.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8" />
-		<file src="Faker.Portable.dll" target="lib\portable-net40+sl5+win8+wpa81+wp8" />
-		<file src="Faker.Portable.pdb" target="lib\portable-net40+sl5+win8+wpa81+wp8" />
-		<file src="Faker.Portable.xml" target="lib\portable-net40+sl5+win8+wpa81+wp8" />
+		<file src="**\*" target="lib\portable-net40+sl5+win8+wpa81+wp8" />
 	</files>
 </package>
