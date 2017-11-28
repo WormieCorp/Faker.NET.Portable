@@ -10,7 +10,24 @@ This class have been marked as obsolete, and is expected to be removed in the ne
 Please use the [RoboHash](robohash) or [FlatHash](flathash) classes instead.
 :::
 
-:::{.alert .alert-info}
-No Examples have been added yet for the [Avatar class](../../api/Faker/Avatar).
-Please help us out by adding some.
-:::
+Examples of available methods and a possible output from a call.
+See the [API documentation](../../api/Faker/Avatar) for the syntax of the methods.
+
+**NOTES:**
+By adding `using Faker;`, all `Faker.` prefixes in the examples can be removed.
+
+- - -
+
+## Image
+Generates an image from the great RoboHash website,
+recommended to use [`RoboHash.Image`](robohash#Image) instead.
+```
+Faker.Avatar.Image(
+	slug = null,
+	size = "300x300",
+	ImageFormat format = ImageFormat.png,
+	string set = "set1
+)
+```
+**OUTPUTS:** `"http://robohash.org/dictasitsit.png?size=300x300&set=set1"`
+![RoboHash Example Image](http://robohash.org/dictasitsit.png?size=300x300&set=set1)
