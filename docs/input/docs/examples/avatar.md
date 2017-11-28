@@ -30,4 +30,4 @@ Faker.Avatar.Image(
 )
 ```
 **OUTPUTS:** `"http://robohash.org/dictasitsit.png?size=300x300&set=set1"`
-![RoboHash Example Image](http://robohash.org/dictasitsit.png?size=300x300&set=set1)
+![RoboHash Example Image](http://robohash.org/dictasitsit.png?size=300x300&set=set1){.img-responsive}
