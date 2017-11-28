@@ -10,18 +10,11 @@ namespace Faker.Tests.Common
         [Repeat(1000)]
         public void Should_Generate_True_Or_False()
         {
-            int trueCount = 0;
-            int falseCount = 0;
+            var booleans = Enumerable.Range(1, 10000)
+                .Select(idx => Boolean.Next());
 
-            // Check that roughly 50% of values return true/false
-            for (int i = 0; i < 10000; i++)
-            {
-                var result = Boolean.Next();
-                if (result)
-                    trueCount++;
-                else
-                    falseCount++;
-            }
+            int trueCount = booleans.Count(b => b);
+            int falseCount = booleans.Count(b => !b);
 
             Assert.That(trueCount, Is.GreaterThan(1000));
             Assert.That(falseCount, Is.GreaterThan(1000));
