@@ -14,7 +14,7 @@ test: off
 
 skip_commits:
   files:
-    - '**/*.md'
+    - 'README.md'
     - '*.vsext'
     - '*.userprefs'
     - '*.editorconfig'
