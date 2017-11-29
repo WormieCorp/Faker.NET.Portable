@@ -30,12 +30,19 @@ Faker.Company.CatchPhrase();
 - - -
 
 ## Logo
-Will generate a random log by using a remote url.
+Will generate a random logo by using a remote url and the http protocol.
 ```
 Faker.Company.Logo();
 ```
 **OUTPUTS:** `"http://pigment.github.io/fake-logos/logos/medium/color/13.png"`  
 ![Company Logo Example](http://pigment.github.io/fake-logos/logos/medium/color/13.png){.img-responsive}
+
+Will generate a random logo by using a remote url and the https protocol.
+```
+Faker.Company.Logo(useSsl: true);
+```
+**OUTPUTS:** `"https://pigment.github.io/fake-logos/logos/medium/color/4.png"`
+![Company Https Logo Example](https://pigment.github.io/fake-logos/logos/medium/color/4.png){.img-responsive}
 
 - - -
 
