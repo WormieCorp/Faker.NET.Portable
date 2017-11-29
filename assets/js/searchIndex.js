@@ -34,102 +34,6 @@ var searchModule = function() {
 
     a({
         id:0,
-        title:"FlatHashImageFormat",
-        content:"FlatHashImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:1,
-        title:"Boolean",
-        content:"Boolean",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:2,
-        title:"RoboHashImageFormat",
-        content:"RoboHashImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:3,
-        title:"PlaceholditImageFormat",
-        content:"PlaceholditImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:4,
-        title:"Config",
-        content:"Config",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:5,
-        title:"App",
-        content:"App",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:6,
-        title:"FlatHash",
-        content:"FlatHash",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:7,
-        title:"Internet",
-        content:"Internet",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:8,
-        title:"ArrayExtensions",
-        content:"ArrayExtensions",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:9,
-        title:"StringExtensions",
-        content:"StringExtensions",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:10,
-        title:"Phone",
-        content:"Phone",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:11,
-        title:"Placeholder",
-        content:"Placeholder",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:12,
         title:"Company",
         content:"Company",
         description:'',
@@ -137,15 +41,15 @@ var searchModule = function() {
     });
 
     a({
-        id:13,
-        title:"Address",
-        content:"Address",
+        id:1,
+        title:"Beer",
+        content:"Beer",
         description:'',
         tags:''
     });
 
     a({
-        id:14,
+        id:2,
         title:"RandomNumber",
         content:"RandomNumber",
         description:'',
@@ -153,7 +57,47 @@ var searchModule = function() {
     });
 
     a({
-        id:15,
+        id:3,
+        title:"FlatHash",
+        content:"FlatHash",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:4,
+        title:"Boolean",
+        content:"Boolean",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:5,
+        title:"StringExtensions",
+        content:"StringExtensions",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:6,
+        title:"Internet",
+        content:"Internet",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:7,
+        title:"Placeholder",
+        content:"Placeholder",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:8,
         title:"Business",
         content:"Business",
         description:'',
@@ -161,7 +105,7 @@ var searchModule = function() {
     });
 
     a({
-        id:16,
+        id:9,
         title:"Avatar",
         content:"Avatar",
         description:'',
@@ -169,7 +113,39 @@ var searchModule = function() {
     });
 
     a({
-        id:17,
+        id:10,
+        title:"Date",
+        content:"Date",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:11,
+        title:"ArrayExtensions",
+        content:"ArrayExtensions",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:12,
+        title:"EnumerableExtensions",
+        content:"EnumerableExtensions",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:13,
+        title:"RoboHashImageFormat",
+        content:"RoboHashImageFormat",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:14,
         title:"Color",
         content:"Color",
         description:'',
@@ -177,9 +153,33 @@ var searchModule = function() {
     });
 
     a({
+        id:15,
+        title:"Address",
+        content:"Address",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:16,
+        title:"NameFormats",
+        content:"NameFormats",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:17,
+        title:"Name",
+        content:"Name",
+        description:'',
+        tags:''
+    });
+
+    a({
         id:18,
-        title:"RoboHash",
-        content:"RoboHash",
+        title:"Lorem",
+        content:"Lorem",
         description:'',
         tags:''
     });
@@ -194,93 +194,75 @@ var searchModule = function() {
 
     a({
         id:20,
-        title:"Name",
-        content:"Name",
+        title:"PlaceholditImageFormat",
+        content:"PlaceholditImageFormat",
         description:'',
         tags:''
     });
 
     a({
         id:21,
-        title:"NameFormats",
-        content:"NameFormats",
+        title:"RoboHash",
+        content:"RoboHash",
         description:'',
         tags:''
     });
 
     a({
         id:22,
-        title:"Code",
-        content:"Code",
+        title:"FlatHashImageFormat",
+        content:"FlatHashImageFormat",
         description:'',
         tags:''
     });
 
     a({
         id:23,
-        title:"Beer",
-        content:"Beer",
+        title:"Phone",
+        content:"Phone",
         description:'',
         tags:''
     });
 
     a({
         id:24,
-        title:"Lorem",
-        content:"Lorem",
+        title:"App",
+        content:"App",
         description:'',
         tags:''
     });
 
     a({
         id:25,
-        title:"EnumerableExtensions",
-        content:"EnumerableExtensions",
+        title:"Config",
+        content:"Config",
         description:'',
         tags:''
     });
 
     a({
         id:26,
-        title:"Date",
-        content:"Date",
+        title:"Code",
+        content:"Code",
         description:'',
         tags:''
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/FlatHashImageFormat',
-        title:"FlatHashImageFormat",
+        url:'/Faker.NET.Portable/api/Faker/Company',
+        title:"Company",
         description:""
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/Boolean',
-        title:"Boolean",
+        url:'/Faker.NET.Portable/api/Faker/Beer',
+        title:"Beer",
         description:""
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/RoboHashImageFormat',
-        title:"RoboHashImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/PlaceholditImageFormat',
-        title:"PlaceholditImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Config',
-        title:"Config",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/App',
-        title:"App",
+        url:'/Faker.NET.Portable/api/Faker/RandomNumber',
+        title:"RandomNumber",
         description:""
     });
 
@@ -291,14 +273,8 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/Internet',
-        title:"Internet",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker.Extensions/ArrayExtensions',
-        title:"ArrayExtensions",
+        url:'/Faker.NET.Portable/api/Faker/Boolean',
+        title:"Boolean",
         description:""
     });
 
@@ -309,32 +285,14 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/Phone',
-        title:"Phone",
+        url:'/Faker.NET.Portable/api/Faker/Internet',
+        title:"Internet",
         description:""
     });
 
     y({
         url:'/Faker.NET.Portable/api/Faker/Placeholder',
         title:"Placeholder",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Company',
-        title:"Company",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Address',
-        title:"Address",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/RandomNumber',
-        title:"RandomNumber",
         description:""
     });
 
@@ -351,50 +309,14 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/Color',
-        title:"Color",
+        url:'/Faker.NET.Portable/api/Faker/Date',
+        title:"Date",
         description:""
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/RoboHash',
-        title:"RoboHash",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/ImageFormat',
-        title:"ImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Name',
-        title:"Name",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/NameFormats',
-        title:"NameFormats",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Code',
-        title:"Code",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Beer',
-        title:"Beer",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Lorem',
-        title:"Lorem",
+        url:'/Faker.NET.Portable/api/Faker.Extensions/ArrayExtensions',
+        title:"ArrayExtensions",
         description:""
     });
 
@@ -405,8 +327,86 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Faker.NET.Portable/api/Faker/Date',
-        title:"Date",
+        url:'/Faker.NET.Portable/api/Faker/RoboHashImageFormat',
+        title:"RoboHashImageFormat",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Color',
+        title:"Color",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Address',
+        title:"Address",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/NameFormats',
+        title:"NameFormats",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Name',
+        title:"Name",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Lorem',
+        title:"Lorem",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/ImageFormat',
+        title:"ImageFormat",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/PlaceholditImageFormat',
+        title:"PlaceholditImageFormat",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/RoboHash',
+        title:"RoboHash",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/FlatHashImageFormat',
+        title:"FlatHashImageFormat",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Phone',
+        title:"Phone",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/App',
+        title:"App",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Config',
+        title:"Config",
+        description:""
+    });
+
+    y({
+        url:'/Faker.NET.Portable/api/Faker/Code',
+        title:"Code",
         description:""
     });
 

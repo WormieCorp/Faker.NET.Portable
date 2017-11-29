@@ -1,22 +1,20 @@
-﻿<!DOCTYPE html>
-<html>
-    <head>
+﻿<!DOCTYPE html><html><head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <meta name="description" />
-        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="description">
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Faker.NET.Portable/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Faker.NET.Portable/assets/img/favicon.ico" type="image/x-icon">
-        <title>Faker.NET.Portable - Placeholder Examples</title>
+        <title>Faker.NET.Portable - API - Company.Logo(bool) Method</title>
         <link href="/Faker.NET.Portable/assets/css/mermaid.css" rel="stylesheet">
         <link href="/Faker.NET.Portable/assets/css/highlight.css" rel="stylesheet">
-        <link href="/Faker.NET.Portable/assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
-        <link href="/Faker.NET.Portable/assets/css/adminlte/AdminLTE.css" rel="stylesheet" />
-        <link href="/Faker.NET.Portable/assets/css/theme/theme.css" rel="stylesheet" />
+        <link href="/Faker.NET.Portable/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="/Faker.NET.Portable/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
+        <link href="/Faker.NET.Portable/assets/css/theme/theme.css" rel="stylesheet">
         <link href="//fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,400i,700,700i" rel="stylesheet">
         <link href="/Faker.NET.Portable/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="/Faker.NET.Portable/assets/css/override.css" rel="stylesheet" />
+        <link href="/Faker.NET.Portable/assets/css/override.css" rel="stylesheet">
         <script src="/Faker.NET.Portable/assets/js/jquery-2.2.3.min.js"></script>
         <script src="/Faker.NET.Portable/assets/js/bootstrap.min.js"></script>        
         <script src="/Faker.NET.Portable/assets/js/app.min.js"></script>         
@@ -58,8 +56,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">                            
-                                    <li class="active"><a href="/Faker.NET.Portable/docs">Documentation</a></li>
-        <li><a href="/Faker.NET.Portable/api">API</a></li>
+                                    <li><a href="/Faker.NET.Portable/docs">Documentation</a></li>
+        <li class="active"><a href="/Faker.NET.Portable/api">API</a></li>
  
                         </ul>       
                     </div>
@@ -73,47 +71,80 @@
             <aside class="main-sidebar ">
                 <section class="infobar" data-spy="affix" data-offset-top="60" data-offset-bottom="200"> 
                     	
-        <div><p><a href="https://github.com/WormieCorp/Faker.NET.Portable/tree/develop/docs/input/docs/examples/placeholder.md"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Content</a></p></div>
-    <div id="infobar-headings"></div>
+	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#Summary">Summary</a></p>
+<p><a href="#Syntax">Syntax</a></p>
+<p><a href="#Parameters">Parameters</a></p>
+<p><a href="#ReturnValue">Return Value</a></p>
+<hr class="infobar-hidden">
+</div>
 
                 </section>
                 <section class="sidebar">                    
-                    
+                    	
+	    <script src="/Faker.NET.Portable/assets/js/lunr.min.js"></script>
+    <script src="/Faker.NET.Portable/assets/js/searchIndex.js"></script>
+    <div class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="search" id="search" class="form-control" placeholder="Search Types...">
+            <span class="input-group-btn">
+                <button class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+    <div id="search-results">
+    </div>
+    <script>
+        function runSearch(query){
+            $("#search-results").empty();			
+            if( query.length < 2 ){
+                return;
+            }			
+            var results = searchModule.search("*" + query + "*");
+            var listHtml = "<ul class='sidebar-menu'>";	
+            listHtml += "<li class='header'>Type Results</li>";	
+            if(results.length == 0 ){
+                listHtml += "<li>No results found</li>";
+            } else {					
+                for(var i = 0; i < results.length; ++i){
+                    var res = results[i];
+                    listHtml += "<li><a href='" + res.url + "'>" + htmlEscape(res.title) + "</a></li>";
+                }				
+            }
+            listHtml += "</ul>";				
+            $("#search-results").append(listHtml);
+        }
+
+        $(document).ready(function(){
+            $("#search").on('input propertychange paste', function() {
+                runSearch($("#search").val());
+            });
+        });
+
+        function htmlEscape(html) {
+            return document.createElement('div')
+                .appendChild(document.createTextNode(html))
+                .parentNode
+                .innerHTML;
+        }
+    </script>
+	
+    <hr>
 
                     <ul class="sidebar-menu">
                         
-                <li class="treeview active">
-                    <a href="/Faker.NET.Portable/docs/examples">Examples</a> <a href="#" class="expand"></a>
-                    <ul class="treeview-menu">
-                                        <li><a href="/Faker.NET.Portable/docs/examples/address">Address Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/app">App Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/avatar">Avatar Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/beer">Beer Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/boolean">Boolean Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/business">Business Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/code">Code Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/color">Color Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/company">Company Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/date">Date Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/flathash">FlatHash Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/internet">Internet Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/lorem">Lorem Ipsum Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/name">Name Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/phone">Phone Examples</a></li>
-                <li class="selected"><a href="/Faker.NET.Portable/docs/examples/placeholder">Placeholder Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/random-number">Random Number Examples</a></li>
-                <li><a href="/Faker.NET.Portable/docs/examples/robohash">RoboHash Examples</a></li>
+			<li class="header">Namespace</li>
+		<li><a href="/Faker.NET.Portable/api/Faker">Faker</a></li>
+		<li class="header">Type</li>
+		<li><a href="/Faker.NET.Portable/api/Faker/Company">Company</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Method Members</li>
+				<li><a href="/Faker.NET.Portable/api/Faker/Company/168460B5">Bullshit<wbr>()<wbr></a></li>
+				<li><a href="/Faker.NET.Portable/api/Faker/Company/88136031">CatchPhrase<wbr>()<wbr></a></li>
+				<li><a href="/Faker.NET.Portable/api/Faker/Company/20AD2074">Logo<wbr>()<wbr></a></li>
+				<li class="selected"><a href="/Faker.NET.Portable/api/Faker/Company/C124CCE9">Logo<wbr>(bool)<wbr></a></li>
+				<li><a href="/Faker.NET.Portable/api/Faker/Company/35498DCE">Name<wbr>()<wbr></a></li>
+				<li><a href="/Faker.NET.Portable/api/Faker/Company/4FD766F9">Suffix<wbr>()<wbr></a></li>
 
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="/Faker.NET.Portable/docs/faq">FAQ</a> <a href="#" class="expand"></a>
-                    <ul class="treeview-menu">
-                                        <li><a href="/Faker.NET.Portable/docs/faq/adding-question">How can I get my question added to the FAQ?</a></li>
-                <li><a href="/Faker.NET.Portable/docs/faq/language-changing">Is it possible to Change the Language?</a></li>
-
-                    </ul>
-                </li>
 
                     </ul>
                 </section>                
@@ -125,15 +156,80 @@
 
 
 
-	<section class="content-header">
-		<h1>Placeholder Examples</h1>
-	</section>
-	<section class="content">
-		<div class="alert alert-info"><p>No Examples have been added yet for the <a href="../../api/Faker/Placeholder">Placeholder class</a>.
-Please help us out by adding some.</p>
-</div>
+<section class="content-header">
+			<h3><a href="/Faker.NET.Portable/api/Faker/Company">Company</a>.</h3>
+	<h1>Logo<wbr>(bool)<wbr> <small>Method</small></h1>
+</section>
+<section class="content">
+	
+	
+		<h1 id="Summary">Summary</h1>
+	<div class="lead">
+      Gets a random logo URL.
+    </div>
 
-	</section>
+		<div class="panel panel-default">
+  			<div class="panel-body">	
+				<dl class="dl-horizontal">	
+						
+						<dt>Namespace</dt>
+						<dd><a href="/Faker.NET.Portable/api/Faker">Faker</a></dd>
+					
+						<dt>Containing Type</dt>
+						<dd><a href="/Faker.NET.Portable/api/Faker/Company">Company</a></dd>		
+					
+				</dl>
+  			</div>
+		</div>
+
+	<h1 id="Syntax">Syntax</h1>
+	<pre><code>public static string Logo(bool useSsl)</code></pre>
+
+
+
+
+
+	<h1 id="Parameters">Parameters</h1>
+	<div class="box">
+		<div class="box-body no-padding table-responsive">
+			<table class="table table-striped table-hover three-cols">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+					<tbody><tr>
+						<td>useSsl</td>
+						<td>bool</td>
+						<td>Set to <code class="cs">true</code> if https should be used, otherwise <code class="cs">false</code></td>
+					</tr>
+			</tbody></table>
+		</div>
+	</div>	
+
+	<h1 id="ReturnValue">Return Value</h1>
+	<div class="box">
+		<div class="box-body no-padding table-responsive">
+			<table class="table table-striped table-hover two-cols">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody><tr>
+					<td>string</td>
+					<td>A random logo URL</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>	
+
+
+	
+</section>
                 
             </div>           
             
@@ -237,5 +333,5 @@ Please help us out by adding some.</p>
                 }, 500);
             });
         </script>
-    </body>
-</html>
+    
+</body></html>

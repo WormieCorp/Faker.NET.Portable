@@ -147,11 +147,16 @@ By adding <code>using Faker;</code>, all <code>Faker.</code> prefixes in the exa
 <p><strong>OUTPUTS:</strong> <code>&quot;Fundamental stable workforce&quot;</code></p>
 <hr />
 <h2 id="logo">Logo</h2>
-<p>Will generate a random log by using a remote url.</p>
+<p>Will generate a random logo by using a remote url and the http protocol.</p>
 <pre><code>Faker.Company.Logo();
 </code></pre>
 <p><strong>OUTPUTS:</strong> <code>&quot;http://pigment.github.io/fake-logos/logos/medium/color/13.png&quot;</code><br />
 <img src="http://pigment.github.io/fake-logos/logos/medium/color/13.png" class="img-responsive img-fluid" alt="Company Logo Example" /></p>
+<p>Will generate a random logo by using a remote url and the https protocol.</p>
+<pre><code>Faker.Company.Logo(useSsl: true);
+</code></pre>
+<p><strong>OUTPUTS:</strong> <code>&quot;https://pigment.github.io/fake-logos/logos/medium/color/4.png&quot;</code>
+<img src="https://pigment.github.io/fake-logos/logos/medium/color/4.png" class="img-responsive img-fluid" alt="Company Https Logo Example" /></p>
 <hr />
 <h2 id="name">Name</h2>
 <p>Will generate a random company name.</p>
