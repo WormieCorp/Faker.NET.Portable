@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<link rel="self" href="https://wormiecorp.github.io/Faker.NET.Portable" />
+	<id>https://wormiecorp.github.io/Faker.NET.Portable</id>
+	<title>Faker.NET.Portable</title>
+	<rights>2017</rights>
+	<updated>2017-11-29T16:36:39Z</updated>
+</feed>

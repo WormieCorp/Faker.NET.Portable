@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Faker.NET.Portable/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Faker.NET.Portable/assets/img/favicon.ico" type="image/x-icon">
-        <title>Faker.NET.Portable - Faker.NET.Portable</title>
+        <title>Faker.NET.Portable - Phone Examples</title>
         <link href="/Faker.NET.Portable/assets/css/mermaid.css" rel="stylesheet">
         <link href="/Faker.NET.Portable/assets/css/highlight.css" rel="stylesheet">
         <link href="/Faker.NET.Portable/assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
 
         
     </head>
-    <body class="hold-transition wyam layout-boxed layout-top-nav ">    
+    <body class="hold-transition wyam layout-boxed  ">    
         <div class="top-banner"></div>
         <div class="wrapper with-container">
             <!-- Header -->
@@ -43,6 +43,10 @@
                          
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
                                         
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -54,7 +58,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">                            
-                                    <li><a href="/Faker.NET.Portable/docs">Documentation</a></li>
+                                    <li class="active"><a href="/Faker.NET.Portable/docs">Documentation</a></li>
         <li><a href="/Faker.NET.Portable/api">API</a></li>
  
                         </ul>       
@@ -66,10 +70,10 @@
             </header>
             
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar hidden">
+            <aside class="main-sidebar ">
                 <section class="infobar" data-spy="affix" data-offset-top="60" data-offset-bottom="200"> 
                     	
-        <div><p><a href="https://github.com/WormieCorp/Faker.NET.Portable/tree/develop/docs/input/index.cshtml"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Content</a></p></div>
+        <div><p><a href="https://github.com/WormieCorp/Faker.NET.Portable/tree/develop/docs/input/docs/examples/phone.md"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Content</a></p></div>
     <div id="infobar-headings"></div>
 
                 </section>
@@ -78,6 +82,38 @@
 
                     <ul class="sidebar-menu">
                         
+                <li class="treeview active">
+                    <a href="/Faker.NET.Portable/docs/examples">Examples</a> <a href="#" class="expand"></a>
+                    <ul class="treeview-menu">
+                                        <li><a href="/Faker.NET.Portable/docs/examples/address">Address Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/app">App Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/avatar">Avatar Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/beer">Beer Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/boolean">Boolean Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/business">Business Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/code">Code Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/color">Color Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/company">Company Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/date">Date Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/flathash">FlatHash Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/internet">Internet Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/lorem">Lorem Ipsum Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/name">Name Examples</a></li>
+                <li class="selected"><a href="/Faker.NET.Portable/docs/examples/phone">Phone Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/placeholder">Placeholder Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/random-number">Random Number Examples</a></li>
+                <li><a href="/Faker.NET.Portable/docs/examples/robohash">RoboHash Examples</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="/Faker.NET.Portable/docs/faq">FAQ</a> <a href="#" class="expand"></a>
+                    <ul class="treeview-menu">
+                                        <li><a href="/Faker.NET.Portable/docs/faq/adding-question">How can I get my question added to the FAQ?</a></li>
+                <li><a href="/Faker.NET.Portable/docs/faq/language-changing">Is it possible to Change the Language?</a></li>
+
+                    </ul>
+                </li>
 
                     </ul>
                 </section>                
@@ -90,49 +126,37 @@
 
 
 	<section class="content-header">
-		<h1>Faker.NET.Portable</h1>
+		<h1>Phone Examples</h1>
 	</section>
 	<section class="content">
-		
-<div class=container-fluid>
-	<h1>What is it?</h1>
-	<p>
-		Faker.NET.Portable is a simple port of the Ruby Faker gem <a href="http://faker.rubyforge.org/" target="_blank">https://faker.rubyforge.org/</a> and is used
-		to generate fake data: names, addresses, phone numbers, etc. This project is based on the <a href="https://github.com/slashdotdash/faker-cs" target="_blank">faker-cs</a>
-		project, and was started with the idea of being able to use Fake Data in portable applications.
-	</p>
-
-	<h2>Where to get it</h2>
-	<p>
-		The easies way to install Faker.NET.Portable is by using nuget.
-		<pre><code class="bash">nuget install Faker.Net.Portable</code></pre>
-
-		or by using the Package Manager Console in Visual Studio
-		<pre><code class="bash">Install-Package Faker.Net.Portable</code></pre>
-
-		Another way is to download the latest release, extract the archive, and add a reference to the <code>Faker.Net.Portable.dll</code> library.
-	</p>
-
-	<h3>Framework Support</h3>
-	<p>
-		The following frameworks are currently supported by Faker.NET.Portable.
-		<strong>NOTE: The library may not build on all of the supported frameworks, but should run as expected.</strong>
-		<ul>
-			<li>Mono 3.12.0 (will not build on that version, building requires minimum of 4.4.2)</li>
-			<li>.NET Framework 4.0+</li>
-			<li>Silverlight 5.0+</li>
-			<li>Windows 8+</li>
-			<li>Windows Phone 8.1+</li>
-			<li>Windows Phone Silverlight 8+</li>
-			<li>Xamarin.Android</li>
-			<li>Xamarin.iOS</li>
-			<li>Xamarin.iOS (Classic)</li>
-		</ul>
-
-		Found a framework Faker.NET.Portable works with, and is missing from the above list?
-		Feel free to open a PR to get it added.
-	</p>
-</div>
+		<p>Examples of available methods and a possible output from a call.
+See the <a href="../../api/Faker/Phone">API documentation</a> for the syntax of the methods.</p>
+<p><strong>NOTES:</strong>
+By adding <code>using Faker;</code>, all <code>Faker.</code> prefixes in the examples can be removed.</p>
+<hr />
+<h2 id="cell-number">Cell Number</h2>
+<p>Will generate a random cell phone number (mobilephone).</p>
+<pre><code>Faker.Phone.CellNumber();
+</code></pre>
+<p><strong>OUTPUTS:</strong> <code>&quot;(581) 147-4247&quot;</code></p>
+<hr />
+<h2 id="extension">Extension</h2>
+<p>Will generate a random phone extension.</p>
+<pre><code>Faker.Phone.Extension();
+</code></pre>
+<p><strong>OUTPUTS:</strong> <code>&quot;3485&quot;</code></p>
+<hr />
+<h2 id="number">Number</h2>
+<p>Will generate a random phone number.</p>
+<pre><code>Faker.Phone.Number();
+</code></pre>
+<p><strong>OUTPUTS:</strong> <code>&quot;1-331-588-8777-x15811&quot;</code></p>
+<hr />
+<h2 id="subscriber-number">Subscriber Number</h2>
+<p>Will generate a random subscriber number.</p>
+<pre><code>Faker.Phone.SubscriberNumber();
+</code></pre>
+<p><strong>OUTPUTS:</strong> <code>&quot;2424&quot;</code></p>
 
 	</section>
                 
