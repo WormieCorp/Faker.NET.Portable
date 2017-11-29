@@ -20,18 +20,7 @@ Get the code via git:
 
     git clone https://github.com/WormieCorp/Faker.NET.Portable.git
 
-Supported version:
-
-
-    .NET framework 4.0,
-    Silverlight 5.0,
-    Windows 8,
-    Windows Phone 8.1,
-    Windows Phone Silverlight 8,
-    Xamarin.Android,
-    Xamarin.iOS,
-    Xamarin.iOS (Classic),
-    Mono 3.12.0 (may work on earlier version, needs minimum 4.4.2 to build the library)
+See our [documentation](https://wormiecorp.github.io/Faker.NET.Portable/#framework-support) for currently supported frameworks.
 
 ## Usage
 
@@ -40,4 +29,4 @@ Add a reference to `Faker.Portable.dll` in you project within Visual Studio.
 Start using the Faker methods to generate your random test data.
 
 ## Examples
-Please take a look on the [wiki pages](https://github.com/WormieCorp/Faker.NET.Portable/wiki#examples)
+Please take a look at our [documentation](https://wormiecorp.github.io/Faker.NET.Portable/docs/examples/).

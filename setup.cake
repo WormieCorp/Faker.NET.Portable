@@ -14,7 +14,8 @@ BuildParameters.SetParameters(
 	appVeyorProjectSlug: "faker-cs",
 	shouldPublishChocolatey: false,
 	solutionFilePath: "./Faker.sln",
-	shouldRunInspectCode: false
+	shouldRunInspectCode: false,
+	shouldDeployGraphDocumentation: false
 );
 
 ToolSettings.SetToolSettings(
@@ -39,5 +40,38 @@ if (BuildParameters.IsMainRepository && BuildParameters.IsMasterBranch
 	!BuildParameters.IsTagged && !BuildParameters.IsPullRequest) {
 		BuildParameters.Tasks.AppVeyorTask.IsDependentOn("Create-Release-Notes");
 	}
+
+var archiveDir = BuildParameters.Paths.Directories.Build.Combine("archives");
+
+BuildParameters.Tasks.CleanTask.Does(() => {
+	CleanDirectory(archiveDir);
+});
+
+BuildParameters.Tasks.PublishGitHubReleaseTask.Does(() => {
+	foreach (var archive in GetFiles(archiveDir + "/*"))
+	{
+		GitReleaseManagerAddAssets(BuildParameters.GitHub.UserName, BuildParameters.GitHub.Password, BuildParameters.RepositoryOwner, BuildParameters.RepositoryName, BuildParameters.Version.Milestone, archive.ToString());
+	}
+});
+
+BuildParameters.Tasks.UploadAppVeyorArtifactsTask.Does(() => {
+	foreach (var archive in GetFiles(archiveDir + "/*"))
+	{
+		AppVeyor.UploadArtifact(archive);
+	}
+});
+
+Task("Create-Zip-Archive")
+	.IsDependentOn("Build")
+	.IsDependentOn("Clean")
+	.Does(() =>
+{
+	var projectBuildDir = BuildParameters.Paths.Directories.PublishedLibraries.Combine("Faker");
+	var outputArchive = archiveDir.CombineWithFilePath("Faker.NET.Portable.zip");
+
+	Zip(projectBuildDir, outputArchive);
+});
+
+BuildParameters.Tasks.PackageTask.IsDependentOn("Create-Zip-Archive");
 
 Build.Run();

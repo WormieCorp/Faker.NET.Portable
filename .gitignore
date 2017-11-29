@@ -131,7 +131,8 @@ publish/
 # NuGet Packages Directory
 packages/*
 # Cake tools directory
-tools/
+tools/*
+!tools/packages.config
 ## TODO: If the tool you use requires repositories.config
 ## uncomment the next line
 #!packages/repositories.config
@@ -199,3 +200,6 @@ opencoverCoverage.xml
 .vs/
 
 artifacts/
+BuildArtifacts/
+*.dll
+*.hash

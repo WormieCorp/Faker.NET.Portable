@@ -7,7 +7,7 @@ init:
 - git config --global core.autocrlf input
 cache:
 - packages -> src\**\packages.config, tests\**\packages.config
-- tools -> setup.cake
+- tools -> setup.cake, tools\packages.config
 build_script:
 - ps: .\build.ps1 -Configuration Release -Verbosity Verbose -Target AppVeyor
 test: off
