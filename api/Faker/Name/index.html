@@ -73,6 +73,7 @@
                     	
 	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#Summary">Summary</a></p>
 <p><a href="#Syntax">Syntax</a></p>
+<p><a href="#Remarks">Remarks</a></p>
 <p><a href="#Methods">Methods</a></p>
 <hr class="infobar-hidden">
 </div>
@@ -220,6 +221,12 @@ class Type type-node
 	<pre><code>public static class Name</code></pre>
 
 
+	<h1 id="Remarks">Remarks</h1>
+	<div>
+      The resources are acquired by satellite assemblies matching the current thread's
+      <code class="cs">System.Globalization.CultureInfo</code>.
+      If no matching satellite  assembly is found, the english version is used.
+    </div>
 
 
 
