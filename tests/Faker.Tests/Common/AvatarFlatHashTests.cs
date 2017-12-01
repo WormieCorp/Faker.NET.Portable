@@ -58,7 +58,7 @@ namespace Faker.Tests.Common
             string avatar = FlatHash.Image(false);
 
             Assert.That(avatar,
-                Does.StartWith("https:"));
+                Does.StartWith("http:"));
         }
     }
 }
