@@ -14,7 +14,7 @@ namespace Faker
         ///   When a straight answer won't do, Bullshit to the rescue!
         /// </summary>
         /// <returns>Some <c>bullshit</c>.</returns>
-        /// <remarks>Wordlist originates from <see href="http://dack.com/web/bullshit.html" /></remarks>
+        /// <remarks>Wordlist originates from <a href="http://dack.com/web/bullshit.html">dack.com</a></remarks>
         public static string Bullshit()
         {
             return string.Join(
@@ -28,7 +28,7 @@ namespace Faker
         ///   Generates a buzzword-laden catch phrase
         /// </summary>
         /// <returns>The buzzword-laden catch phrase.</returns>
-        /// <remarks>Wordlist originates from <see href="http://www.1728.com/buzzword.htm" /></remarks>
+        /// <remarks>Wordlist originates from <a href="http://www.1728.com/buzzword.htm">1728.com</a></remarks>
         public static string CatchPhrase()
         {
             return string.Join(

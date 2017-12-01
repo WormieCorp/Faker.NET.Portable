@@ -12,7 +12,11 @@ namespace Faker
     /// <summary>
     ///   A collection of address related resources.
     /// </summary>
-    /// <include file="Docs/CustomRemarks.xml" path="Comments/SatelliteResource/*" />
+    /// <remarks>
+	///   The resources are acquired by satellite assemblies matching the current thread's
+	///   <see cref="System.Globalization.CultureInfo" />.
+	///	  If no matching satellite  assembly is found, the english version is used.
+	///	</remarks>
     /// <threadsafety static="true" />
     public static class Internet
     {

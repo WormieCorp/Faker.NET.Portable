@@ -24,8 +24,8 @@ namespace Faker
         /// <returns>The generated EAN</returns>
         /// <remarks>
         ///   Description of the EAN standard is at
-        ///   <see href="https://en.wikipedia.org/wiki/International_Article_Number" /> Checksum
-        ///   routines are at <see href="http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js" />
+        ///   <a href="https://en.wikipedia.org/wiki/International_Article_Number">wikipedia.</a>
+		///   Checksum routines are at <a href="http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js">isbn-check</a>
         /// </remarks>
         public static string EAN(bool validChecksum = true)
         {
@@ -47,7 +47,10 @@ namespace Faker
         ///   Indicates whether the generated Fiscal Code has a valid checksum or not
         /// </param>
         /// <returns>The generated Fiscal Code</returns>
-        /// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+        /// <remarks>Description of the Fiscal Code standard is at <a href="https://en.wikipedia.org/wiki/Italian_fiscal_code_card">wikipedia</a></remarks>
+		/// <seealso cref="FiscalCode(int, int)" />
+		/// <seealso cref="FiscalCode(bool, int, int)" />
+		/// <seealso cref="FiscalCode(string, string, DateTime, bool)" />
         public static string FiscalCode(bool validChecksum = true)
         {
             var birthday = Date.Birthday();
@@ -60,7 +63,10 @@ namespace Faker
         /// <param name="minAge">Minimum age of the holder</param>
         /// <param name="maxAge">Maximum age of the holder</param>
         /// <returns>The generated Fiscal Code</returns>
-        /// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+        /// <remarks>Description of the Fiscal Code standard is at <a href="https://en.wikipedia.org/wiki/Italian_fiscal_code_card">wikipedia</a></remarks>
+		/// <seealso cref="FiscalCode(bool)" />
+		/// <seealso cref="FiscalCode(bool, int, int)" />
+		/// <seealso cref="FiscalCode(string, string, DateTime, bool)" />
         public static string FiscalCode(int minAge, int maxAge)
         {
             var birthday = Date.Birthday(minAge, maxAge);
@@ -76,7 +82,10 @@ namespace Faker
         /// <param name="minAge">Minimum age of the holder</param>
         /// <param name="maxAge">Maximum age of the holder</param>
         /// <returns>The generated Fiscal Code</returns>
-        /// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+        /// <remarks>Description of the Fiscal Code standard is at <a href="https://en.wikipedia.org/wiki/Italian_fiscal_code_card">wikipedia</a></remarks>
+		/// <seealso cref="FiscalCode(bool)" />
+		/// <seealso cref="FiscalCode(int, int)" />
+		/// <seealso cref="FiscalCode(string, string, DateTime, bool)" />
         public static string FiscalCode(bool validChecksum, int minAge, int maxAge)
         {
             var birthday = Date.Birthday(minAge, maxAge);
@@ -93,7 +102,10 @@ namespace Faker
         ///   Indicates whether the generated Fiscal Code has a valid checksum or not
         /// </param>
         /// <returns>The generated Fiscal Code</returns>
-        /// <remarks>Description of the Fiscal Code standard is at https://en.wikipedia.org/wiki/Italian_fiscal_code_card</remarks>
+        /// <remarks>Description of the Fiscal Code standard is at <a href="https://en.wikipedia.org/wiki/Italian_fiscal_code_card">wikipedia</a></remarks>
+		/// <seealso cref="FiscalCode(bool)" />
+		/// <seealso cref="FiscalCode(int, int)" />
+		/// <seealso cref="FiscalCode(bool, int, int)" />
         public static string FiscalCode(string lastName, string firstName, DateTime birthday, bool validChecksum = true)
         {
             char[] monthChars = { 'A', 'B', 'C', 'D', 'E', 'H', 'L', 'M', 'P', 'R', 'S', 'T' };
@@ -133,9 +145,10 @@ namespace Faker
         /// <returns>The generated ISBN-10</returns>
         /// <remarks>
         ///   Description of the ISBN standard is at
-        ///   <see href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" />
-        ///   Checksum routines are at <see href="http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js" />
+        ///   <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">wikipedia</a>.
+        ///   Checksum routines are at <a href="http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js">isb-check</a>.
         /// </remarks>
+		/// <seealso cref="ISBN13" />
         public static string ISBN10(bool validChecksum = true)
         {
             int[] v = new int[9];
@@ -165,9 +178,10 @@ namespace Faker
         /// <returns>The generated ISBN-13</returns>
         /// <remarks>
         ///   Description of the ISBN standard is at
-        ///   <see href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" />
-        ///   Checksum routines are at <see href="http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js" />
+        ///   <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">wikipedia</a>.
+        ///   Checksum routines are at <a href="http://www.isbn-check.de/servejs.pl?src=isbnfront.perlserved.js">isbn-check</a>
         /// </remarks>
+		/// <seealso cref="ISBN10" />
         public static string ISBN13(bool validChecksum = true)
         {
             int[] v = new int[12];
@@ -193,7 +207,7 @@ namespace Faker
         /// <returns>The generated NPI</returns>
         /// <remarks>
         ///   Description of the NPI standard is at
-        ///   https://en.wikipedia.org/wiki/National_Provider_Identifier. The NPI has replaced the
+        ///   <a href="https://en.wikipedia.org/wiki/National_Provider_Identifier">wikipedia</a>. The NPI has replaced the
         ///   unique physician identification number (UPIN).
         /// </remarks>
         public static string NPI()
@@ -220,8 +234,9 @@ namespace Faker
         /// <returns>The generated NRIC</returns>
         /// <remarks>
         ///   Description of the NRIC standard is at
-        ///   <see href="https://en.wikipedia.org/wiki/National_Registration_Identity_Card" />. This
-        ///   ID was issued for the first time in 1965 in Singapore. See also: <see href="https://github.com/stympy/faker/blob/master/lib/faker/code.rb#L32" />
+        ///   <a href="https://en.wikipedia.org/wiki/National_Registration_Identity_Card">wikipedia</a>. This
+        ///   ID was issued for the first time in 1965 in Singapore. See also:
+		///   <a href="https://github.com/stympy/faker/blob/master/lib/faker/code.rb#L32">github faker ruby code</a>.
         /// </remarks>
         public static string NRIC(bool validChecksum = true, int minAge = 18, int maxAge = 65)
         {
@@ -247,8 +262,8 @@ namespace Faker
         /// <returns>The generated RUT</returns>
         /// <remarks>
         ///   Description of the RUT standard is at
-        ///   <see href="https://en.wikipedia.org/wiki/National_identification_number#Chile" />
-        ///   Checksum routines are at <see href="http://www.vesic.org/english/blog-eng/net/verifying-chilean-rut-code-tax-number/" />
+        ///   <a href="https://en.wikipedia.org/wiki/National_identification_number#Chile">wikipedia</a>
+        ///   Checksum routines are at <a href="http://www.vesic.org/english/blog-eng/net/verifying-chilean-rut-code-tax-number/">vesic.org</a>.
         /// </remarks>
         public static string RUT(bool validChecksum = true)
         {
@@ -457,7 +472,7 @@ namespace Faker
         ///   according to the algorithm.
         /// </summary>
         /// <param name="name">The name to process</param>
-        /// <param name="isFirstName">true, in case of first names</param>
+        /// <param name="isFirstName"><c>true</c>, in case of first names</param>
         /// <returns>The squeezed name</returns>
         private static string GetFiscalCodeSqueezedName(string name, bool isFirstName)
         {
