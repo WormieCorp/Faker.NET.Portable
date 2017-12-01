@@ -16,9 +16,14 @@ issue-labels-include:
 - Breaking Change
 - Bug
 - Feature
+- Enhancement
 - Improvement
 - Language
 - Documentation
 issue-labels-exclude:
 - Internal Refactoring
 - Build
+issue-labels-alias:
+  - name:    Documentation
+    header:  Documentation
+    plural:  Documentation
