@@ -1,21 +1,30 @@
 language: csharp
 os:
-  - linux
-  - osx
-
+- linux
+#- osx
+mono:
+  - latest
+  - 4.4.2
+branches:
+  except:
+    - ci/appveyor
+    - /^[\d\.]+$/ # Skip tag builds, these should already have been tested before the tag was created
+    - gh-pages
+before_install:
+  - git fetch --unshallow
 script:
-  - chmod +x build.sh
-  - ./build.sh --verbosity normal --target Travis
-
+- chmod +x build.sh
+- "./build.sh --verbosity=normal --target=Travis"
 cache:
   directories:
-    - packages
-    - tools
-
+  - packages
+  - tools
+before_cache:
+  rm -f tools/packages.config
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/4a4095f0f21d178196c4
+        secure: "QyOA2uVUQWmz9sESetuM4L/OKaT4pKjQtGiQR6Ili1YMomB6MV+ClbEs9WIbYzfJoRPM4El8B13H5JcIs74fw8ljTvu+lHtSE4fD26XuOJcwLKgy5u9tmoZ/5vVmmjKPy47LrBtK2RdEro2PlZd4BsUHP9GEGmZtoolUnxNCBaQy23b0d/lwCpGpx5zlZ5Ea/mYgs3bRe5ECO0hKu7AArz06KiQRVh0iI17H1u9sov6oO+09MRgd3su+w8R7yf71r3YxgBjP2VVWNIbxv9eE5AgHDDehk14u9RPdk38OnX33v+l+JvCcodX7Rk/MBKz8a3QPPSCooPELFcOeYXrzIXcQjWYcliKBiey9kblPUUIb9CO2qBGBGKNDLPrWKOTrBfHDGQW0FYZH9jSkcdvdwnmLVLnvgylLXfNHPz3nTB7VVnDzc1VvUlq7ULZop+7x2Jv0CFutKEifB5Uly4RE1fZQ3nHmiBCU8kem6PKvdb0I4gISigToE4YEBOpxM4Sq1ePXSwQUlgVXVWULkF68vcVDvWeMNkZVFLjWd2jG3VoXaYViKqhyr7TGHXBhPG4Amcs2dHwaDGmaEAyMD4eM7Kbn4iHERTEEXPPijAAxGjtBElK5eL7MxTzRr7RpWTijtjdd24OJYkLZzLwOhCuqXfk8Y2vQqzBiGa9tyUmfpGo="
     on_success: change
     on_failure: always
     on_start: never

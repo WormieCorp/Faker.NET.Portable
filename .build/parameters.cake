@@ -80,6 +80,7 @@ public class BuildParameters
 		{
 			Target = target,
 			Configuration = context.Argument("configuration", "Release"),
+			Verbosity = context.Argument("verbosity", Verbosity.Minimal),
 			CurrentBranch = GetCurrentBranch(buildSystem),
 
 			IsLocalBuild = buildSystem.IsLocalBuild,
