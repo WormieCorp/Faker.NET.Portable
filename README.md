@@ -4,6 +4,7 @@ Faker.NET Portable Edition
 [![CLA assistant](https://cla-assistant.io/readme/badge/WormieCorp/Faker.NET.Portable)](https://cla-assistant.io/WormieCorp/Faker.NET.Portable)
 
 [![Join the chat at https://gitter.im/Faker-NET-Portable/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Faker-NET-Portable/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Open Source Helpers](https://www.codetriage.com/admiringworm/faker.net.portable/badges/users.svg)](https://www.codetriage.com/admiringworm/faker.net.portable)
 
 | AppVeyor | Travis | NuGet | GitHub | Codecov |
 | :------: | :----: | :---: | :----: | :-----: |
