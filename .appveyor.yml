@@ -3,6 +3,7 @@ pull_requests:
 branches:
   except:
   - ci/travis
+  - /dependabot\/.*/
 init:
 - git config --global core.autocrlf input
 cache:
