@@ -1,413 +1,430 @@
 
-var camelCaseTokenizer = function (obj) {
+var camelCaseTokenizer = function (builder) {
+
+  var pipelineFunction = function (token) {
     var previous = '';
-    return obj.toString().trim().split(/[\s\-]+|(?=[A-Z])/).reduce(function(acc, cur) {
-        var current = cur.toLowerCase();
-        if(acc.length === 0) {
-            previous = current;
-            return acc.concat(current);
-        }
-        previous = previous.concat(current);
-        return acc.concat([current, previous]);
+    // split camelCaseString to on each word and combined words
+    // e.g. camelCaseTokenizer -> ['camel', 'case', 'camelcase', 'tokenizer', 'camelcasetokenizer']
+    var tokenStrings = token.toString().trim().split(/[\s\-]+|(?=[A-Z])/).reduce(function(acc, cur) {
+      var current = cur.toLowerCase();
+      if (acc.length === 0) {
+        previous = current;
+        return acc.concat(current);
+      }
+      previous = previous.concat(current);
+      return acc.concat([current, previous]);
     }, []);
+
+    // return token for each string
+    // will copy any metadata on input token
+    return tokenStrings.map(function(tokenString) {
+      return token.clone(function(str) {
+        return tokenString;
+      })
+    });
+  }
+
+  lunr.Pipeline.registerFunction(pipelineFunction, 'camelCaseTokenizer')
+
+  builder.pipeline.before(lunr.stemmer, pipelineFunction)
 }
-lunr.tokenizer.registerFunction(camelCaseTokenizer, 'camelCaseTokenizer')
 var searchModule = function() {
+    var documents = [];
     var idMap = [];
-    function y(e) { 
-        idMap.push(e); 
+    function a(a,b) { 
+        documents.push(a);
+        idMap.push(b); 
     }
+
+    a(
+        {
+            id:0,
+            title:"App",
+            content:"App",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/App',
+            title:"App",
+            description:""
+        }
+    );
+    a(
+        {
+            id:1,
+            title:"EnumerableExtensions",
+            content:"EnumerableExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker.Extensions/EnumerableExtensions',
+            title:"EnumerableExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:2,
+            title:"FlatHash",
+            content:"FlatHash",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/FlatHash',
+            title:"FlatHash",
+            description:""
+        }
+    );
+    a(
+        {
+            id:3,
+            title:"Date",
+            content:"Date",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Date',
+            title:"Date",
+            description:""
+        }
+    );
+    a(
+        {
+            id:4,
+            title:"Lorem",
+            content:"Lorem",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Lorem',
+            title:"Lorem",
+            description:""
+        }
+    );
+    a(
+        {
+            id:5,
+            title:"ImageFormat",
+            content:"ImageFormat",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/ImageFormat',
+            title:"ImageFormat",
+            description:""
+        }
+    );
+    a(
+        {
+            id:6,
+            title:"Phone",
+            content:"Phone",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Phone',
+            title:"Phone",
+            description:""
+        }
+    );
+    a(
+        {
+            id:7,
+            title:"Business",
+            content:"Business",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Business',
+            title:"Business",
+            description:""
+        }
+    );
+    a(
+        {
+            id:8,
+            title:"RoboHash",
+            content:"RoboHash",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/RoboHash',
+            title:"RoboHash",
+            description:""
+        }
+    );
+    a(
+        {
+            id:9,
+            title:"Name",
+            content:"Name",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Name',
+            title:"Name",
+            description:""
+        }
+    );
+    a(
+        {
+            id:10,
+            title:"ArrayExtensions",
+            content:"ArrayExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker.Extensions/ArrayExtensions',
+            title:"ArrayExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:11,
+            title:"Beer",
+            content:"Beer",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Beer',
+            title:"Beer",
+            description:""
+        }
+    );
+    a(
+        {
+            id:12,
+            title:"Address",
+            content:"Address",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Address',
+            title:"Address",
+            description:""
+        }
+    );
+    a(
+        {
+            id:13,
+            title:"RandomNumber",
+            content:"RandomNumber",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/RandomNumber',
+            title:"RandomNumber",
+            description:""
+        }
+    );
+    a(
+        {
+            id:14,
+            title:"Boolean",
+            content:"Boolean",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Boolean',
+            title:"Boolean",
+            description:""
+        }
+    );
+    a(
+        {
+            id:15,
+            title:"RoboHashImageFormat",
+            content:"RoboHashImageFormat",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/RoboHashImageFormat',
+            title:"RoboHashImageFormat",
+            description:""
+        }
+    );
+    a(
+        {
+            id:16,
+            title:"Code",
+            content:"Code",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Code',
+            title:"Code",
+            description:""
+        }
+    );
+    a(
+        {
+            id:17,
+            title:"Avatar",
+            content:"Avatar",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Avatar',
+            title:"Avatar",
+            description:""
+        }
+    );
+    a(
+        {
+            id:18,
+            title:"NameFormats",
+            content:"NameFormats",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/NameFormats',
+            title:"NameFormats",
+            description:""
+        }
+    );
+    a(
+        {
+            id:19,
+            title:"Company",
+            content:"Company",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Company',
+            title:"Company",
+            description:""
+        }
+    );
+    a(
+        {
+            id:20,
+            title:"StringExtensions",
+            content:"StringExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker.Extensions/StringExtensions',
+            title:"StringExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:21,
+            title:"PlaceholditImageFormat",
+            content:"PlaceholditImageFormat",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/PlaceholditImageFormat',
+            title:"PlaceholditImageFormat",
+            description:""
+        }
+    );
+    a(
+        {
+            id:22,
+            title:"Color",
+            content:"Color",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Color',
+            title:"Color",
+            description:""
+        }
+    );
+    a(
+        {
+            id:23,
+            title:"Placeholder",
+            content:"Placeholder",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Placeholder',
+            title:"Placeholder",
+            description:""
+        }
+    );
+    a(
+        {
+            id:24,
+            title:"Config",
+            content:"Config",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Config',
+            title:"Config",
+            description:""
+        }
+    );
+    a(
+        {
+            id:25,
+            title:"FlatHashImageFormat",
+            content:"FlatHashImageFormat",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/FlatHashImageFormat',
+            title:"FlatHashImageFormat",
+            description:""
+        }
+    );
+    a(
+        {
+            id:26,
+            title:"Internet",
+            content:"Internet",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Faker.NET.Portable/api/Faker/Internet',
+            title:"Internet",
+            description:""
+        }
+    );
     var idx = lunr(function() {
-        this.field('title', { boost: 10 });
+        this.field('title');
         this.field('content');
-        this.field('description', { boost: 5 });
-        this.field('tags', { boost: 50 });
+        this.field('description');
+        this.field('tags');
         this.ref('id');
-        this.tokenizer(camelCaseTokenizer);
+        this.use(camelCaseTokenizer);
 
         this.pipeline.remove(lunr.stopWordFilter);
         this.pipeline.remove(lunr.stemmer);
-    });
-    function a(e) { 
-        idx.add(e); 
-    }
-
-    a({
-        id:0,
-        title:"App",
-        content:"App",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:1,
-        title:"Address",
-        content:"Address",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:2,
-        title:"ImageFormat",
-        content:"ImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:3,
-        title:"Name",
-        content:"Name",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:4,
-        title:"Internet",
-        content:"Internet",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:5,
-        title:"Boolean",
-        content:"Boolean",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:6,
-        title:"RandomNumber",
-        content:"RandomNumber",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:7,
-        title:"Beer",
-        content:"Beer",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:8,
-        title:"Placeholder",
-        content:"Placeholder",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:9,
-        title:"RoboHashImageFormat",
-        content:"RoboHashImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:10,
-        title:"Config",
-        content:"Config",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:11,
-        title:"Code",
-        content:"Code",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:12,
-        title:"ArrayExtensions",
-        content:"ArrayExtensions",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:13,
-        title:"Date",
-        content:"Date",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:14,
-        title:"PlaceholditImageFormat",
-        content:"PlaceholditImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:15,
-        title:"FlatHashImageFormat",
-        content:"FlatHashImageFormat",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:16,
-        title:"Color",
-        content:"Color",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:17,
-        title:"Lorem",
-        content:"Lorem",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:18,
-        title:"Avatar",
-        content:"Avatar",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:19,
-        title:"Company",
-        content:"Company",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:20,
-        title:"Business",
-        content:"Business",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:21,
-        title:"EnumerableExtensions",
-        content:"EnumerableExtensions",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:22,
-        title:"Phone",
-        content:"Phone",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:23,
-        title:"StringExtensions",
-        content:"StringExtensions",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:24,
-        title:"NameFormats",
-        content:"NameFormats",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:25,
-        title:"FlatHash",
-        content:"FlatHash",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:26,
-        title:"RoboHash",
-        content:"RoboHash",
-        description:'',
-        tags:''
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/App',
-        title:"App",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Address',
-        title:"Address",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/ImageFormat',
-        title:"ImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Name',
-        title:"Name",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Internet',
-        title:"Internet",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Boolean',
-        title:"Boolean",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/RandomNumber',
-        title:"RandomNumber",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Beer',
-        title:"Beer",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Placeholder',
-        title:"Placeholder",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/RoboHashImageFormat',
-        title:"RoboHashImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Config',
-        title:"Config",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Code',
-        title:"Code",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker.Extensions/ArrayExtensions',
-        title:"ArrayExtensions",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Date',
-        title:"Date",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/PlaceholditImageFormat',
-        title:"PlaceholditImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/FlatHashImageFormat',
-        title:"FlatHashImageFormat",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Color',
-        title:"Color",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Lorem',
-        title:"Lorem",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Avatar',
-        title:"Avatar",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Company',
-        title:"Company",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Business',
-        title:"Business",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker.Extensions/EnumerableExtensions',
-        title:"EnumerableExtensions",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/Phone',
-        title:"Phone",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker.Extensions/StringExtensions',
-        title:"StringExtensions",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/NameFormats',
-        title:"NameFormats",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/FlatHash',
-        title:"FlatHash",
-        description:""
-    });
-
-    y({
-        url:'/Faker.NET.Portable/api/Faker/RoboHash',
-        title:"RoboHash",
-        description:""
+        documents.forEach(function (doc) { this.add(doc) }, this)
     });
 
     return {

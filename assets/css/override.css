@@ -31,7 +31,7 @@ pre:hover .btn-copy {
   z-index: 1000000;
   padding: 5px 8px;
   font: normal normal 11px/1.5 Helvetica arial, nimbussans1, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-  color: white;
+  color: #fff;
   text-align: center;
   text-decoration: none;
   text-shadow: none;
@@ -103,16 +103,16 @@ pre:hover .btn-copy {
   -o-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: white;
+  color: #fff;
 }
 .github-button a,
 .github-button a:active,
 .github-button a:hover,
 .github-button a:focus {
-  color: white;
+  color: #fff;
 }
 .github-button:hover,
 .github-button:focus {
-  background-color: #4eabdd;
-  color: white;
+  background-color: #4EABDD;
+  color: #fff;
 }
