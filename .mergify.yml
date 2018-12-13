@@ -18,6 +18,7 @@ pull_request_rules:
       - author=dependabot[bot]
       - "#approved-reviews-by>=1"
       - status-success=continuous-integration/appveyor/pr
+      - status-success=continuous-integration/travis-ci/pr
       - status-success=codecov/patch
       - base=develop
     actions:
