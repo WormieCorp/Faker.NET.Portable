@@ -1,15 +1,15 @@
 language: csharp
 os:
 - linux
-#- osx
+- osx
 mono:
   - latest
-  - 4.4.2
 branches:
   except:
     - ci/appveyor
     - /^[\d\.]+$/ # Skip tag builds, these should already have been tested before the tag was created
     - gh-pages
+    - /^dependabot\/.*$/
 before_install:
   - git fetch --unshallow
 script:
