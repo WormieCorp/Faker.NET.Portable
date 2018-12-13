@@ -15,7 +15,8 @@ BuildParameters.SetParameters(
 	shouldPublishChocolatey: false,
 	solutionFilePath: "./Faker.sln",
 	shouldRunInspectCode: false,
-	shouldDeployGraphDocumentation: false
+	shouldDeployGraphDocumentation: false,
+	shouldRunCodecov: true
 );
 
 ToolSettings.SetToolSettings(
