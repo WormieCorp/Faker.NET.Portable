@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -14,7 +14,7 @@ namespace Faker.Caching
 	/// <threadsafety static="true" />
 	internal static class ResourceCollectionCacher
 	{
-		private static object lockObj = new object();
+		private static readonly object lockObj = new object();
 		private static Dictionary<string, string[]> cache = new Dictionary<string, string[]>();
 
 		/// <summary>
