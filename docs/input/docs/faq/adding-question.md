@@ -10,4 +10,4 @@ You have two choices to do this, depending on wether you know the answer to your
    **NOTE: The question is not guaranteed to be added to the FAQ, but most likely will**
 2. Open a PR to our [github repository](https://github.com/WormieCorp/Faker.NET.Portable) and add
    the necessary markdown page in the [faq documentation path](https://github.com/WormieCorp/Faker.NET.Portable/tree/develop/docs/faq).
-   Ass soon as your PR is accepted, your question and answer will be available in our Documentation.
+   As soon as your PR is accepted, your question and answer will be available in our Documentation.
