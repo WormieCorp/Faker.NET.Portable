@@ -20,6 +20,7 @@ issue-labels-include:
 - Improvement
 - Language
 - Documentation
+- dependencies
 issue-labels-exclude:
 - Internal Refactoring
 - Build
@@ -27,3 +28,6 @@ issue-labels-alias:
   - name:    Documentation
     header:  Documentation
     plural:  Documentation
+  - name:    dependencies
+    header:  Dependency
+    plural:  Dependencies
