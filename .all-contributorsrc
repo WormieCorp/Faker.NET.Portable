@@ -1,0 +1,83 @@
+{
+  "projectName": "Faker.NET.Portable",
+  "projectOwner": "WormieCorp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "AdmiringWorm",
+      "name": "Kim J. Nordmo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1474648?v=4",
+      "profile": "https://github.com/AdmiringWorm",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "gitter-badger",
+      "name": "The Gitter Badger",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8518239?v=4",
+      "profile": "https://gitter.im",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jsauvexamarin",
+      "name": "Joe Sauve",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12718942?v=4",
+      "profile": "https://github.com/jsauvexamarin",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "supix",
+      "name": "supix",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1502191?v=4",
+      "profile": "http://esercizicpp.sourceforge.net",
+      "contributions": [
+        "code",
+        "ideas",
+        "doc"
+      ]
+    },
+    {
+      "login": "codetriage-readme-bot",
+      "name": "README Bot",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/35302948?v=4",
+      "profile": "https://www.codetriage.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "avatar_url": "https://avatars3.githubusercontent.com/in/2141?v=4",
+      "profile": "https://github.com/apps/dependabot",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "types": {
+    "bug": {
+      "symbol": "🐛",
+      "description": "Bug reports",
+      "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/issues?q=author%3A<%= contributor.login %>+label%3Abug"
+    },
+    "ideas": {
+      "symbol": "🤔",
+      "description": "Ideas, Planning, & Feedback",
+      "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/issues?q=author%3A<%= contributor.login %>"
+    }
+  }
+}
