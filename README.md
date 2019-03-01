@@ -1,3 +1,5 @@
+***Faker.NET.Portable is no longer being maintained, and no new features or bug fixes will be added to the library***
+
 Faker.NET Portable Edition
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
 =====
